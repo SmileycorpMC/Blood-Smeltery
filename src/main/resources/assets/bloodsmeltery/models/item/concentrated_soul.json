@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "bloodsmeltery:items/soul_essence"
+    }
+}
