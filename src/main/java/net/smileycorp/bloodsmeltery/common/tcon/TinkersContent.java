@@ -7,26 +7,25 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.smileycorp.bloodsmeltery.client.BlockFluidMapper;
+import net.smileycorp.atlas.api.client.FluidStateMapper;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalContent;
 import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.fluid.FluidColored;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 @EventBusSubscriber(modid=ModDefinitions.modid)
@@ -72,6 +71,8 @@ public class TinkersContent {
 		BLOOD_INFUSED_STONE.setLuminosity(0).setViscosity(8000)
 			.setTemperature(1000).setDensity(2000)
 			.setRarity(EnumRarity.UNCOMMON);
+		
+		if (Loader.isModLoaded("bloodarsenal")) BloodArsenalContent.registerBlocks(registry);
 	}
 	
 	@SubscribeEvent
@@ -85,12 +86,16 @@ public class TinkersContent {
 	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent event) {
 		for (BlockFluidClassic fluid_block : FLUID_BLOCKS) {
-			ModelLoader.setCustomStateMapper(fluid_block, new BlockFluidMapper());
+			ModelLoader.setCustomStateMapper(fluid_block, new FluidStateMapper(fluid_block.getFluid()));
 		}
 	}
 	
-	static FluidColored fluid(String name, int color, IForgeRegistry<Block> registry) {
-		    FluidColored fluid = new FluidColored(name.toLowerCase(), color, FluidColored.ICON_LiquidStill, FluidColored.ICON_LiquidFlowing);
+	public static FluidColored fluid(String name, int color, IForgeRegistry<Block> registry) {
+		return fluid(name, color, registry, FluidColored.ICON_LiquidStill, FluidColored.ICON_LiquidFlowing);
+	}
+	
+	public static FluidColored fluid(String name, int color, IForgeRegistry<Block> registry, ResourceLocation stillIcon, ResourceLocation flowingIcon) {
+		    FluidColored fluid = new FluidColored(name.toLowerCase(), color, stillIcon, flowingIcon);
 		    fluid.setUnlocalizedName(ModDefinitions.getName(name));
 		    FluidRegistry.registerFluid(fluid);
 		    FluidRegistry.addBucketForFluid(fluid);

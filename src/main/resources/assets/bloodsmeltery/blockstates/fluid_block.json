@@ -21,6 +21,9 @@
         }],
 		"steadfast_will": [{
             "custom": { "fluid": "steadfast_will" }
+        }],
+		"blood_glass": [{
+            "custom": { "fluid": "blood_glass" }
         }]
     }
 }

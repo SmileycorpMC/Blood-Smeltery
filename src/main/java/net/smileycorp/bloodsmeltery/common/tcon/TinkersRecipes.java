@@ -1,26 +1,16 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
-import scala.actors.threadpool.Arrays;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.fluid.FluidColored;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import WayofTime.bloodmagic.api.impl.BloodMagicAPI;
 import WayofTime.bloodmagic.api.impl.recipe.RecipeBloodAltar;
 import WayofTime.bloodmagic.block.BlockLifeEssence;
@@ -30,19 +20,37 @@ import WayofTime.bloodmagic.core.RegistrarBloodMagicItems;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
 import WayofTime.bloodmagic.soul.IDemonWillGem;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalRecipes;
+
 public class TinkersRecipes {
 
-	static Item[] sigils = {RegistrarBloodMagicItems.SIGIL_AIR, RegistrarBloodMagicItems.SIGIL_BLOOD_LIGHT, RegistrarBloodMagicItems.SIGIL_BOUNCE, 
+	public static List<Item> sigils = new ArrayList<Item>();
+	 
+	
+	public static void loadRecipes() {
+		sigils.addAll(Arrays.asList((new Item[] {RegistrarBloodMagicItems.SIGIL_AIR, RegistrarBloodMagicItems.SIGIL_BLOOD_LIGHT, RegistrarBloodMagicItems.SIGIL_BOUNCE, 
 			RegistrarBloodMagicItems.SIGIL_CLAW, RegistrarBloodMagicItems.SIGIL_DIVINATION, RegistrarBloodMagicItems.SIGIL_LAVA, 
 			RegistrarBloodMagicItems.SIGIL_WATER, RegistrarBloodMagicItems.SIGIL_VOID, RegistrarBloodMagicItems.SIGIL_GREEN_GROVE, 
 			RegistrarBloodMagicItems.SIGIL_ELEMENTAL_AFFINITY, RegistrarBloodMagicItems.SIGIL_HASTE, RegistrarBloodMagicItems.SIGIL_MAGNETISM, 
 			RegistrarBloodMagicItems.SIGIL_SUPPRESSION, RegistrarBloodMagicItems.SIGIL_FAST_MINER, RegistrarBloodMagicItems.SIGIL_SEER, 
 			RegistrarBloodMagicItems.SIGIL_ENDER_SEVERANCE, RegistrarBloodMagicItems.SIGIL_WHIRLWIND, RegistrarBloodMagicItems.SIGIL_PHANTOM_BRIDGE, 
 			RegistrarBloodMagicItems.SIGIL_COMPRESSION, RegistrarBloodMagicItems.SIGIL_HOLDING, RegistrarBloodMagicItems.SIGIL_TELEPOSITION, 
-			RegistrarBloodMagicItems.SIGIL_TRANSPOSITION };
-	 
-	
-	public static void loadRecipes() {
+			RegistrarBloodMagicItems.SIGIL_TRANSPOSITION })));
+		
+		if (Loader.isModLoaded("bloodarsenal")) BloodArsenalRecipes.loadRecipes();
+		
 		//alloying
 		if (BloodSmelteryConfig.createLifeEssence) {
 			for (FluidColored will : TinkersContent.FLUID_WILLS) {
@@ -142,8 +150,12 @@ public class TinkersRecipes {
 	 	//melting
 	 	if (BloodSmelteryConfig.unifiedWill) {
 	 		TinkerRegistry.registerMelting(new MeltingWillRecipe(EnumDemonWillType.DEFAULT));
+	 		if (BloodSmelteryConfig.meltCrystals)TinkerRegistry.registerMelting(RegistrarBloodMagicItems.ITEM_DEMON_CRYSTAL, TinkersContent.FLUID_RAW_WILL, 
+	 				BloodSmelteryConfig.crystalMeltMultiplier*BloodSmelteryConfig.willFluidAmount);
 	 	} else {
 	 		for (EnumDemonWillType will : EnumDemonWillType.values()) TinkerRegistry.registerMelting(new MeltingWillRecipe(will));
+	 		if (BloodSmelteryConfig.meltCrystals) for (EnumDemonWillType will : EnumDemonWillType.values()) TinkerRegistry.registerMelting(will.getStack(), TinkersContent.FLUID_WILLS[will.ordinal()], 
+	 				BloodSmelteryConfig.crystalMeltMultiplier*BloodSmelteryConfig.willFluidAmount);
 	 	}
 	 	
 	 	if (BloodSmelteryConfig.meltAllSlates) {
@@ -165,6 +177,7 @@ public class TinkersRecipes {
 	 	if (BloodSmelteryConfig.meltSigils) {
 	 		for (Item sigil : sigils) TinkerRegistry.registerMelting(sigil, TinkersContent.BLOOD_INFUSED_STONE, 250);
 	 	}
+	 	
 	}
 	
 	public static void loadLateRecipes() {

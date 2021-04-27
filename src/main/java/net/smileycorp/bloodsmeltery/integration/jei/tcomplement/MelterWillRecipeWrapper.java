@@ -1,20 +1,19 @@
-package net.smileycorp.bloodsmeltery.common.jei;
+package net.smileycorp.bloodsmeltery.integration.jei.tcomplement;
 
 import java.awt.Color;
 
-import javax.annotation.Nonnull;
+import knightminer.tcomplement.plugin.jei.melter.MeltingRecipeWrapper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.text.translation.I18n;
+
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
-import slimeknights.tconstruct.library.Util;
-import slimeknights.tconstruct.plugin.jei.smelting.SmeltingRecipeWrapper;
 
-public class MeltingWillRecipeWrapper extends SmeltingRecipeWrapper  {
+public class MelterWillRecipeWrapper extends MeltingRecipeWrapper  {
 
-	public MeltingWillRecipeWrapper(MeltingWillRecipe recipe) {
+	public MelterWillRecipeWrapper(MeltingWillRecipe recipe) {
 		super(recipe);
 	}
 	

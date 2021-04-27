@@ -1,13 +1,14 @@
-package net.smileycorp.bloodsmeltery.common.jei.tcomplement;
+package net.smileycorp.bloodsmeltery.integration.jei.tcomplement;
 
 import javax.annotation.Nonnull;
 
-import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
 import knightminer.tcomplement.common.Config;
 import knightminer.tcomplement.common.PulseBase;
 import knightminer.tcomplement.plugin.jei.highoven.melting.HighOvenMeltingCategory;
 import knightminer.tcomplement.plugin.jei.melter.MeltingRecipeCategory;
 import mezz.jei.api.IModRegistry;
+
+import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
 
 public class JEIIntegrationTComplement {
 

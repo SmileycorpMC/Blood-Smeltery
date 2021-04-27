@@ -2,10 +2,11 @@ package net.smileycorp.bloodsmeltery.common;
 
 import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.smeltery.tileentity.TileCasting;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+
 import net.minecraftforge.fluids.Fluid;
 
 public class TileEntityCastingAltar extends TileCasting {

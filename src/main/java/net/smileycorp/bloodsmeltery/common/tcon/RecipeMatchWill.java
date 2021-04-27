@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
 import slimeknights.mantle.util.RecipeMatch;
-import slimeknights.mantle.util.RecipeMatch.Match;
 import WayofTime.bloodmagic.core.RegistrarBloodMagicItems;
 import WayofTime.bloodmagic.iface.IMultiWillTool;
-import WayofTime.bloodmagic.item.soul.ItemMonsterSoul;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
 import WayofTime.bloodmagic.soul.IDemonWill;
 import WayofTime.bloodmagic.soul.IDemonWillGem;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 
 public class RecipeMatchWill extends RecipeMatch {
 	

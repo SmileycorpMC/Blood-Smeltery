@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.jei;
+package net.smileycorp.bloodsmeltery.integration.jei;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +9,20 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.plugin.jei.casting.CastingRecipeCategory;
 import slimeknights.tconstruct.plugin.jei.smelting.SmeltingRecipeCategory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.Loader;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.jei.tcomplement.JEIIntegrationTComplement;
-import net.smileycorp.bloodsmeltery.common.tcon.CastingTartaricRecipe;
-import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.gui.GuiHelper;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+
+import net.minecraftforge.fml.common.Loader;
+
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.tcon.CastingTartaricRecipe;
+import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
+import net.smileycorp.bloodsmeltery.integration.jei.tcomplement.JEIIntegrationTComplement;
 
 @JEIPlugin
 public class JEIIntegration implements IModPlugin {

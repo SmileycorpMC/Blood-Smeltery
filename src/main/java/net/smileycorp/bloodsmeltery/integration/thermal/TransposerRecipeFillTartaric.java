@@ -1,13 +1,15 @@
-package net.smileycorp.bloodsmeltery.common.thermal;
+package net.smileycorp.bloodsmeltery.integration.thermal;
 
 import WayofTime.bloodmagic.iface.IMultiWillTool;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
-import WayofTime.bloodmagic.soul.IDemonWillGem;
+import cofh.thermalexpansion.util.managers.machine.TransposerManager.TransposerRecipe;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import net.minecraftforge.fluids.FluidStack;
+
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import cofh.thermalexpansion.util.managers.machine.TransposerManager.TransposerRecipe;
 
 public class TransposerRecipeFillTartaric extends TransposerRecipe {
 	
@@ -18,6 +20,7 @@ public class TransposerRecipeFillTartaric extends TransposerRecipe {
 		this.type=type;
 	}
 	
+	@Override
 	public ItemStack getOutput() {
 		ItemStack input = getInput();
 		if (((IMultiWillTool)input.getItem()).getCurrentType(input) == type) {

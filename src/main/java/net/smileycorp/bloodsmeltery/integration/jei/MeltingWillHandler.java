@@ -1,7 +1,8 @@
-package net.smileycorp.bloodsmeltery.common.jei;
+package net.smileycorp.bloodsmeltery.integration.jei;
 
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
+
 import net.smileycorp.bloodsmeltery.common.tcon.MeltingWillRecipe;
 
 public class MeltingWillHandler implements IRecipeWrapperFactory<MeltingWillRecipe> {

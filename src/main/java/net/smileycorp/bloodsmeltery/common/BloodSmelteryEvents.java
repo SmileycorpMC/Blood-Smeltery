@@ -1,42 +1,24 @@
 package net.smileycorp.bloodsmeltery.common;
 
-import WayofTime.bloodmagic.core.RegistrarBloodMagicItems;
-import WayofTime.bloodmagic.orb.IBloodOrb;
-import WayofTime.bloodmagic.soul.EnumDemonWillType;
-import WayofTime.bloodmagic.soul.IDemonWill;
-import WayofTime.bloodmagic.soul.IDemonWillGem;
-import slimeknights.tconstruct.library.entity.EntityProjectileBase;
-import slimeknights.tconstruct.library.events.TinkerRegisterEvent;
 import slimeknights.tconstruct.library.fluid.FluidColored;
-import slimeknights.tconstruct.library.modifiers.ModifierNBT;
-import slimeknights.tconstruct.library.smeltery.CastingRecipe;
-import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.library.smeltery.SmelteryTank;
-import slimeknights.tconstruct.library.tools.TinkerToolCore;
-import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.smeltery.block.BlockMultiblockController;
 import slimeknights.tconstruct.smeltery.events.TinkerCastingEvent;
 import slimeknights.tconstruct.smeltery.events.TinkerSmelteryEvent;
 import slimeknights.tconstruct.smeltery.tileentity.TileSmeltery;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import WayofTime.bloodmagic.orb.IBloodOrb;
+import WayofTime.bloodmagic.soul.IDemonWillGem;
+
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import net.smileycorp.bloodsmeltery.common.tcon.ModifierAlive;
+
 import net.smileycorp.bloodsmeltery.common.tcon.TinkersContent;
 
 @EventBusSubscriber(modid=ModDefinitions.modid)

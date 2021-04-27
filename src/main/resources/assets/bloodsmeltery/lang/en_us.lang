@@ -4,12 +4,15 @@ fluid.bloodsmeltery.CorrosiveWill.name=Corrosive Demonic Will
 fluid.bloodsmeltery.DestructiveWill.name=Destructive Demonic Will
 fluid.bloodsmeltery.VengefulWill.name=Vengeful Demonic Will
 fluid.bloodsmeltery.SteadfastWill.name=Steadfast Demonic Will
+fluid.bloodsmeltery.BloodGlass.name=Blood Infused Glass
+
 fluid.bloodsmeltery.Rune=Blood-Infused Stone
 fluid.bloodsmeltery.RawWill=Demonic Will
 fluid.bloodsmeltery.CorrosiveWill=Corrosive Demonic Will
 fluid.bloodsmeltery.DestructiveWill=Destructive Demonic Will
 fluid.bloodsmeltery.VengefulWill=Vengeful Demonic Will
 fluid.bloodsmeltery.SteadfastWill=Steadfast Demonic Will
+fluid.bloodsmeltery.BloodGlass=Blood Infused Glass
 
 item.ConcentratedSoul.name=Concentrated Soul Essence
 desc.bloodsmeltery.willmelting=Produces %s mb per point of Will Quality.
