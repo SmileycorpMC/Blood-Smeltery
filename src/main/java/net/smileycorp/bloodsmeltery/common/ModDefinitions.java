@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 public class ModDefinitions {
 	public static final String modid = "bloodsmeltery";
 	public static final String name = "Blood Smeltery: A TCon Addon for Blood Magic";
-	public static final String dependencies = "required-after:tconstruct;required-after:bloodmagic;required-after:mantle";
+	public static final String dependencies = "required-after:tconstruct;required-after:bloodmagic;required-after:mantle;required-after:atlaslib";
 	public static final String version = "1.0.5";
 	public static final String location = "net.smileycorp.bloodsmeltery.";
 	

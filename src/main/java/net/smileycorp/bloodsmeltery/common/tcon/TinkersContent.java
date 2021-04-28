@@ -6,12 +6,10 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
@@ -24,9 +22,7 @@ import net.smileycorp.atlas.api.client.FluidStateMapper;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
 import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalContent;
-import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.fluid.FluidColored;
-import slimeknights.tconstruct.tools.TinkerTools;
 
 @EventBusSubscriber(modid=ModDefinitions.modid)
 public class TinkersContent {
@@ -40,8 +36,6 @@ public class TinkersContent {
 	public static FluidColored BLOOD_INFUSED_STONE;
 	
 	public static FluidColored[] FLUID_WILLS = {};
-	
-	public static ModifierAlive ALIVE_MODIFIER;
 	
 	static List<BlockFluidClassic> FLUID_BLOCKS = new ArrayList<BlockFluidClassic>();
 	
@@ -73,13 +67,6 @@ public class TinkersContent {
 			.setRarity(EnumRarity.UNCOMMON);
 		
 		if (Loader.isModLoaded("bloodarsenal")) BloodArsenalContent.registerBlocks(registry);
-	}
-	
-	@SubscribeEvent
-	public static void registerModifiers(Register<Item> event) {
-		if (TConstruct.pulseManager.isPulseLoaded(TinkerTools.PulseId)) {
-			//ALIVE_MODIFIER = new ModifierAlive();
-		}
 	}
 	
 	@SubscribeEvent

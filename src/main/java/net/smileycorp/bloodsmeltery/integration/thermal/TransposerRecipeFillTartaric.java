@@ -1,16 +1,14 @@
 package net.smileycorp.bloodsmeltery.integration.thermal;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.FluidStack;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import WayofTime.bloodmagic.iface.IMultiWillTool;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
 import cofh.thermalexpansion.util.managers.machine.TransposerManager.TransposerRecipe;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-
-import net.minecraftforge.fluids.FluidStack;
-
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-
+//unfinished, needs reworking to make it work properly, might not be possible to finish
 public class TransposerRecipeFillTartaric extends TransposerRecipe {
 	
 	protected final EnumDemonWillType type;
