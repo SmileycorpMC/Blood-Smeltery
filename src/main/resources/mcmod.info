@@ -3,7 +3,7 @@
   "modid": "bloodsmeltery",
   "name": "Blood Smeltery: A TCon Addon for Blood Magic",
   "description": "Adds the ablity to create Life Essence and Rune blocks in the Tinker's Construct Smeltery.",
-  "version": "1.2.1",
+  "version": "1.1.1",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
