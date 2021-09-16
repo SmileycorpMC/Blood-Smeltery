@@ -5,9 +5,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.FluidWillUtils;
+import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalRecipes;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.fluid.FluidColored;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -19,20 +31,6 @@ import WayofTime.bloodmagic.core.RegistrarBloodMagicBlocks;
 import WayofTime.bloodmagic.core.RegistrarBloodMagicItems;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
 import WayofTime.bloodmagic.soul.IDemonWillGem;
-
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalRecipes;
 
 public class TinkersRecipes {
 
@@ -53,7 +51,7 @@ public class TinkersRecipes {
 		
 		//alloying
 		if (BloodSmelteryConfig.createLifeEssence) {
-			for (FluidColored will : TinkersContent.FLUID_WILLS) {
+			for (Fluid will : FluidWillUtils.getWillFluids()) {
 				TinkerRegistry.registerAlloy(new FluidStack(BlockLifeEssence.getLifeEssence(), BloodSmelteryConfig.lifeEssenceAmount),
 		                new FluidStack(will, BloodSmelteryConfig.lifeEssenceRatio[0]),
 		                new FluidStack(TinkerFluids.blood, BloodSmelteryConfig.lifeEssenceRatio[1]));
@@ -82,7 +80,7 @@ public class TinkersRecipes {
 			 	nbt.setFloat("souls", 1f);
 			 	soul.setTagCompound(nbt);
 			 	
-			 	TinkerRegistry.registerTableCasting(soul, ItemStack.EMPTY, TinkersContent.FLUID_WILLS[i], BloodSmelteryConfig.willFluidAmount);
+			 	TinkerRegistry.registerTableCasting(soul, ItemStack.EMPTY, FluidWillUtils.getFluidForType(will), BloodSmelteryConfig.willFluidAmount);
 	 		}
 	 		
 	 		if (BloodSmelteryConfig.castFillTartaricGems) {
@@ -95,7 +93,7 @@ public class TinkersRecipes {
 			 	
 		 	if (BloodSmelteryConfig.castSoulStone) {
 		 		TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(RegistrarBloodMagicBlocks.DEMON_EXTRAS, 1, i), 
-		 				RecipeMatch.of("stone"), new FluidStack(TinkersContent.FLUID_WILLS[i], BloodSmelteryConfig.soulStoneCost), true, true));
+		 				RecipeMatch.of("stone"), new FluidStack(FluidWillUtils.getFluidForType(will), BloodSmelteryConfig.soulStoneCost), true, true));
 		 	}
 		 	if (BloodSmelteryConfig.castDemonAlloy) {
 		 		List<ItemStack> ingredients = new ArrayList<ItemStack>();
@@ -114,7 +112,7 @@ public class TinkersRecipes {
 		 			ingredients.add(ItemStack.EMPTY);
 		 		}
 		 		TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(RegistrarBloodMagicBlocks.DEMON_EXTRAS, 1, i+10), 
-		 				RecipeMatch.of(ingredients), new FluidStack(TinkersContent.FLUID_WILLS[i], BloodSmelteryConfig.demonAlloyCost), true, true));
+		 				RecipeMatch.of(ingredients), new FluidStack(FluidWillUtils.getFluidForType(will), BloodSmelteryConfig.demonAlloyCost), true, true));
 		 	}
 	 	}
 	 	
@@ -154,7 +152,7 @@ public class TinkersRecipes {
 	 				BloodSmelteryConfig.crystalMeltMultiplier*BloodSmelteryConfig.willFluidAmount);
 	 	} else {
 	 		for (EnumDemonWillType will : EnumDemonWillType.values()) TinkerRegistry.registerMelting(new MeltingWillRecipe(will));
-	 		if (BloodSmelteryConfig.meltCrystals) for (EnumDemonWillType will : EnumDemonWillType.values()) TinkerRegistry.registerMelting(will.getStack(), TinkersContent.FLUID_WILLS[will.ordinal()], 
+	 		if (BloodSmelteryConfig.meltCrystals) for (EnumDemonWillType will : EnumDemonWillType.values()) TinkerRegistry.registerMelting(will.getStack(), FluidWillUtils.getFluidForType(will), 
 	 				BloodSmelteryConfig.crystalMeltMultiplier*BloodSmelteryConfig.willFluidAmount);
 	 	}
 	 	
