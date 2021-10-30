@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -217,9 +216,9 @@ public class BloodSmelteryConfig {
 			//progression skipping
 			castUpgradeOrbs = config.get("progression skipping", "castUpgradeOrbs",
 					false, "Should you be able to pour life essence onto blood orbs to upgrade them? (Default is false)").getBoolean();
-			castAllSlates = config.get("progression-skipping", "castAllSlates",
+			castAllSlates = config.get("progression skipping", "castAllSlates",
 					false, "Should you be able to pour more life essence onto slates to upgrade them? (Default is false)").getBoolean();
-			castAltarItems = config.get("progression-skipping", "castAltarItems",
+			castAltarItems = config.get("progression skipping", "castAltarItems",
 					false, "Should any recipe made in the blood altar be able to be made in the casting table? (Default is false)").getBoolean();
 		} catch (Exception e) {
 		} finally {

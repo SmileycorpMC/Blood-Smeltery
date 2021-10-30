@@ -11,6 +11,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -20,9 +21,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.smileycorp.atlas.api.client.FluidStateMapper;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.FluidWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
 import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalContent;
 import slimeknights.tconstruct.library.fluid.FluidColored;
+import WayofTime.bloodmagic.soul.EnumDemonWillType;
 
 @EventBusSubscriber(modid=ModDefinitions.modid)
 public class TinkersContent {
@@ -35,8 +38,6 @@ public class TinkersContent {
 	
 	public static FluidColored BLOOD_INFUSED_STONE;
 	
-	public static FluidColored[] FLUID_WILLS = {};
-	
 	static List<BlockFluidClassic> FLUID_BLOCKS = new ArrayList<BlockFluidClassic>();
 	
 	@SubscribeEvent
@@ -45,16 +46,19 @@ public class TinkersContent {
 		
 		if (BloodSmelteryConfig.enableFluidWill) {
 			FLUID_RAW_WILL = fluid("Raw_Will", 0x4EF6FF, registry);
-			FLUID_WILLS = new FluidColored[]{FLUID_RAW_WILL};
+			FluidWillUtils.mapFluid(EnumDemonWillType.DEFAULT, FLUID_RAW_WILL);
 			if (!BloodSmelteryConfig.unifiedWill) {
 				FLUID_CORROSIVE_WILL = fluid("Corrosive_Will", 0x60FF4F, registry);
 				FLUID_DESTRUCTIVE_WILL = fluid("Destructive_Will", 0xFFCF4F, registry);
 				FLUID_VENGEFUL_WILL = fluid("Vengeful_Will", 0xFF5367, registry);
 				FLUID_STEADFAST_WILL = fluid("Steadfast_Will", 0xBB4FFF, registry);
-			
-				FLUID_WILLS = new FluidColored[]{FLUID_RAW_WILL, FLUID_CORROSIVE_WILL, FLUID_DESTRUCTIVE_WILL, FLUID_VENGEFUL_WILL, FLUID_STEADFAST_WILL};
+				
+				FluidWillUtils.mapFluid(EnumDemonWillType.CORROSIVE, FLUID_CORROSIVE_WILL);
+				FluidWillUtils.mapFluid(EnumDemonWillType.DESTRUCTIVE, FLUID_DESTRUCTIVE_WILL);
+				FluidWillUtils.mapFluid(EnumDemonWillType.VENGEFUL, FLUID_VENGEFUL_WILL);
+				FluidWillUtils.mapFluid(EnumDemonWillType.STEADFAST, FLUID_STEADFAST_WILL);
 			}
-			for (FluidColored will : FLUID_WILLS) {
+			for (Fluid will : FluidWillUtils.getWillFluids()) {
 				will.setLuminosity(11).setViscosity(1000)
 					.setTemperature(500).setDensity(1000)
 					.setRarity(EnumRarity.RARE);

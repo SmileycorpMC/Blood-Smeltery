@@ -1,22 +1,19 @@
 package net.smileycorp.bloodsmeltery.common.bloodaresenal;
 
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.FluidWillUtils;
+import net.smileycorp.bloodsmeltery.common.tcon.TinkersRecipes;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.fluid.FluidColored;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import WayofTime.bloodmagic.block.BlockLifeEssence;
 import arcaratus.bloodarsenal.compat.tconstruct.TConstructPlugin;
 import arcaratus.bloodarsenal.core.RegistrarBloodArsenalBlocks;
 import arcaratus.bloodarsenal.core.RegistrarBloodArsenalItems;
-
-import net.minecraft.item.ItemStack;
-
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.Loader;
-
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.tcon.TinkersContent;
-import net.smileycorp.bloodsmeltery.common.tcon.TinkersRecipes;
 
 public class BloodArsenalRecipes {
 
@@ -53,7 +50,7 @@ public class BloodArsenalRecipes {
 			TinkerRegistry.registerMelting(RegistrarBloodArsenalBlocks.BLOOD_STAINED_GLASS_PANE, BloodArsenalContent.BLOOD_INFUSED_GLASS, BloodSmelteryConfig.castingBloodGlassPanesAmount);
 		}
 		if (Loader.isModLoaded("enderio") && BloodSmelteryConfig.enderIOAlloyBloodIron) {
-			for (FluidColored fluid : TinkersContent.FLUID_WILLS) {
+			for (Fluid fluid : FluidWillUtils.getWillFluids()) {
 				TinkerRegistry.registerAlloy(new FluidStack(TConstructPlugin.FLUID_MOLTEN_BLOOD_INFUSED_IRON, BloodSmelteryConfig.enderIOBloodIronAmount), 
 					new FluidStack(BlockLifeEssence.getLifeEssence(), BloodSmelteryConfig.enderIOBloodIronRatio[0]), new FluidStack(fluid, BloodSmelteryConfig.enderIOBloodIronRatio[1]), 
 					new FluidStack(TinkerFluids.iron, BloodSmelteryConfig.enderIOBloodIronRatio[2]), new FluidStack(FluidRegistry.getFluid("glowstone"),
@@ -62,7 +59,7 @@ public class BloodArsenalRecipes {
 			}
 		}
 		if (Loader.isModLoaded("mekanism") && BloodSmelteryConfig.mekAlloyBloodIron) {
-			for (FluidColored fluid : TinkersContent.FLUID_WILLS) {
+			for (Fluid fluid : FluidWillUtils.getWillFluids()) {
 				TinkerRegistry.registerAlloy(new FluidStack(TConstructPlugin.FLUID_MOLTEN_BLOOD_INFUSED_IRON, BloodSmelteryConfig.mekBloodIronAmount), 
 					new FluidStack(BlockLifeEssence.getLifeEssence(), BloodSmelteryConfig.mekBloodIronRatio[0]), new FluidStack(fluid, BloodSmelteryConfig.mekBloodIronRatio[1]), 
 					new FluidStack(TinkerFluids.iron, BloodSmelteryConfig.mekBloodIronRatio[2]), new FluidStack(FluidRegistry.getFluid("glowstone"),
