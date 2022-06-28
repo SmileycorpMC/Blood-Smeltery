@@ -1,12 +1,11 @@
 package net.smileycorp.bloodsmeltery.integration.jei;
 
 import mezz.jei.api.IModPlugin;
-import mezz.jei.api.JeiPlugin;
 import mezz.jei.gui.GuiHelper;
 import net.minecraft.util.ResourceLocation;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
 
-@JeiPlugin
+//@JeiPlugin
 public class JEIIntegration implements IModPlugin {
 
 	public static GuiHelper guiHelper;
