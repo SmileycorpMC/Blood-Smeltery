@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [],
+  "inputs": [
+    {
+      "name": "bloodmagic:life_essence_fluid",
+      "amount": 3
+    },
+    {
+      "tag": "tconstruct:seared_stone",
+      "amount": 1
+    }
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:blood_stone",
+    "amount": 1
+  },
+  "temperature": 1000
+}

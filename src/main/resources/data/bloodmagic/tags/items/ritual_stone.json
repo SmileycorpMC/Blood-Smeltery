@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+		"bloodmagic:ritualstone",
+		"bloodmagic:airritualstone",
+		"bloodmagic:waterritualstone",
+		"bloodmagic:fireritualstone",
+		"bloodmagic:earthritualstone",
+		"bloodmagic:duskritualstone",
+		"bloodmagic:lightritualstone"
+  ]
+}

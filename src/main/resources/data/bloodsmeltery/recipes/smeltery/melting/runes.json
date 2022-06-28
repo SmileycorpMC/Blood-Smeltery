@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    {
+      "tag": "bloodmagic:rune"
+    }
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:blood_stone",
+    "amount": 1000
+  },
+  "temperature": 1000,
+  "time": 700
+}

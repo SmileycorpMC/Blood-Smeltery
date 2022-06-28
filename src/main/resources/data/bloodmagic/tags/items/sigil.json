@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+		"bloodmagic:growthsigil",
+		"bloodmagic:miningsigil",
+		"bloodmagic:sigilofmagnetism",
+		"bloodmagic:icesigil",
+		"bloodmagic:sigilofsuppression",
+		"bloodmagic:divinationsigil",
+		"bloodmagic:seersigil",
+		"bloodmagic:watersigil",
+		"bloodmagic:voidsigil",
+		"bloodmagic:lavasigil",
+		"bloodmagic:airsigil",
+		"bloodmagic:bloodlightsigil",
+		"bloodmagic:divinationsigil",
+		"bloodmagic:sigilofholding"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    {
+      "tag": "bloodmagic:sigil"
+    },
+	{
+      "tag": "bloodmagic:slate"
+    }
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:blood_stone",
+    "amount": 250
+  },
+  "temperature": 1000,
+  "time": 175
+}

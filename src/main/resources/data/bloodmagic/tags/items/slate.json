@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+		"bloodmagic:blankslate",
+		"bloodmagic:reinforcedslate",
+		"bloodmagic:infusedslate",
+		"bloodmagic:demonslate",
+		"bloodmagic:etherealslate"
+  ]
+}

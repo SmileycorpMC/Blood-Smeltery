@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+		"bloodsmeltery:default_will",
+		"bloodsmeltery:corrosive_will",
+		"bloodsmeltery:destructive_will",
+		"bloodsmeltery:vengeful_will",
+		"bloodsmeltery:steadfast_will"
+  ]
+}

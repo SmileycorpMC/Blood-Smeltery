@@ -1,101 +1,35 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraft.util.SoundEvents;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.smileycorp.atlas.api.client.FluidStateMapper;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.FluidWillUtils;
+import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
-import net.smileycorp.bloodsmeltery.common.bloodaresenal.BloodArsenalContent;
-import slimeknights.tconstruct.library.fluid.FluidColored;
-import WayofTime.bloodmagic.soul.EnumDemonWillType;
+import slimeknights.mantle.registration.ModelFluidAttributes;
+import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
+import slimeknights.mantle.registration.object.FluidObject;
+import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
-@EventBusSubscriber(modid=ModDefinitions.modid)
+@EventBusSubscriber(modid=ModDefinitions.MODID)
 public class TinkersContent {
-	
-	public static FluidColored FLUID_RAW_WILL;
-	public static FluidColored FLUID_CORROSIVE_WILL;
-	public static FluidColored FLUID_DESTRUCTIVE_WILL;
-	public static FluidColored FLUID_VENGEFUL_WILL;
-	public static FluidColored FLUID_STEADFAST_WILL;
-	
-	public static FluidColored BLOOD_INFUSED_STONE;
-	
-	static List<BlockFluidClassic> FLUID_BLOCKS = new ArrayList<BlockFluidClassic>();
-	
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		IForgeRegistry<Block> registry = event.getRegistry();
-		
-		if (BloodSmelteryConfig.enableFluidWill) {
-			FLUID_RAW_WILL = fluid("Raw_Will", 0x4EF6FF, registry);
-			FluidWillUtils.mapFluid(EnumDemonWillType.DEFAULT, FLUID_RAW_WILL);
-			if (!BloodSmelteryConfig.unifiedWill) {
-				FLUID_CORROSIVE_WILL = fluid("Corrosive_Will", 0x60FF4F, registry);
-				FLUID_DESTRUCTIVE_WILL = fluid("Destructive_Will", 0xFFCF4F, registry);
-				FLUID_VENGEFUL_WILL = fluid("Vengeful_Will", 0xFF5367, registry);
-				FLUID_STEADFAST_WILL = fluid("Steadfast_Will", 0xBB4FFF, registry);
-				
-				FluidWillUtils.mapFluid(EnumDemonWillType.CORROSIVE, FLUID_CORROSIVE_WILL);
-				FluidWillUtils.mapFluid(EnumDemonWillType.DESTRUCTIVE, FLUID_DESTRUCTIVE_WILL);
-				FluidWillUtils.mapFluid(EnumDemonWillType.VENGEFUL, FLUID_VENGEFUL_WILL);
-				FluidWillUtils.mapFluid(EnumDemonWillType.STEADFAST, FLUID_STEADFAST_WILL);
-			}
-			for (Fluid will : FluidWillUtils.getWillFluids()) {
-				will.setLuminosity(11).setViscosity(1000)
-					.setTemperature(500).setDensity(1000)
-					.setRarity(EnumRarity.RARE);
+
+	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModDefinitions.MODID);
+
+	public static final FluidObject<ForgeFlowingFluid> BLOOD_INFUSED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
+			.viscosity(8000).temperature(900).color(0x432425).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 8);
+
+	static {
+		if (BloodSmelteryConfig.enableFluidWill.get()) {
+			for (EnumDemonWillType will : EnumDemonWillType.values()) {
+				if (!BloodSmelteryConfig.unifiedWill.get() || will == EnumDemonWillType.DEFAULT) {
+					FluidObject<ForgeFlowingFluid> fluid = FLUIDS.register(will.toString() + "_will", ModelFluidAttributes.builder().luminosity(11).density(1000)
+							.viscosity(1000).temperature(500).color(DemonWillUtils.getColour(will)).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 11);
+					DemonWillUtils.registerWillFluid(will, fluid);
+				}
 			}
 		}
-		
-		BLOOD_INFUSED_STONE = fluid("Rune", 0x432425, registry);
-		BLOOD_INFUSED_STONE.setLuminosity(0).setViscosity(8000)
-			.setTemperature(1000).setDensity(2000)
-			.setRarity(EnumRarity.UNCOMMON);
-		
-		if (Loader.isModLoaded("bloodarsenal")) BloodArsenalContent.registerBlocks(registry);
 	}
-	
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public static void registerModels(ModelRegistryEvent event) {
-		for (BlockFluidClassic fluid_block : FLUID_BLOCKS) {
-			ModelLoader.setCustomStateMapper(fluid_block, new FluidStateMapper(fluid_block.getFluid()));
-		}
-	}
-	
-	public static FluidColored fluid(String name, int color, IForgeRegistry<Block> registry) {
-		return fluid(name, color, registry, FluidColored.ICON_LiquidStill, FluidColored.ICON_LiquidFlowing);
-	}
-	
-	public static FluidColored fluid(String name, int color, IForgeRegistry<Block> registry, ResourceLocation stillIcon, ResourceLocation flowingIcon) {
-		    FluidColored fluid = new FluidColored(name.toLowerCase(), color, stillIcon, flowingIcon);
-		    fluid.setUnlocalizedName(ModDefinitions.getName(name));
-		    FluidRegistry.registerFluid(fluid);
-		    FluidRegistry.addBucketForFluid(fluid);
-		    BlockFluidClassic fluid_block = new BlockFluidClassic(fluid, Material.LAVA);
-		    fluid_block.setRegistryName(ModDefinitions.getResource(name));
-		    fluid_block.setUnlocalizedName(ModDefinitions.getName(name));
-		    registry.register(fluid_block);
-		    FLUID_BLOCKS.add(fluid_block);
-		    return fluid;
-	  }
 
 }

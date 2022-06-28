@@ -1,103 +1,28 @@
 package net.smileycorp.bloodsmeltery.common;
 
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import slimeknights.tconstruct.library.smeltery.SmelteryTank;
-import slimeknights.tconstruct.smeltery.block.BlockMultiblockController;
-import slimeknights.tconstruct.smeltery.events.TinkerCastingEvent;
-import slimeknights.tconstruct.smeltery.events.TinkerSmelteryEvent;
-import slimeknights.tconstruct.smeltery.tileentity.TileSmeltery;
-import WayofTime.bloodmagic.iface.IMultiWillTool;
-import WayofTime.bloodmagic.orb.IBloodOrb;
-import WayofTime.bloodmagic.soul.IDemonWillGem;
+import wayoftime.bloodmagic.api.compat.IDemonWillGem;
+import wayoftime.bloodmagic.api.compat.IMultiWillTool;
 
-@EventBusSubscriber(modid=ModDefinitions.modid)
+@EventBusSubscriber(modid=ModDefinitions.MODID)
 public class BloodSmelteryEvents {
-	
+
 	@SubscribeEvent
-	public static void tinkersMelt(TinkerSmelteryEvent.OnMelting event) {
-		boolean retain = false;
-		ItemStack input = event.itemStack;
-		FluidStack output = event.result;
-		TileSmeltery smeltery = event.smeltery;
-		World world = smeltery.getWorld();
-		if (FluidWillUtils.isWillFluid(output.getFluid())) {
-			NBTTagCompound nbt = input.getTagCompound();
-			if (nbt != null) {
-				if (nbt.hasKey("souls")) {
-					int souls =  Math.round(nbt.getFloat("souls") * BloodSmelteryConfig.willFluidAmount);
-					SmelteryTank tank = smeltery.getTank();
-					if (smeltery.hasFuel()&&smeltery.isActive()) {
-						if (tank.getFluidAmount()+souls<=tank.getCapacity()) {
-							output.amount = souls;
-						} else {
-							output.amount = tank.getCapacity()-tank.getFluidAmount();
-							nbt.setFloat("souls", (souls-output.amount)/BloodSmelteryConfig.willFluidAmount);
-							retain = true;
-						}
-					}
-				}
-			}
-			if (input.getItem() instanceof  IDemonWillGem) {
-				if (nbt==null) nbt = new NBTTagCompound();
-				ItemStack stack = input.copy();
-				if (!retain) nbt.setFloat("souls", 0f);
-				stack.setTagCompound(nbt);
-				BlockPos pos = smeltery.getPos().offset(world.getBlockState(smeltery.getPos()).getValue(BlockMultiblockController.FACING));
-				EntityItem drop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-				world.spawnEntity(drop);
+	public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
+		ItemStack stack = event.getObject();
+		if (stack != null) {
+			Item item = stack.getItem();
+			if (item instanceof IMultiWillTool && item instanceof IDemonWillGem) {
+				TartaricFluidCapability cap = new TartaricFluidCapability(stack);
+				event.addCapability(ModDefinitions.getResource("TartaricFluid"), cap);
 			}
 		}
 	}
-	
-	@SubscribeEvent
-	public static void tinkersCast(TinkerCastingEvent.OnCasted event) {
-		ItemStack input = event.tile.getStackInSlot(0);
-		ItemStack output = event.output;
-		if (output.getItem() instanceof IBloodOrb) {
-			NBTTagCompound nbt = output.getTagCompound();
-			if (nbt!=null) {
-				if (nbt.hasKey("orb")) {
-					String orb = nbt.getString("orb");
-					nbt = input.getTagCompound();
-					nbt.setString("orb", orb);
-					event.output = event.tile.getStackInSlot(0).copy();
-					event.output.setTagCompound(nbt);
-				}
-			}
-		} else if (output.getItem() instanceof IDemonWillGem) {
-			NBTTagCompound nbt = input.getTagCompound();
-			if (nbt==null) nbt = new NBTTagCompound();
-			if (!nbt.hasKey("souls")) nbt.setFloat("souls", 0f);
-			nbt.setFloat("souls", nbt.getFloat("souls")+1f);
-			event.output = input.copy();
-			event.output.setTagCompound(nbt);
-			event.tile.setInventorySlotContents(0, ItemStack.EMPTY);
-		}
-	}
-	
-	@SubscribeEvent
-    public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
-		if (!event.getCapabilities().containsKey(ModDefinitions.getResource("TartaricFluid"))) {
-			ItemStack stack = event.getObject();
-			if (stack != null) {
-				Item item = stack.getItem();
-				if (item instanceof IMultiWillTool && item instanceof IDemonWillGem) {
-					TartaricFluidCapability cap = new TartaricFluidCapability(stack);
-					event.addCapability(ModDefinitions.getResource("TartaricFluid"), cap);
-				}
-			}
-		}
-    }
-	
+
 	/*@SubscribeEvent
 	public void killMob(LivingDeathEvent event) {
 		if (event.getSource() instanceof EntityDamageSource) {
@@ -120,7 +45,7 @@ public class BloodSmelteryEvents {
 				}
 			}
 		}
-			
+
 	}
 
 	private void generateSoul(ItemStack held, EntityPlayer player, EntityLivingBase entity) {
@@ -147,6 +72,6 @@ public class BloodSmelteryEvents {
 		 	EntityItem drop = new EntityItem(null, entity.posX, entity.posY, entity.posZ, soul);
 		 	entity.world.spawnEntity(drop);
 		}
-		
+
 	}*/
 }

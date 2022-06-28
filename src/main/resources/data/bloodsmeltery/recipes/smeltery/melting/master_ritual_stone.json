@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    [
+      {
+        "item": "bloodmagic:masterritualstone"
+      }
+    ]
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:blood_stone",
+    "amount": 1000
+  },
+  "temperature": 1000,
+  "time": 700
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "name": "bloodsmeltery:blood_stone",
+    "amount": 1000
+  },
+  "result": "bloodmagic:blankrune",
+  "cooling_time": 700
+}

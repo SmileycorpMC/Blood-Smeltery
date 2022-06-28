@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    [
+      {
+        "item": "bloodmagic:vengefulcrystal"
+      }
+    ]
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:vengeful_will",
+    "amount": 5000
+  },
+  "temperature": 1000,
+  "time": 200
+}
