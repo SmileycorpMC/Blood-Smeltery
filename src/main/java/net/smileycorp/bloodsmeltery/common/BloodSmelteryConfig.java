@@ -66,7 +66,7 @@ public class BloodSmelteryConfig {
 				.define("enableFluidWill", true);
 		unifiedWill = builder.comment("Should all demonic will fluids be replaced with a single unified fluid? (Default is false)")
 				.define("unifiedWill", false);
-		willFluidAmount = builder.comment("How much mb per will quantity does fluid will have? (Default is 100)")
+		/*willFluidAmount = builder.comment("How much mb per will quantity does fluid will have? (Default is 100)")
 				.define("willFluidAmount", 100);
 		meltCrystals = builder.comment("Can demon will crystals be melted to make demonic will fluid? (Default is true)")
 				.define("meltCrystals", true);
@@ -144,7 +144,7 @@ public class BloodSmelteryConfig {
 		castAllSlates = builder.comment("Should you be able to pour more life essence onto slates to upgrade them? (Default is false)")
 				.define("castAllSlates", false);
 		castAltarItems = builder.comment("Should any recipe made in the blood altar be able to be made in the casting table? (Default is false)")
-				.define("castAltarItems", false);
+				.define("castAltarItems", false);*/
 
 		builder.pop();
 		config = builder.build();
