@@ -1,0 +1,17 @@
+{
+  "type": "thermal:chiller",
+  "ingredients": [
+    {
+	  "fluid": "bloodsmeltery:default_will",
+      "amount": 100
+    }
+  ],
+  "result": [
+    {
+      "type": "minecraft:item_nbt",
+	  "item": "bloodmagic:basemonstersoul",
+	  "nbt":  "{\"souls\": 1d}"
+    }
+  ],
+  "energy": 20000
+}

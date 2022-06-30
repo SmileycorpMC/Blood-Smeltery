@@ -1,0 +1,17 @@
+{
+  "type": "thermal:chiller",
+  "ingredients": [
+    {
+	  "fluid": "bloodsmeltery:vengeful_will",
+      "amount": 100
+    }
+  ],
+  "result": [
+    {
+      "type": "minecraft:item_nbt",
+	  "item": "bloodmagic:basemonstersoul_vengeful",
+	  "nbt":  "{\"souls\": 1d}"
+    }
+  ],
+  "energy": 20000
+}

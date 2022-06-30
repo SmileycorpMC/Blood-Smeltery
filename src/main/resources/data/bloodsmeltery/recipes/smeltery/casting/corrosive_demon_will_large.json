@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "name": "bloodsmeltery:corrosive_will",
+    "amount": 500
+  },
+  "result": {
+	   "type": "minecraft:item_nbt",
+		 "item": "bloodmagic:basemonstersoul_corrosive",
+		"nbt":  "{\"souls\": 5d}"
+  },
+  "cooling_time": 500
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "bloodmagic:defaultcrystal"
+  },
+  "result": [
+    {
+      "fluid": "bloodsmeltery:default_will",
+      "amount": 5000
+    }
+  ],
+  "energy": 20000
+}

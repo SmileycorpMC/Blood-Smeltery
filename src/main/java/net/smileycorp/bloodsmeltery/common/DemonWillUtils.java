@@ -7,17 +7,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.common.collect.Lists;
+
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.RegistryObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 
 public class DemonWillUtils {
 
-	private static Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = new HashMap<>();
+	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = new HashMap<>();
+	private static final List<RegistryObject<Item>> TARTARIC_GEMS = Lists.newArrayList(BloodMagicItems.PETTY_GEM, BloodMagicItems.LESSER_GEM, BloodMagicItems.COMMON_GEM, BloodMagicItems.GREATER_GEM);
 
 	public static Item getWillItem(EnumDemonWillType type) {
 		switch (type) {
@@ -91,6 +97,29 @@ public class DemonWillUtils {
 
 	public static void registerWillFluid(EnumDemonWillType type, FluidObject<ForgeFlowingFluid> fluid) {
 		if (!WILL_FLUIDS.containsKey(type)) WILL_FLUIDS.put(type, fluid);
+	}
+
+	public static int getToolTier(double will) {
+		if (will >= 4000) return 7;
+		else if (will >= 2000) return 6;
+		else if (will >= 1000) return 5;
+		else if (will >= 400) return 4;
+		else if (will >= 200) return 3;
+		else if (will >= 60) return 2;
+		else if (will >= 16) return 1;
+		else return 0;
+	}
+
+	public static EnumDemonWillType getWillFromTartaric(ItemStack stack) {
+		if (stack.hasTag()) {
+			CompoundNBT tag = stack.getTag();
+			if (tag.contains("demonWillType")) return EnumDemonWillType.getType(tag.getString("demonWillType"));
+		}
+		return EnumDemonWillType.DEFAULT;
+	}
+
+	public static List<RegistryObject<Item>> getTartaricGemItems() {
+		return TARTARIC_GEMS ;
 	}
 
 }

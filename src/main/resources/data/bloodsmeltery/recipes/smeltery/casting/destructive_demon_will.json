@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "fluid": {
+    "name": "bloodsmeltery:destructive_will",
+    "amount": 100
+  },
+  "result": {
+	   "type": "minecraft:item_nbt",
+		 "item": "bloodmagic:basemonstersoul_destructive",
+		"nbt":  "{\"souls\": 1d}"
+  },
+  "cooling_time": 100
+}

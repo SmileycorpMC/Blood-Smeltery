@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "bloodmagic:soulgempetty"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/melee_or_harvest"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "result": {
+    "name": "bloodsmeltery:sentient",
+    "level": 1
+  },
+  "max_level": 1
+}

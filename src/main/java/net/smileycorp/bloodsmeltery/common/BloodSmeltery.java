@@ -2,6 +2,7 @@ package net.smileycorp.bloodsmeltery.common;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -25,6 +26,8 @@ public class BloodSmeltery {
 		MinecraftForge.EVENT_BUS.register(new TinkersContent());
 		MinecraftForge.EVENT_BUS.register(new BloodSmelteryEvents());
 		TinkersContent.FLUIDS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		TinkersContent.RECIPE_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		if (ModList.get().isLoaded("thermal_expansion"));
 	}
 
 	@SubscribeEvent

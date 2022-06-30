@@ -1,0 +1,16 @@
+{
+  "type": "bloodsmeltery:will_melting",
+  "ingredient": [
+    [
+      {
+        "item": "bloodmagic:basemonstersoul_destructive"
+      }
+    ]
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:destructive_will",
+    "amount": 1
+  },
+  "temperature": 800,
+  "time": 100
+}

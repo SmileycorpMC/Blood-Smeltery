@@ -1,0 +1,16 @@
+{
+  "type": "bloodsmeltery:will_melting",
+  "ingredient": [
+    [
+      {
+        "item": "bloodmagic:basemonstersoul_corrosive"
+      }
+    ]
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:corrosive_will",
+    "amount": 1
+  },
+  "temperature": 800,
+  "time": 100
+}

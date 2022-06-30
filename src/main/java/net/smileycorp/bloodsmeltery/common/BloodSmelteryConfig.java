@@ -13,6 +13,7 @@ public class BloodSmelteryConfig {
 	public static BooleanValue enableFluidWill;
 	public static BooleanValue unifiedWill;
 	public static ConfigValue<Integer> willFluidAmount;
+	public static ConfigValue<Integer> willMeltingTime;
 	public static BooleanValue meltCrystals;
 	public static ConfigValue<Integer> crystalMeltMultiplier;
 	public static BooleanValue castWill;
@@ -66,9 +67,11 @@ public class BloodSmelteryConfig {
 				.define("enableFluidWill", true);
 		unifiedWill = builder.comment("Should all demonic will fluids be replaced with a single unified fluid? (Default is false)")
 				.define("unifiedWill", false);
-		/*willFluidAmount = builder.comment("How much mb per will quantity does fluid will have? (Default is 100)")
+		willFluidAmount = builder.comment("How much mb per will quality does fluid will have? (Default is 100)")
 				.define("willFluidAmount", 100);
-		meltCrystals = builder.comment("Can demon will crystals be melted to make demonic will fluid? (Default is true)")
+		willMeltingTime = builder.comment("How many ticks does it take to melt will items per will quality? (Default is 20)")
+				.define("willMeltingTime", 20);
+		/*meltCrystals = builder.comment("Can demon will crystals be melted to make demonic will fluid? (Default is true)")
 				.define("meltCrystals", true);
 		crystalMeltMultiplier = builder.comment("What multiplier to willFuidAmount do crystals produce when melted? (Default is 50)")
 				.define("crystalMeltMultiplier", 50);
