@@ -40,20 +40,16 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 
 	@Override
 	public FluidStack getFluidInTank(int tank) {
-		return tank == 0 ? getFluid() : FluidStack.EMPTY;
+		return getFluid();
 	}
 
 	@Override
 	public int getTankCapacity(int tank) {
-		return tank == 0 ? getStackCapacity() : 0;
+		return getStackCapacity();
 	}
 
 	@Override
 	public boolean isFluidValid(int tank, FluidStack stack) {
-		if (tank!=0) return false;
-		if (getFluid().getAmount() == 0) {
-			return DemonWillUtils.getWillFluids().contains(stack.getFluid());
-		}
 		return stack.getFluid() == DemonWillUtils.getFluidForType(type);
 	}
 

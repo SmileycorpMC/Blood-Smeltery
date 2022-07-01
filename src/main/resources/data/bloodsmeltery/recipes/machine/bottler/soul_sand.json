@@ -1,0 +1,17 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "tag": "forge:sand"
+    },
+    {
+      "fluid_tag": "bloodsmeltery:demon_will",
+      "amount": 200
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:soul_sand"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [],
+  "inputs": [
+    {
+      "tag": "bloodsmeltery:demon_will",
+      "amount": 1
+    },
+    {
+      "tag": "tconstruct:molten_glass",
+      "amount": 5
+    }
+  ],
+  "result": {
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 5
+  },
+  "temperature": 1000
+}

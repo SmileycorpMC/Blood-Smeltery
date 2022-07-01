@@ -3,6 +3,12 @@
   "inputs": [
     {
       "item": "bloodmagic:soulgempetty"
+    },
+	{
+      "item": "bloodmagic:defaultcrystal"
+    },
+	{
+      "item": "bloodmagic:defaultcrystal"
     }
   ],
   "tools": {

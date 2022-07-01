@@ -60,7 +60,6 @@ public class IngredientDemonWill extends Ingredient {
 		for (RegistryObject<Item> item : DemonWillUtils.getTartaricGemItems())  {
 			ItemStack stack = new ItemStack(item.get());
 			CompoundNBT tag = stack.getOrCreateTag();
-			tag.putDouble("souls", 100);
 			if (will != EnumDemonWillType.DEFAULT) {
 				tag.putString("demonWillType", will.toString());
 			}

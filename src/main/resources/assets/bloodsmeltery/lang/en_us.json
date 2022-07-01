@@ -19,8 +19,8 @@
 "desc.bloodsmeltery.tartariccasting": "Adds 1 point of Will Quality to the item.",
 "desc.bloodsmeltery.willcompat": "This recipe may work for other items that hold Demon Will.",
 
-"modifier.bloodsmeltery.alive": "Living",
-"modifier.bloodsmeltery.alive.desc": "A soul being bound to a weapon brings it life, allowing for the harvesting of more souls.",
-"modifier.bloodsmeltery.alive.extra": "Slain enemies drop Demon Will"
+"modifier.bloodsmeltery.sentient": "Sentience",
+"modifier.bloodsmeltery.sentient.flavor": "It's alive!",
+"modifier.bloodsmeltery.sentient.description": "Becomes more powerful the more Demon Will you carry"
 
 }

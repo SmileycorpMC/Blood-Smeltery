@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "tag": "bloodsmeltery:demon_will",
+    "amount": 200
+  },
+  "cast": {
+    "tag": "forge:sand"
+  },
+  "cast_consumed": true,
+  "result": "minecraft:soul_sand",
+  "cooling_time": 200
+}

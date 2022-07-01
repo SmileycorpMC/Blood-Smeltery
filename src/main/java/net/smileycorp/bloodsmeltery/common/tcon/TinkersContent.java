@@ -42,6 +42,6 @@ public class TinkersContent {
 
 	public static final RegistryObject<IRecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
 
-	//public static final RegistryObject<Modifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", () -> new SentientModifier());
+	public static final RegistryObject<Modifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", () -> new SentientModifier());
 
 }

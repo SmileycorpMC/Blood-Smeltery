@@ -19,24 +19,29 @@ import net.minecraftforge.fml.RegistryObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
+import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
+import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 
 public class DemonWillUtils {
 
 	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = new HashMap<>();
 	private static final List<RegistryObject<Item>> TARTARIC_GEMS = Lists.newArrayList(BloodMagicItems.PETTY_GEM, BloodMagicItems.LESSER_GEM, BloodMagicItems.COMMON_GEM, BloodMagicItems.GREATER_GEM);
 
-	public static Item getWillItem(EnumDemonWillType type) {
+	private static final double[] DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS = {0.875, 0.813, 0.075, 0.688, 0.625, 0.625, 0.625};
+	private static final double[] VENGEFUL_ATTACK_SPEED_MULTIPLIERS = {1.188, 1.25, 1.375, 1.438, 1.5, 1.5, 1.563};
+
+	public static ItemMonsterSoul getWillItem(EnumDemonWillType type) {
 		switch (type) {
 		case DEFAULT:
-			return BloodMagicItems.MONSTER_SOUL_RAW.get();
+			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_RAW.get();
 		case CORROSIVE:
-			return BloodMagicItems.MONSTER_SOUL_CORROSIVE.get();
+			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_CORROSIVE.get();
 		case DESTRUCTIVE:
-			return BloodMagicItems.MONSTER_SOUL_DESTRUCTIVE.get();
+			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_DESTRUCTIVE.get();
 		case VENGEFUL:
-			return BloodMagicItems.MONSTER_SOUL_VENGEFUL.get();
+			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_VENGEFUL.get();
 		case STEADFAST:
-			return BloodMagicItems.MONSTER_SOUL_STEADFAST.get();
+			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_STEADFAST.get();
 		}
 		return null;
 	}
@@ -100,14 +105,12 @@ public class DemonWillUtils {
 	}
 
 	public static int getToolTier(double will) {
-		if (will >= 4000) return 7;
-		else if (will >= 2000) return 6;
-		else if (will >= 1000) return 5;
-		else if (will >= 400) return 4;
-		else if (will >= 200) return 3;
-		else if (will >= 60) return 2;
-		else if (will >= 16) return 1;
-		else return 0;
+		for (int i = 0; i < ItemSentientSword.soulBracket.length; i++) {
+			if (will < ItemSentientSword.soulBracket[i]) {
+				return i-1;
+			}
+		}
+		return ItemSentientSword.soulBracket.length-1;
 	}
 
 	public static EnumDemonWillType getWillFromTartaric(ItemStack stack) {
@@ -120,6 +123,26 @@ public class DemonWillUtils {
 
 	public static List<RegistryObject<Item>> getTartaricGemItems() {
 		return TARTARIC_GEMS ;
+	}
+
+	public static double getBonusDamage(int tier, EnumDemonWillType type) {
+		if (type == EnumDemonWillType.DESTRUCTIVE) {
+			return ItemSentientSword.destructiveDamageAdded[tier];
+		} else if (type == EnumDemonWillType.STEADFAST) {
+			return ItemSentientSword.steadfastDamageAdded[tier];
+		} else if (type == EnumDemonWillType.VENGEFUL) {
+			return ItemSentientSword.vengefulDamageAdded[tier];
+		}
+		return ItemSentientSword.defaultDamageAdded[tier];
+	}
+
+	public static double getAttackSpeedMultiplier(int tier, EnumDemonWillType type) {
+		if (type == EnumDemonWillType.DESTRUCTIVE) {
+			return DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS[tier];
+		} else if (type == EnumDemonWillType.VENGEFUL) {
+			return VENGEFUL_ATTACK_SPEED_MULTIPLIERS[tier];
+		}
+		return 1;
 	}
 
 }
