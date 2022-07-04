@@ -21,6 +21,7 @@ import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
+import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 public class DemonWillUtils {
 
@@ -79,6 +80,7 @@ public class DemonWillUtils {
 	}
 
 	public static FluidStack getStackForSouls(EnumDemonWillType type, double amount) {
+		if (type == null) return new FluidStack(WILL_FLUIDS.get(EnumDemonWillType.DEFAULT).get(), 0);
 		return getStackForAmount(type, (int) Math.round(amount*BloodSmelteryConfig.willFluidAmount.get()));
 	}
 
@@ -143,6 +145,13 @@ public class DemonWillUtils {
 			return VENGEFUL_ATTACK_SPEED_MULTIPLIERS[tier];
 		}
 		return 1;
+	}
+
+	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem) {
+		ItemStack stack = new ItemStack(gem);
+		gem.setCurrentType(type, stack);
+		gem.setWill(type, stack, gem.getMaxWill(type, stack));
+		return stack;
 	}
 
 }

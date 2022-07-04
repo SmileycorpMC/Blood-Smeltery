@@ -1,14 +1,14 @@
 {
   "type": "tconstruct:modifier",
   "inputs": [
-    {
+	{
+      "tag": "bloodmagic:crystals/demon"
+    },
+	{
       "item": "bloodmagic:soulgempetty"
     },
 	{
-      "item": "bloodmagic:defaultcrystal"
-    },
-	{
-      "item": "bloodmagic:defaultcrystal"
+      "tag": "bloodmagic:crystals/demon"
     }
   ],
   "tools": {

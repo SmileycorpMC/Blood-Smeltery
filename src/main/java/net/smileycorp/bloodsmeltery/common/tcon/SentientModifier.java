@@ -38,12 +38,13 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWill;
+import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.will.PlayerDemonWillHandler;
 
 public class SentientModifier extends SingleLevelModifier {
 
-	private final ResourceLocation SENTIENT_DATA = ModDefinitions.getResource("sentient");
+	private static final ResourceLocation SENTIENT_DATA = ModDefinitions.getResource("sentient");
 
 	public SentientModifier() {
 		super(0x4EF6FF);
@@ -55,7 +56,7 @@ public class SentientModifier extends SingleLevelModifier {
 		IFormattableTextComponent name = (IFormattableTextComponent) getDisplayName(level).copy();
 		EnumDemonWillType type = getWillType(tool);
 		int tier = getTier(tool) + 1;
-		if (tier > 0) name = name.append(new TranslationTextComponent(" enchantment.level."+tier));
+		if (tier > 0) name = name.append(" ").append(new TranslationTextComponent("enchantment.level."+tier));
 		return name.withStyle(name.getStyle().withColor(Color.fromRgb(DemonWillUtils.getColour(type))));
 	}
 
@@ -124,6 +125,7 @@ public class SentientModifier extends SingleLevelModifier {
 			ToolStats.ATTACK_DAMAGE.add(builder, DemonWillUtils.getBonusDamage(tier, type));
 			double attackSpeed = DemonWillUtils.getAttackSpeedMultiplier(tier, type);
 			if (attackSpeed!=1) ToolStats.ATTACK_SPEED.multiply(builder, attackSpeed);
+			ToolStats.MINING_SPEED.add(builder, ItemSentientPickaxe.defaultDigSpeedAdded[ tier < 5 ? tier : 4]);
 		}
 	}
 
@@ -150,16 +152,16 @@ public class SentientModifier extends SingleLevelModifier {
 		tool.getPersistentData().put(SENTIENT_DATA, nbt);
 	}
 
-	public int getTier(IModifierToolStack tool) {
+	public static int getTier(IModifierToolStack tool) {
 		return getTier(tool.getPersistentData());
 	}
 
-	public EnumDemonWillType getWillType(IModifierToolStack tool) {
+	public static EnumDemonWillType getWillType(IModifierToolStack tool) {
 		return getWillType(tool.getPersistentData());
 	}
 
 
-	protected int getTier(IModDataReadOnly data) {
+	protected static int getTier(IModDataReadOnly data) {
 		CompoundNBT nbt = data.getCompound(SENTIENT_DATA);
 		int tier = -1;
 		if (nbt.contains("tier")) {
@@ -168,7 +170,7 @@ public class SentientModifier extends SingleLevelModifier {
 		return tier;
 	}
 
-	protected EnumDemonWillType getWillType(IModDataReadOnly data) {
+	protected static EnumDemonWillType getWillType(IModDataReadOnly data) {
 		CompoundNBT nbt = data.getCompound(SENTIENT_DATA);
 		EnumDemonWillType type = EnumDemonWillType.DEFAULT;
 		if (nbt.contains("type")) {
