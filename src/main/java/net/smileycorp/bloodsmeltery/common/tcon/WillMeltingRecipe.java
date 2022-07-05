@@ -3,15 +3,15 @@ package net.smileycorp.bloodsmeltery.common.tcon;
 import java.util.Collections;
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import slimeknights.tconstruct.library.recipe.melting.IMeltingInventory;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
+import slimeknights.tconstruct.smeltery.block.entity.module.MeltingModuleInventory;
 
 public class WillMeltingRecipe extends MeltingRecipe {
 
@@ -20,7 +20,7 @@ public class WillMeltingRecipe extends MeltingRecipe {
 	public WillMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidStack output, int temperature, int time, List<FluidStack> byproducts) {
 		super(id, group, input, output, temperature, time, byproducts);
 		ItemStack stack = input.getItems()[0];
-		CompoundNBT tag = new CompoundNBT();
+		CompoundTag tag = new CompoundTag();
 		tag.putDouble("souls", 1);
 		stack.setTag(tag);
 		JEI_INGREDIENT = Ingredient.of(stack);
@@ -31,7 +31,7 @@ public class WillMeltingRecipe extends MeltingRecipe {
 		ItemStack stack = inv.getStack();
 		int amount = 0;
 		if (stack.hasTag()) {
-			CompoundNBT tag = stack.getTag();
+			CompoundTag tag = stack.getTag();
 			if(tag.contains("souls")) {
 				amount = (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willMeltingTime.get());
 			}
@@ -45,11 +45,11 @@ public class WillMeltingRecipe extends MeltingRecipe {
 	}
 
 	@Override
-	public FluidStack getOutput(IMeltingInventory inv) {
+	public FluidStack getOutput(MeltingModuleInventory inv) {
 		ItemStack stack = inv.getStack();
 		int amount = 0;
 		if (stack.hasTag()) {
-			CompoundNBT tag = stack.getTag();
+			CompoundTag tag = stack.getTag();
 			if(tag.contains("souls")) {
 				amount = (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willFluidAmount.get());
 			}

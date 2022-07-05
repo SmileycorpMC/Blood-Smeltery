@@ -8,9 +8,9 @@ import com.simibubi.create.content.contraptions.processing.EmptyingRecipe;
 import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
 
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;

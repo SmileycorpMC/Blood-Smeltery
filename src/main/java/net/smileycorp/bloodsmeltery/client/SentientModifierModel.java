@@ -7,11 +7,11 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+import com.mojang.math.Transformation;
 
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.RenderMaterial;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.math.vector.TransformationMatrix;
+import net.minecraft.client.resources.model.Material;
 import net.smileycorp.bloodsmeltery.common.tcon.SentientModifier;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;
@@ -19,15 +19,15 @@ import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;
 import slimeknights.tconstruct.library.client.modifiers.NormalModifierModel;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 public class SentientModifierModel extends NormalModifierModel {
 
 	public static final IUnbakedModifierModel UNBAKED_INSTANCE = (smallGetter, largeGetter) -> {
-		Map<EnumRenderType, Map<EnumDemonWillType, RenderMaterial>> maps = Maps.newHashMap();
+		Map<EnumRenderType, Map<EnumDemonWillType, Material>> maps = Maps.newHashMap();
 		for (EnumRenderType type : EnumRenderType.values()) {
-			Map<EnumDemonWillType, RenderMaterial> map = Maps.newHashMap();
+			Map<EnumDemonWillType, Material> map = Maps.newHashMap();
 			for (EnumDemonWillType will : EnumDemonWillType.values()) {
 				map.put(will, (type.isLarge() ? largeGetter: smallGetter).apply("/" + type.append(will)));
 			}
@@ -36,16 +36,16 @@ public class SentientModifierModel extends NormalModifierModel {
 		return new SentientModifierModel(maps);
 	};
 
-	public final Map<EnumRenderType, Map<EnumDemonWillType, RenderMaterial>> MATERIAL_MAPS;
+	public final Map<EnumRenderType, Map<EnumDemonWillType, Material>> MATERIAL_MAPS;
 
-	public SentientModifierModel(Map<EnumRenderType, Map<EnumDemonWillType, RenderMaterial>> maps) {
+	public SentientModifierModel(Map<EnumRenderType, Map<EnumDemonWillType, Material>> maps) {
 		super(maps.get(EnumRenderType.SMALL).get(EnumDemonWillType.DEFAULT), maps.get(EnumRenderType.LARGE).get(EnumDemonWillType.DEFAULT));
 		MATERIAL_MAPS = maps;
 	}
 
 	@Nullable
 	@Override
-	public Object getCacheKey(IModifierToolStack tool, ModifierEntry entry) {
+	public Object getCacheKey(IToolStackView tool, ModifierEntry entry) {
 		if (entry.getModifier() instanceof SentientModifier) {
 			EnumDemonWillType will = SentientModifier.getWillType(tool);
 			boolean isActive = SentientModifier.getTier(tool) >= 0;
@@ -55,11 +55,11 @@ public class SentientModifierModel extends NormalModifierModel {
 	}
 
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
+	public ImmutableList<BakedQuad> getQuads(IToolStackView tool, ModifierEntry entry, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
 		if (entry.getModifier() instanceof SentientModifier) {
 			EnumDemonWillType will = SentientModifier.getWillType(tool);
 			boolean isActive = SentientModifier.getTier(tool) >= 0;
-			RenderMaterial material = MATERIAL_MAPS.get(EnumRenderType.getType(isActive, isLarge)).get(will);
+			Material material = MATERIAL_MAPS.get(EnumRenderType.getType(isActive, isLarge)).get(will);
 			if (material != null) return MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels);
 		}
 		return ImmutableList.of();

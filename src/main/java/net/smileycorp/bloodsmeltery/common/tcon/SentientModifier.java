@@ -4,35 +4,32 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.SlimeEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
-import slimeknights.tconstruct.library.modifiers.SingleLevelModifier;
-import slimeknights.tconstruct.library.tools.ToolDefinition;
+import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.nbt.IModDataView;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -47,36 +44,36 @@ public class SentientModifier extends SingleLevelModifier {
 	private static final ResourceLocation SENTIENT_DATA = ModDefinitions.getResource("sentient");
 
 	public SentientModifier() {
-		super(0x4EF6FF);
+		super();
 	}
 
 
 	@Override
-	public ITextComponent getDisplayName(IModifierToolStack tool, int level) {
-		IFormattableTextComponent name = (IFormattableTextComponent) getDisplayName(level).copy();
+	public MutableComponent getDisplayName(IToolStackView tool, int level) {
+		MutableComponent name = getDisplayName(level).copy();
 		EnumDemonWillType type = getWillType(tool);
 		int tier = getTier(tool) + 1;
-		if (tier > 0) name = name.append(" ").append(new TranslationTextComponent("enchantment.level."+tier));
-		return name.withStyle(name.getStyle().withColor(Color.fromRgb(DemonWillUtils.getColour(type))));
+		if (tier > 0) name = name.append(" ").append(new TranslatableComponent("enchantment.level."+tier));
+		return name.withStyle(name.getStyle().withColor(DemonWillUtils.getColour(type)));
 	}
 
 	@Override
-	public void onRemoved(IModifierToolStack tool) {
+	public void onRemoved(IToolStackView tool) {
 		tool.getPersistentData().remove(SENTIENT_DATA);
 	}
 
 
 	@Override
-	public ActionResultType onToolUse(IModifierToolStack tool, int level, World world, PlayerEntity player, Hand hand, EquipmentSlotType slot) {
+	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slot) {
 		recalcStats(tool, player, hand, true);
-		return ActionResultType.SUCCESS;
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
-	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
-		PlayerEntity player = context.getPlayerAttacker();
+	public int afterEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt) {
+		Player player = context.getPlayerAttacker();
 		LivingEntity target = context.getLivingTarget();
-		CompoundNBT nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
+		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
 		recalcStats(tool, player, context.getHand(), false);
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
@@ -88,10 +85,10 @@ public class SentientModifier extends SingleLevelModifier {
 		type = getWillType(tool);
 		if (tier >= 0) {
 			if (type == EnumDemonWillType.CORROSIVE) {
-				target.addEffect(new EffectInstance(Effects.WITHER, ItemSentientSword.poisonTime[tier], ItemSentientSword.poisonLevel[tier]));
+				target.addEffect(new MobEffectInstance(MobEffects.WITHER, ItemSentientSword.poisonTime[tier], ItemSentientSword.poisonLevel[tier]));
 			} else if (type == EnumDemonWillType.STEADFAST && target.isDeadOrDying()) {
 				float absorption = player.getAbsorptionAmount();
-				player.addEffect(new EffectInstance(Effects.ABSORPTION, ItemSentientSword.absorptionTime[tier], 127, false, false));
+				player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, ItemSentientSword.absorptionTime[tier], 127, false, false));
 				player.setAbsorptionAmount((float) Math.min(absorption + target.getMaxHealth() * 0.05f, ItemSentientSword.maxAbsorptionHearts));
 			}
 		}
@@ -100,15 +97,15 @@ public class SentientModifier extends SingleLevelModifier {
 	}
 
 	@Override
-	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> drops, LootContext context) {
+	public List<ItemStack> processLoot(IToolStackView tool, int level, List<ItemStack> drops, LootContext context) {
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
 		IDemonWill will = DemonWillUtils.getWillItem(type);
-		LivingEntity target = (LivingEntity) context.getParamOrNull(LootParameters.THIS_ENTITY);
+		LivingEntity target = (LivingEntity) context.getParamOrNull(LootContextParams.THIS_ENTITY);
 		if (target != null) {
 			for (int i = 0; i <= context.getLootingModifier(); i++) {
 				if (i == 0 || RANDOM.nextDouble() < 0.4) {
-					ItemStack drop = will.createWill((target instanceof SlimeEntity ? 0.67 : 1) * (tier >=  0 ? ItemSentientSword.soulDrop[tier] : 0) * RANDOM.nextDouble()
+					ItemStack drop = will.createWill((target instanceof Slime ? 0.67 : 1) * (tier >=  0 ? ItemSentientSword.soulDrop[tier] : 0) * RANDOM.nextDouble()
 							+ (tier >=  0 ? ItemSentientSword.staticDrop[tier] : 1) * target.getMaxHealth() / 20d);
 					drops.add(drop);
 				}
@@ -118,7 +115,7 @@ public class SentientModifier extends SingleLevelModifier {
 	}
 
 	@Override
-	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
+	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataView persistentData, IModDataView volatileData, int level, ModifierStatsBuilder builder) {
 		int tier = getTier(persistentData);
 		EnumDemonWillType type = getWillType(persistentData);
 		if (tier >= 0) {
@@ -130,7 +127,7 @@ public class SentientModifier extends SingleLevelModifier {
 	}
 
 	@Override
-	public void addAttributes(IModifierToolStack tool, int level, EquipmentSlotType slot, BiConsumer<Attribute,AttributeModifier> consumer) {
+	public void addAttributes(IToolStackView tool, int level, EquipmentSlot slot, BiConsumer<Attribute,AttributeModifier> consumer) {
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
 		if (tier >= 0 && type == EnumDemonWillType.VENGEFUL) {
@@ -138,8 +135,8 @@ public class SentientModifier extends SingleLevelModifier {
 		}
 	}
 
-	protected void recalcStats(IModifierToolStack tool, PlayerEntity player, Hand hand, boolean recalcToolStats) {
-		CompoundNBT nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
+	protected void recalcStats(IToolStackView tool, Player player, InteractionHand hand, boolean recalcToolStats) {
+		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
 		EnumDemonWillType player_type = PlayerDemonWillHandler.getLargestWillType(player);
 		EnumDemonWillType tool_type = EnumDemonWillType.DEFAULT;
 		if (nbt.contains("type")) {
@@ -152,17 +149,17 @@ public class SentientModifier extends SingleLevelModifier {
 		tool.getPersistentData().put(SENTIENT_DATA, nbt);
 	}
 
-	public static int getTier(IModifierToolStack tool) {
+	public static int getTier(IToolStackView tool) {
 		return getTier(tool.getPersistentData());
 	}
 
-	public static EnumDemonWillType getWillType(IModifierToolStack tool) {
+	public static EnumDemonWillType getWillType(IToolStackView tool) {
 		return getWillType(tool.getPersistentData());
 	}
 
 
-	protected static int getTier(IModDataReadOnly data) {
-		CompoundNBT nbt = data.getCompound(SENTIENT_DATA);
+	protected static int getTier(IModDataView data) {
+		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
 		int tier = -1;
 		if (nbt.contains("tier")) {
 			tier = nbt.getInt("tier");
@@ -170,8 +167,8 @@ public class SentientModifier extends SingleLevelModifier {
 		return tier;
 	}
 
-	protected static EnumDemonWillType getWillType(IModDataReadOnly data) {
-		CompoundNBT nbt = data.getCompound(SENTIENT_DATA);
+	protected static EnumDemonWillType getWillType(IModDataView data) {
+		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
 		EnumDemonWillType type = EnumDemonWillType.DEFAULT;
 		if (nbt.contains("type")) {
 			type = EnumDemonWillType.getType(nbt.getString("type"));

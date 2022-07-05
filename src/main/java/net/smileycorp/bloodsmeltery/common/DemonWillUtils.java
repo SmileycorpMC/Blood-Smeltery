@@ -9,13 +9,13 @@ import java.util.Map.Entry;
 
 import com.google.common.collect.Lists;
 
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
@@ -117,7 +117,7 @@ public class DemonWillUtils {
 
 	public static EnumDemonWillType getWillFromTartaric(ItemStack stack) {
 		if (stack.hasTag()) {
-			CompoundNBT tag = stack.getTag();
+			CompoundTag tag = stack.getTag();
 			if (tag.contains("demonWillType")) return EnumDemonWillType.getType(tag.getString("demonWillType"));
 		}
 		return EnumDemonWillType.DEFAULT;

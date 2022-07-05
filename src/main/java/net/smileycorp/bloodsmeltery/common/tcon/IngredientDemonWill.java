@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraftforge.common.crafting.StackList;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.crafting.MultiItemValue;
+import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
@@ -34,17 +34,17 @@ public class IngredientDemonWill extends Ingredient {
 		if (p_test_1_ == null) {
 			return false;
 		} else {
-			if (this.itemStacks == null) {
-				this.itemStacks = Arrays.stream(this.values).flatMap((p_209359_0_) -> {
+			if (itemStacks == null) {
+				itemStacks = Arrays.stream(values).flatMap((p_209359_0_) -> {
 					return p_209359_0_.getItems().stream();
 				}).distinct().toArray((p_209358_0_) -> {
 					return new ItemStack[p_209358_0_];
 				});
 			}
-			if (this.itemStacks.length == 0) {
+			if (itemStacks.length == 0) {
 				return p_test_1_.isEmpty();
 			} else {
-				for(ItemStack itemstack : this.itemStacks) {
+				for(ItemStack itemstack : itemStacks) {
 					if (itemstack.getItem() == p_test_1_.getItem()) {
 						return true;
 					}
@@ -55,17 +55,17 @@ public class IngredientDemonWill extends Ingredient {
 		}
 	}
 
-	private static Stream<? extends IItemList> getIngredientStream(EnumDemonWillType will) {
+	private static Stream<? extends MultiItemValue> getIngredientStream(EnumDemonWillType will) {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (RegistryObject<Item> item : DemonWillUtils.getTartaricGemItems())  {
 			ItemStack stack = new ItemStack(item.get());
-			CompoundNBT tag = stack.getOrCreateTag();
+			CompoundTag tag = stack.getOrCreateTag();
 			if (will != EnumDemonWillType.DEFAULT) {
 				tag.putString("demonWillType", will.toString());
 			}
 			stacks.add(stack);
 		}
-		return Arrays.stream(new StackList[] {new StackList(stacks)});
+		return Arrays.stream(new MultiItemValue[] {new MultiItemValue(stacks)});
 	}
 
 }

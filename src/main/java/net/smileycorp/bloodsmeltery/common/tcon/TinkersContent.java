@@ -1,13 +1,14 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
@@ -22,7 +23,7 @@ import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 public class TinkersContent {
 
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModDefinitions.MODID);
-	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
+	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, ModDefinitions.MODID);
 
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_INFUSED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
