@@ -20,6 +20,7 @@ import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 public class BloodSmelteryJEICreateSupport {
 
+	@SuppressWarnings("removal")
 	public static void registerRecipes(IRecipeRegistration registration) {
 		List<EmptyingRecipe> emptying_recipes = Lists.newArrayList();
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {

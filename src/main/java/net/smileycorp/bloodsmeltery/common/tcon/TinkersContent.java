@@ -1,6 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.material.Material;
@@ -15,7 +14,8 @@ import net.smileycorp.bloodsmeltery.common.ModDefinitions;
 import slimeknights.mantle.registration.ModelFluidAttributes;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
-import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
+import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
@@ -24,7 +24,7 @@ public class TinkersContent {
 
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModDefinitions.MODID);
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
-	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, ModDefinitions.MODID);
+	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ModDefinitions.MODID);
 
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_INFUSED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
 			.viscosity(8000).temperature(900).color(0x432425).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 8);
@@ -41,8 +41,8 @@ public class TinkersContent {
 		}
 	}
 
-	public static final RegistryObject<IRecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
+	public static final RegistryObject<RecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
 
-	public static final RegistryObject<Modifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", () -> new SentientModifier());
+	public static final StaticModifier<SentientModifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", () -> new SentientModifier());
 
 }

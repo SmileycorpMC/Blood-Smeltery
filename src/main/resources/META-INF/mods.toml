@@ -7,7 +7,7 @@ modId="bloodsmeltery"
 version="1.1.4"
 displayName="Blood Smeltery"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/blood-smeltery"
-updateJSONURL="https://github.com/SmileycorpMC/Blood-Smeltery/tree/1.16/update.json"
+updateJSONURL="https://github.com/SmileycorpMC/Blood-Smeltery/tree/1.18/update.json"
 credits=""
 authors="Smileycorp"
 description="Adds the ablity to create Life Essence and Rune blocks in the Tinker's Construct Smeltery."
@@ -15,27 +15,27 @@ description="Adds the ablity to create Life Essence and Rune blocks in the Tinke
 [[dependencies.bloodsmeltery]]
     modId="tconstruct"
     mandatory=true
-    versionRange="[3.3.4.335,)"
+    versionRange="[3.5.1.31,)"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.bloodsmeltery]]
     modId="mantle"
     mandatory=true
-    versionRange="[1.6.157,)"
+    versionRange="[1.9.27,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.bloodsmeltery]]
     modId="bloodmagic"
     mandatory=true
-    versionRange="[1.16.4-3.1.11-34,)"
+    versionRange="[1.18.2-3.2.2-37,)"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.bloodsmeltery]]
     modId="patchouli"
     mandatory=true
-    versionRange="[1.16.4-53.3,)"
+    versionRange="[1.18.2-71.1,)"
     ordering="NONE"
     side="BOTH"
