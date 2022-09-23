@@ -2,10 +2,11 @@
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/blood-smeltery",
   "1.18.2": {
 	"1.1.4": "port to 1.18",
-	"1.1.4a": "fix broken update url"
+	"1.1.4a": "fix broken update url",
+	"1.1.5": "two new tinkers tool materials, the ability to add divination runes to your tool and bug fixes related to tartaric gem fluid capability"
   },
   "promos": {
-    "1.18.2-latest": "1.1.4a",
-    "1.18.2-recommended": "1.1.4a"
+    "1.18.2-latest": "1.1.5",
+    "1.18.2-recommended": "1.1.5"
   }
 }
