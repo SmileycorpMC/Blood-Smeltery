@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:casting_basin",
   "fluid": {
-    "tag": "forge:vengeful_will",
+    "tag": "bloodsmeltery:vengeful_will",
     "amount": 500
   },
   "result": {

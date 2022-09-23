@@ -41,7 +41,7 @@ public class TinkersContent {
 	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, ModDefinitions.MODID);
 
-	public static final RegistryObject<Item> GUIDE_BOOK_BOOK = ITEMS.register("guide_book", GuideBook::new);
+	//public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book", GuideBook::new);
 
 	public static final MetalItemObject BLOODBRASS = BLOCKS.registerMetal("bloodbrass", "bloodbrass",
 			Block.Properties.of(Material.HEAVY_METAL, MaterialColor.NETHER).harvestTool(ToolType.PICKAXE).sound(SoundType.METAL),

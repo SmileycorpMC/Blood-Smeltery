@@ -1,7 +1,7 @@
 [
   {
     "name": "blood_stone_introduction",
-    "type": "image with text below",
+    "type": "text",
     "data": "blood_stone/intro.json"
   },
   {

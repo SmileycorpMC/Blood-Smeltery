@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:casting_basin",
   "fluid": {
-    "tag": "bloodsmeltery:demon_will",
+    "tag": "forge:demon_will",
     "amount": 200
   },
   "cast": {
