@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "bloodmagic:seersigil"
+    }
+  ],
+  "tools": {
+      "tag": "tconstruct:modifiable/melee"
+   },
+  "requirements": {
+    "name": "bloodsmeltery:divination",
+    "level": 1,
+    "error": "recipe.bloodsmeltery.modifier.divination.level_2"
+  },
+  "result": {
+    "name": "bloodsmeltery:divination",
+    "level": 1
+  },
+  "max_level": 2
+}

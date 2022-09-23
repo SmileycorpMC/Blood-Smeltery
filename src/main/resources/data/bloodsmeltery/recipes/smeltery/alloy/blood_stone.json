@@ -3,12 +3,12 @@
   "conditions": [],
   "inputs": [
     {
-      "name": "bloodmagic:life_essence_fluid",
-      "amount": 3
+      "tag": "forge:life",
+      "amount": 12
     },
     {
       "tag": "tconstruct:seared_stone",
-      "amount": 1
+      "amount": 4
     }
   ],
   "result": {

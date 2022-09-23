@@ -2,7 +2,7 @@
   "type": "thermal:chiller",
   "ingredients": [
     {
-	  "fluid": "bloodsmeltery:default_will",
+	  "tag": "bloodsmeltery:default_will",
       "amount": 100
     }
   ],

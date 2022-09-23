@@ -1,0 +1,17 @@
+{
+  "modifier_id": "bloodsmeltery:divination",
+  "text": [
+    {
+      "text": "Provides detailed information about Blood Altars and Incence Altars when looked at. Also shows the current LP of a bound player's soul network when used."
+    },
+    {
+      "text": "Divination has two levels, each requiring a different recipe.",
+      "paragraph": true
+    }
+  ],
+  "effects": [
+    "Maximum of 2 levels.",
+	"First level requires using 1 upgrade slot",
+    "Second level is slotless"
+  ]
+}

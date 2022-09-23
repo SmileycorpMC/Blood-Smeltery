@@ -1,0 +1,27 @@
+[
+  {
+    "name": "blood_stone_introduction",
+    "type": "text",
+    "data": "blood_stone/intro.json"
+  },
+  {
+    "name": "creation",
+    "type": "image with text below",
+    "data": "blood_stone/creation.json"
+  },
+  {
+    "name": "casting",
+    "type": "image with text below",
+    "data": "blood_stone/casting.json"
+  },
+  {
+    "name": "melting",
+    "type": "text",
+    "data": "blood_stone/melting.json"
+  },
+  {
+    "name": "tools",
+    "type": "text",
+    "data": "blood_stone/tools.json"
+  }
+]

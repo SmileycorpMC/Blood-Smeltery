@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:dusts/bloodbrass",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:dusts/bloodbrass"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_bloodbrass",
+    "amount": 90
+  },
+  "temperature": 605,
+  "time": 40
+}

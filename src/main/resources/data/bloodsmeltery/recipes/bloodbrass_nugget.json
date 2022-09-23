@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bloodsmeltery:bloodbrass_ingot"
+    }
+  ],
+  "result": {
+    "item": "bloodsmeltery:bloodbrass_nugget",
+    "count": 9
+  }
+}

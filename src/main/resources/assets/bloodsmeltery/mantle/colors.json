@@ -1,0 +1,8 @@
+{
+  "modifier.bloodsmeltery": {
+    "bloodstained":    "#512525",
+	"exsanguinate":    "#910000",
+	"sentient":    	   "#4EF6FF",
+	"divination":      "#FCE324"
+  }
+}

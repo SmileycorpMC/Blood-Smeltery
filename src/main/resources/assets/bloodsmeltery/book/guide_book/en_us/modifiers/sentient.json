@@ -1,0 +1,17 @@
+{
+  "modifier_id": "bloodsmeltery:sentient",
+  "text": [
+    {
+      "text": "Killing mobs drops demon will at the same rate as the Sentient Sword.", 
+    },
+	{
+      "text": "Your weapon/tool also powers up at the same rate as the Sentient Sword/Sentient Pickaxe, based on the amount of and type of demon will in your inventory/in tartaric gems.",
+      "paragraph": true
+    }
+  ],
+  "effects": [
+    "1 appliable level",
+	"Requires 1 Ability Slot", 
+	"7 additional levels unlocked based on amount of will"
+  ]
+}

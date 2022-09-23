@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon;
+package net.smileycorp.bloodsmeltery.common.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.MultiItemValue;
 import net.minecraftforge.registries.RegistryObject;
-import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 public class IngredientDemonWill extends Ingredient {
@@ -55,7 +54,7 @@ public class IngredientDemonWill extends Ingredient {
 		}
 	}
 
-	private static Stream<? extends MultiItemValue> getIngredientStream(EnumDemonWillType will) {
+	private static Stream<? extends Ingredient.Value> getIngredientStream(EnumDemonWillType will) {
 		List<ItemStack> stacks = new ArrayList<>();
 		for (RegistryObject<Item> item : DemonWillUtils.getTartaricGemItems())  {
 			ItemStack stack = new ItemStack(item.get());

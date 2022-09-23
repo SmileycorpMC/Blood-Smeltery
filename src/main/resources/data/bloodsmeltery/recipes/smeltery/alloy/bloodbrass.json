@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [],
+  "inputs": [
+    {
+      "tag": "forge:life",
+      "amount": 3000
+    },
+    {
+      "tag": "forge:molten_copper",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:molten_bloodbrass",
+    "amount": 90
+  },
+  "temperature": 1000
+}

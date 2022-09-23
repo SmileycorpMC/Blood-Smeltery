@@ -2,7 +2,7 @@
   "type": "thermal:chiller",
   "ingredients": [
     {
-	  "fluid": "bloodsmeltery:destructive_will",
+	  "tag": "bloodsmeltery:destructive_will",
       "amount": 100
     }
   ],

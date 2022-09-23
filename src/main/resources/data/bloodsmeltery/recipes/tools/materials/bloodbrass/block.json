@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "forge:storage_blocks/bloodbrass"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "bloodsmeltery:bloodbrass",
+  "leftover": {
+    "tag": "forge:ingots/bloodbrass"
+  }
+}

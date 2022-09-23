@@ -1,12 +1,13 @@
-package net.smileycorp.bloodsmeltery.common.tcon;
+package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,8 +24,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
@@ -32,6 +33,7 @@ import slimeknights.tconstruct.library.tools.nbt.IModDataView;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.library.utils.RomanNumeralHelper;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWill;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
@@ -42,18 +44,13 @@ public class SentientModifier extends SingleLevelModifier {
 
 	private static final ResourceLocation SENTIENT_DATA = ModDefinitions.getResource("sentient");
 
-	public SentientModifier() {
-		super();
-	}
-
-
 	@Override
-	public MutableComponent getDisplayName(IToolStackView tool, int level) {
-		MutableComponent name = getDisplayName(level).copy();
+	public Component getDisplayName(IToolStackView tool, int level) {
+		MutableComponent name = (MutableComponent) getDisplayName(level).copy();
 		EnumDemonWillType type = getWillType(tool);
 		int tier = getTier(tool) + 1;
-		if (tier > 0) name = name.append(" ").append(new TranslatableComponent("enchantment.level."+tier));
-		return name.withStyle(name.getStyle().withColor(DemonWillUtils.getColour(type)));
+		if (tier > 0) name = name.append(" ").append(RomanNumeralHelper.getNumeral(tier));
+		return name.withStyle(name.getStyle().withColor(TextColor.fromRgb(DemonWillUtils.getColour(type))));
 	}
 
 	@Override
@@ -65,7 +62,12 @@ public class SentientModifier extends SingleLevelModifier {
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slot) {
 		recalcStats(tool, player, hand, true);
-		return InteractionResult.SUCCESS;
+		return InteractionResult.PASS;
+	}
+
+	@Override
+	public int getPriority() {
+		return Integer.MAX_VALUE;
 	}
 
 	@Override

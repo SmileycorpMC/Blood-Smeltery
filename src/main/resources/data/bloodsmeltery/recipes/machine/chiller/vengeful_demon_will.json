@@ -2,7 +2,7 @@
   "type": "thermal:chiller",
   "ingredients": [
     {
-	  "fluid": "bloodsmeltery:vengeful_will",
+	  "tag": "bloodsmeltery:vengeful_will",
       "amount": 100
     }
   ],

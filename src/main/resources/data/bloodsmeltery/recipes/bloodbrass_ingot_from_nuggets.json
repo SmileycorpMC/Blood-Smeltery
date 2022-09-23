@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bloodsmeltery:bloodbrass_ingot",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "bloodsmeltery:bloodbrass_nugget"
+    }
+  },
+  "result": {
+    "item": "bloodsmeltery:bloodbrass_ingot"
+  }
+}
