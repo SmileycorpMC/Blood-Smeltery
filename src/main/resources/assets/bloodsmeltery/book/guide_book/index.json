@@ -1,0 +1,47 @@
+[
+  {
+    "name": "fluid_will",
+    "data": "sections/fluid_will.json",
+    "icon": {
+      "item": {
+        "id": "bloodsmeltery:default_will_bucket"
+      }
+    }
+  },
+  {
+    "name": "blood_stone",
+    "data": "sections/blood_stone.json",
+    "icon": {
+      "item": {
+        "id": "bloodsmeltery:blood_stone_bucket"
+      }
+    }
+  },
+  {
+    "name": "bloodbrass",
+    "data": "sections/bloodbrass.json",
+    "icon": {
+      "item": {
+        "id": "bloodsmeltery:bloodbrass_ingot"
+      }
+    }
+  },
+  {
+    "name": "sentient_modifier",
+    "data": "sections/sentient_modifier.json",
+    "icon": {
+      "item": {
+        "id": "bloodmagic:soulgempetty"
+      }
+    }
+  },
+  {
+    "name": "divination_modifier",
+    "data": "sections/divination_modifier.json",
+    "icon": {
+      "item": {
+        "id": "bloodmagic:divinationsigil"
+      }
+    }
+  }
+]

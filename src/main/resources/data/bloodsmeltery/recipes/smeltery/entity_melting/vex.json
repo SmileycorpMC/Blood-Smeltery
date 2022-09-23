@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "types": [
+      "minecraft:vex"
+    ]
+  },
+  "result": {
+    "fluid": "bloodsmeltery:default_will",
+    "amount": 25
+  },
+  "damage": 2
+}

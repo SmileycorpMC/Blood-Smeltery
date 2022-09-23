@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:book"
+  },
+  "fluid": {
+    "name": "bloodsmeltery:blood_stone",
+    "amount": 144
+  },
+  "result": "bloodsmeltery:guide_book",
+  "cooling_time": 90
+}

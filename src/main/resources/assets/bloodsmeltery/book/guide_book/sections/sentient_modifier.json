@@ -1,0 +1,17 @@
+[
+  {
+    "name": "divination_introduction",
+    "type": "image with text below",
+    "data": "sentient/intro.json"
+  },
+  {
+    "name": "modifier",
+    "type": "text",
+    "data": "sentient/modifier.json"
+  },
+  {
+    "name": "applying",
+    "type": "image with text below",
+    "data": "sentient/applying.json"
+  }
+]

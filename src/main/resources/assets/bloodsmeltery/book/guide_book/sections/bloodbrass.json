@@ -1,0 +1,17 @@
+[
+  {
+    "name": "bloodbrass_introduction",
+    "type": "image with text below",
+    "data": "bloodbrass/intro.json"
+  },
+  {
+    "name": "creation",
+    "type": "image with text below",
+    "data": "bloodbrass/creation.json"
+  },
+  {
+    "name": "tools",
+    "type": "image with text below",
+    "data": "bloodbrass/tools.json"
+  }
+]

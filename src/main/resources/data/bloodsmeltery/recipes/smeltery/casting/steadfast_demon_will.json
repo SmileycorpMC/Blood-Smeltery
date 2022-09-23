@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:casting_table",
   "fluid": {
-    "name": "bloodsmeltery:steadfast_will",
+    "tag": "forge:steadfast_will",
     "amount": 100
   },
   "result": {

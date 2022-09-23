@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/bloodbrass",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/bloodbrass"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_bloodbrass",
+    "amount": 1296
+  },
+  "temperature": 700,
+  "time": 171
+}

@@ -2,13 +2,7 @@
   "type": "tconstruct:modifier",
   "inputs": [
 	{
-      "tag": "bloodmagic:crystals/demon"
-    },
-	{
-      "item": "bloodmagic:soulgempetty"
-    },
-	{
-      "tag": "bloodmagic:crystals/demon"
+      "tag": "bloodmagic:tartaric_gem"
     }
   ],
   "tools": {

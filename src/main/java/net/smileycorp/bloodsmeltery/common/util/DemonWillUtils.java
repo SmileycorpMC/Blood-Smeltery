@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common;
+package net.smileycorp.bloodsmeltery.common.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +16,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
@@ -151,6 +152,13 @@ public class DemonWillUtils {
 		ItemStack stack = new ItemStack(gem);
 		gem.setCurrentType(type, stack);
 		gem.setWill(type, stack, gem.getMaxWill(type, stack));
+		return stack;
+	}
+
+	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem, double souls) {
+		ItemStack stack = new ItemStack(gem);
+		gem.setCurrentType(type, stack);
+		gem.setWill(type, stack, souls);
 		return stack;
 	}
 

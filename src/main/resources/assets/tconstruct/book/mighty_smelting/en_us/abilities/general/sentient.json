@@ -1,0 +1,14 @@
+{
+  "modifier_id": "bloodsmeltery:sentient",
+  "text": [
+    {
+      "text": "Harvesting souls today, for a brighter tomorrow!"
+    }
+  ],
+  "effects": [
+    "Killing mobs drops Demonic Will",
+	"Powers up the more Demonic Will you have and gains abilities based on it's type.",
+    "Single Level",
+    "Requires 1 Ability Slot"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "bloodmagic:divinationsigil"
+    }
+  ],
+  "tools": {
+      "tag": "tconstruct:modifiable/melee"
+   },
+  "slots": {
+    "upgrades": 1
+  },
+  "result": {
+    "name": "bloodsmeltery:divination",
+    "level": 1
+  },
+  "max_level": 1
+}

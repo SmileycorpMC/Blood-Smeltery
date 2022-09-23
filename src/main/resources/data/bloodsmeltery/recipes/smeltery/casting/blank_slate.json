@@ -6,7 +6,7 @@
   "cast_consumed": true,
   "fluid": {
     "name": "bloodsmeltery:blood_stone",
-    "amount": 250
+    "amount": 144
   },
   "result": "bloodmagic:blankslate",
   "cooling_time": 175

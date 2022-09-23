@@ -1,0 +1,27 @@
+[
+  {
+    "name": "fluid_will_introduction",
+    "type": "image with text below",
+    "data": "fluid_will/intro.json"
+  },
+  {
+    "name": "tanks_and_create",
+    "type": "image with text below",
+    "data": "fluid_will/tanks_and_create.json"
+  },
+  {
+    "name": "melting",
+    "type": "text",
+    "data": "fluid_will/melting.json"
+  },
+  {
+    "name": "life_essence",
+    "type": "image with text below",
+    "data": "fluid_will/life_essence.json"
+  },
+  {
+    "name": "soul_sand",
+    "type": "image with text below",
+    "data": "fluid_will/soul_sand.json"
+  }
+]

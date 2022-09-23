@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon;
+package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,10 +24,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.tconstruct.library.modifiers.SingleLevelModifier;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -36,6 +35,7 @@ import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.library.utils.RomanNumeralHelper;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWill;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
@@ -50,13 +50,12 @@ public class SentientModifier extends SingleLevelModifier {
 		super(0x4EF6FF);
 	}
 
-
 	@Override
 	public ITextComponent getDisplayName(IModifierToolStack tool, int level) {
 		IFormattableTextComponent name = (IFormattableTextComponent) getDisplayName(level).copy();
 		EnumDemonWillType type = getWillType(tool);
 		int tier = getTier(tool) + 1;
-		if (tier > 0) name = name.append(" ").append(new TranslationTextComponent("enchantment.level."+tier));
+		if (tier > 0) name = name.append(" ").append(RomanNumeralHelper.getNumeral(tier));
 		return name.withStyle(name.getStyle().withColor(Color.fromRgb(DemonWillUtils.getColour(type))));
 	}
 
@@ -69,7 +68,12 @@ public class SentientModifier extends SingleLevelModifier {
 	@Override
 	public ActionResultType onToolUse(IModifierToolStack tool, int level, World world, PlayerEntity player, Hand hand, EquipmentSlotType slot) {
 		recalcStats(tool, player, hand, true);
-		return ActionResultType.SUCCESS;
+		return ActionResultType.PASS;
+	}
+
+	@Override
+	public int getPriority() {
+		return Integer.MAX_VALUE;
 	}
 
 	@Override

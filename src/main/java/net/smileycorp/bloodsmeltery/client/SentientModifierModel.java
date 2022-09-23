@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.math.vector.TransformationMatrix;
-import net.smileycorp.bloodsmeltery.common.tcon.SentientModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.SentientModifier;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;
 import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;

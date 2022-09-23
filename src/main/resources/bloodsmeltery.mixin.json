@@ -1,0 +1,10 @@
+{
+	"required": true,
+	"package": "net.smileycorp.bloodsmeltery.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "bloodsmeltery.refmap.json",
+	"client": [
+		"MixinElementDivinedInformation"
+	],
+	"minVersion": "0.8"
+}

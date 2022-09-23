@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon;
+package net.smileycorp.bloodsmeltery.common.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.crafting.StackList;
 import net.minecraftforge.fml.RegistryObject;
-import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 public class IngredientDemonWill extends Ingredient {

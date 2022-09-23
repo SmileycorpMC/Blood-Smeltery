@@ -1,0 +1,13 @@
+{
+  "type": "bloodmagic:altar",
+  "input": {
+    "tag": "forge:ingots/copper"
+  },
+  "output": {
+    "item": "bloodsmeltery:bloodbrass_ingot"
+  },
+  "upgradeLevel": 1,
+  "altarSyphon": 3000,
+  "consumptionRate": 15,
+  "drainRate": 15
+}

@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common;
+package net.smileycorp.bloodsmeltery.common.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -8,29 +8,33 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWillGem;
 import wayoftime.bloodmagic.api.compat.IMultiWillTool;
+import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityProvider {
 
 	protected ItemStack stack;
 	protected EnumDemonWillType type;
+	protected final int capacity;
 
 	public TartaricFluidCapability(ItemStack stack) {
 		this.stack=stack;
 		IDemonWillGem gem = (IDemonWillGem) stack.getItem();
 		type = ((IMultiWillTool)gem).getCurrentType(stack);
-	}
-
-	private int getStackCapacity() {
-		IDemonWillGem gem = (IDemonWillGem) stack.getItem();
-		return (int) Math.floor(gem.getMaxWill(type, stack)*BloodSmelteryConfig.willFluidAmount.get());
+		capacity = (int) Math.floor(gem.getMaxWill(type, stack)*BloodSmelteryConfig.willFluidAmount.get());
 	}
 
 	protected FluidStack getFluid() {
 		IDemonWillGem gem = (IDemonWillGem) stack.getItem();
-		return DemonWillUtils.getStackForSouls(type , gem.getWill(type, stack));
+		return DemonWillUtils.getStackForSouls(type, gem.getWill(type, stack));
+	}
+
+	private void setType(EnumDemonWillType type) {
+		this.type = type;
+		((ItemSoulGem)stack.getItem()).setCurrentType(type, stack);
 	}
 
 	@Override
@@ -45,32 +49,28 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 
 	@Override
 	public int getTankCapacity(int tank) {
-		return getStackCapacity();
+		return capacity;
 	}
 
 	@Override
 	public boolean isFluidValid(int tank, FluidStack stack) {
-		return stack.getFluid() == DemonWillUtils.getFluidForType(type);
+		return stack.getFluid() == DemonWillUtils.getFluidForType(type)
+				|| (getFluid().getAmount() == 0 && DemonWillUtils.isWillFluid(stack));
 	}
 
 	@Override
 	public int fill(FluidStack resource, FluidAction action) {
-		FluidStack contained = getFluid();
-		int amount = resource.getAmount() + contained.getAmount();
-		if (amount <= getStackCapacity()) {
-			if (contained.getAmount() == 0) {
-				type = DemonWillUtils.getTypeForFluid(resource);
-				contained = getFluid();
-			}
-			if (contained.getFluid() == resource.getFluid()) {
-				if (action.execute()) {
-					IDemonWillGem gem = (IDemonWillGem) stack.getItem();
-					gem.setWill(type, stack, amount/BloodSmelteryConfig.willFluidAmount.get());
-				}
-				return amount;
-			}
+		if (!isFluidValid(0, resource)) return 0;
+		int amount = resource.getAmount();
+		int contained = getFluid().getAmount();
+		if (amount + contained > capacity) amount = capacity - contained;
+		if (action.execute()) {
+			EnumDemonWillType type = DemonWillUtils.getTypeForFluid(resource);
+			if (this.type != type) setType(type);
+			IDemonWillGem gem = (IDemonWillGem) stack.getItem();
+			gem.setWill(type, stack, (amount + contained)/BloodSmelteryConfig.willFluidAmount.get());
 		}
-		return 0;
+		return amount;
 	}
 
 	@Override

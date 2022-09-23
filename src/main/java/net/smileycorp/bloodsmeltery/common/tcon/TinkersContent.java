@@ -1,33 +1,60 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
+import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.BloodstainedModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.DivinationModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.ExsanguinateModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.SentientModifier;
+import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
+import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.registration.ModelFluidAttributes;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
+import slimeknights.tconstruct.common.TinkerModule;
+import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
+import slimeknights.tconstruct.common.registration.MetalItemObject;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.recipe.casting.container.ContainerFillingRecipeSerializer;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 @EventBusSubscriber(modid=ModDefinitions.MODID)
 public class TinkersContent {
 
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModDefinitions.MODID);
+	public static final BlockDeferredRegisterExtension BLOCKS = new BlockDeferredRegisterExtension(ModDefinitions.MODID);
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModDefinitions.MODID);
 	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, ModDefinitions.MODID);
 
+	public static final RegistryObject<Item> GUIDE_BOOK_BOOK = ITEMS.register("guide_book", GuideBook::new);
+
+	public static final MetalItemObject BLOODBRASS = BLOCKS.registerMetal("bloodbrass", "bloodbrass",
+			Block.Properties.of(Material.HEAVY_METAL, MaterialColor.NETHER).harvestTool(ToolType.PICKAXE).sound(SoundType.METAL),
+			(b) -> new BlockTooltipItem(b, new Item.Properties().tab(TinkerModule.TAB_GENERAL)), new Item.Properties().tab(TinkerModule.TAB_GENERAL));
+
+	//fluids
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_INFUSED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
 			.viscosity(8000).temperature(900).color(0x432425).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 8);
 
+	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.register("molten_bloodbrass", ModelFluidAttributes.builder().density(2000).viscosity(10000)
+			.temperature(1000).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA).temperature(1000).color(0x910000), Material.LAVA, 12);
+
+	//demon will fluids
 	static {
 		if (BloodSmelteryConfig.enableFluidWill.get()) {
 			for (EnumDemonWillType will : EnumDemonWillType.values()) {
@@ -40,8 +67,19 @@ public class TinkersContent {
 		}
 	}
 
+	//recipe serializers
 	public static final RegistryObject<IRecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
+	public static final RegistryObject<ContainerFillingRecipeSerializer<TartaricGemFillingRecipe>> TARTARIC_GEM_FILLING = RECIPE_SERIALIZERS.register("tartaric_gem_filling", () -> new ContainerFillingRecipeSerializer<>(TartaricGemFillingRecipe::new));
 
+	//abilities
 	public static final RegistryObject<Modifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", () -> new SentientModifier());
+
+	//upgrades
+	public static final RegistryObject<Modifier> DIVINATION = MODIFIERS.register("divination", () -> new DivinationModifier());
+
+	//traits
+	public static final RegistryObject<Modifier> BLOODSTAINED = MODIFIERS.register("bloodstained", () -> new BloodstainedModifier());
+	public static final RegistryObject<Modifier> EXSANGUINATE = MODIFIERS.register("exsanguinate", () -> new ExsanguinateModifier());
+
 
 }

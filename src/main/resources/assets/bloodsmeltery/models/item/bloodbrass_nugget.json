@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "bloodsmeltery:item/bloodbrass_nugget"
+    }
+}
