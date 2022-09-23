@@ -41,7 +41,6 @@ public class GuideBook extends LecternBookItem {
 	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (world.isClientSide) {
-			System.out.println(BOOK_DATA.toString());
 			BOOK_DATA.openGui(hand, stack);
 		}
 		return new ActionResult<>(ActionResultType.SUCCESS, stack);
