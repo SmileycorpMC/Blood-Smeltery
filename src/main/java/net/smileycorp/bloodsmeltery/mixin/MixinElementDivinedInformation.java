@@ -8,9 +8,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
 import net.smileycorp.bloodsmeltery.common.tcon.TinkersContent;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import wayoftime.bloodmagic.client.hud.element.ElementDivinedInformation;
 import wayoftime.bloodmagic.client.hud.element.ElementTileInformation;
@@ -30,14 +32,19 @@ public abstract class MixinElementDivinedInformation<T extends TileEntity> exten
 		ClientPlayerEntity player = mc.player;
 		if (player != null) {
 			for (Hand hand : Hand.values()) {
-				ToolStack tool = ToolStack.from(player.getItemInHand(hand));
-				if (tool != null) {
-					int divinationLevel = tool.getModifierLevel(TinkersContent.DIVINATION.get());
-					if ((simple && divinationLevel > 0) || divinationLevel > 1) {
-						if (super.shouldRender(mc)) {
-							callback.setReturnValue(true);
-							callback.cancel();
-							return;
+				ItemStack stack = player.getItemInHand(hand);
+				if (stack != null) {
+					if (stack.getItem() instanceof IModifiable) {
+						ToolStack tool = ToolStack.from(stack);
+						if (tool != null) {
+							int divinationLevel = tool.getModifierLevel(TinkersContent.DIVINATION.get());
+							if ((simple && divinationLevel > 0) || divinationLevel > 1) {
+								if (super.shouldRender(mc)) {
+									callback.setReturnValue(true);
+									callback.cancel();
+									return;
+								}
+							}
 						}
 					}
 				}

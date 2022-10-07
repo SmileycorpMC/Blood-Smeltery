@@ -5,7 +5,7 @@
     "amount": 200
   },
   "cast": {
-    "tag": "forge:clay"
+    "tag": "forge:storage_blocks/clay"
   },
   "cast_consumed": true,
   "result": "minecraft:soul_soil",

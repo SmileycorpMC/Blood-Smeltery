@@ -2,6 +2,7 @@ package net.smileycorp.bloodsmeltery.client;
 
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,6 +14,7 @@ import net.smileycorp.bloodsmeltery.common.ModDefinitions;
 import net.smileycorp.bloodsmeltery.common.tcon.modifiers.PlayerBoundModifier;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = ModDefinitions.MODID, bus = Bus.MOD)
@@ -25,15 +27,20 @@ public class ClientEventListener {
 
 	@SubscribeEvent
 	public void renderTooltip(ItemTooltipEvent event) {
-		ToolStack tool = ToolStack.from(event.getItemStack());
-		if (tool != null) {
-			for (ModifierEntry entry : tool.getModifierList()) {
-				if (entry.getModifier() instanceof PlayerBoundModifier) {
-					PlayerBoundModifier modifier = (PlayerBoundModifier) entry.getModifier();
-					if (modifier.isBound(tool)) {
-						List<ITextComponent> tooltips = event.getToolTip();
-						tooltips.add(tooltips.size()-6, new TranslationTextComponent("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
-						return;
+		ItemStack stack = event.getItemStack();
+		if (stack != null) {
+			if (stack.getItem() instanceof IModifiable) {
+				ToolStack tool = ToolStack.from(stack);
+				if (tool != null) {
+					for (ModifierEntry entry : tool.getModifierList()) {
+						if (entry.getModifier() instanceof PlayerBoundModifier) {
+							PlayerBoundModifier modifier = (PlayerBoundModifier) entry.getModifier();
+							if (modifier.isBound(tool)) {
+								List<ITextComponent> tooltips = event.getToolTip();
+								tooltips.add(tooltips.size()-6, new TranslationTextComponent("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
+								return;
+							}
+						}
 					}
 				}
 			}

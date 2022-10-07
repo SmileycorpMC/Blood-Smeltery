@@ -3,8 +3,10 @@
 	"package": "net.smileycorp.bloodsmeltery.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"refmap": "bloodsmeltery.refmap.json",
+	"mixins": [],
 	"client": [
-		"MixinElementDivinedInformation"
+		"MixinElementDivinedInformation",
+		"MixinItemRenderer"
 	],
 	"minVersion": "0.8"
 }
