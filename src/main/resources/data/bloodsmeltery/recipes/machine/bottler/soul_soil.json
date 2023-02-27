@@ -2,7 +2,7 @@
   "type": "thermal:bottler",
   "ingredients": [
     {
-      "tag": "forge:clay"
+      "tag": "minecraft:dirt"
     },
     {
       "fluid_tag": "forge:demon_will",

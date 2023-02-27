@@ -1,8 +1,8 @@
 {
   "type": "thermal:chiller",
-  "ingredients": [
+  "ingredient": [
     {
-	  "tag": "bloodsmeltery:steadfast_will",
+	  "fluid": "bloodsmeltery:steadfast_will",
       "amount": 100
     }
   ],

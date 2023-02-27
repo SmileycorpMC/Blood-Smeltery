@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.smileycorp.bloodsmeltery.common.util.TartaricFluidCapability;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
-@EventBusSubscriber(modid=ModDefinitions.MODID)
+@EventBusSubscriber(modid=Constants.MODID)
 public class BloodSmelteryEvents {
 
 	@SubscribeEvent
@@ -18,7 +18,7 @@ public class BloodSmelteryEvents {
 			Item item = stack.getItem();
 			if (item instanceof ItemSoulGem) {
 				TartaricFluidCapability cap = new TartaricFluidCapability(stack);
-				event.addCapability(ModDefinitions.getResource("TartaricFluid"), cap);
+				event.addCapability(Constants.loc("TartaricFluid"), cap);
 			}
 		}
 	}

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/hellforged",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/hellforged"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_hellforged",
+    "amount": 90
+  },
+  "temperature": 666,
+  "time": 54
+}

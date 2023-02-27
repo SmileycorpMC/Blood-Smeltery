@@ -11,8 +11,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.smileycorp.bloodsmeltery.client.ClientEventListener;
 import net.smileycorp.bloodsmeltery.common.tcon.TinkersContent;
 
-@Mod(ModDefinitions.MODID)
-@Mod.EventBusSubscriber(modid = ModDefinitions.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(Constants.MODID)
+@Mod.EventBusSubscriber(modid = Constants.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BloodSmeltery {
 
 	public BloodSmeltery() {

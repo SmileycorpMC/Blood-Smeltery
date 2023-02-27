@@ -5,7 +5,7 @@
     "amount": 200
   },
   "cast": {
-    "tag": "forge:clay"
+    "tag": "minecraft:dirt"
   },
   "cast_consumed": true,
   "result": "minecraft:soul_soil",

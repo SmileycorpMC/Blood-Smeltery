@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/hellforged",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:nuggets/hellforged"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_hellforged",
+    "amount": 10
+  },
+  "temperature": 666,
+  "time": 18
+}

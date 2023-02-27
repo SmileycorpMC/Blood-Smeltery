@@ -24,7 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -42,7 +42,7 @@ import wayoftime.bloodmagic.will.PlayerDemonWillHandler;
 
 public class SentientModifier extends SingleLevelModifier {
 
-	private static final ResourceLocation SENTIENT_DATA = ModDefinitions.getResource("sentient");
+	private static final ResourceLocation SENTIENT_DATA = Constants.loc("sentient");
 
 	@Override
 	public Component getDisplayName(IToolStackView tool, int level) {
@@ -102,12 +102,12 @@ public class SentientModifier extends SingleLevelModifier {
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
 		IDemonWill will = DemonWillUtils.getWillItem(type);
-		LivingEntity target = (LivingEntity) context.getParamOrNull(LootContextParams.THIS_ENTITY);
-		if (target != null) {
+		if (context.getParamOrNull(LootContextParams.DAMAGE_SOURCE) != null) {
+			LivingEntity target = (LivingEntity) context.getParamOrNull(LootContextParams.THIS_ENTITY);
 			for (int i = 0; i <= context.getLootingModifier(); i++) {
 				if (i == 0 || RANDOM.nextDouble() < 0.4) {
-					ItemStack drop = will.createWill((target instanceof Slime ? 0.67 : 1) * (tier >=  0 ? ItemSentientSword.soulDrop[tier] : 0) * RANDOM.nextDouble()
-							+ (tier >=  0 ? ItemSentientSword.staticDrop[tier] : 1) * target.getMaxHealth() / 20d);
+					ItemStack drop = will.createWill((target instanceof Slime ? 0.67 : 1d) * (tier >=  0 ? ItemSentientSword.soulDrop[tier] : 0) * RANDOM.nextDouble()
+							+ (tier >=  0 ? ItemSentientSword.staticDrop[tier] : 1d) * target.getMaxHealth() / 20d);
 					drops.add(drop);
 				}
 			}

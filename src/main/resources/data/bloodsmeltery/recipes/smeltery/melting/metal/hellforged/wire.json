@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/hellforged",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/hellforged"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_hellforged",
+    "amount": 45
+  },
+  "temperature": 666,
+  "time": 11
+}

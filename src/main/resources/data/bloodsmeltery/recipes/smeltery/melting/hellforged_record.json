@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    {
+      "item": "bloodmagic:bleedingedge"
+    }
+  ],
+  "result": {
+    "tag": "forge:molten_hellforged",
+    "amount": 500
+  },
+  "temperature": 666,
+  "time": 700
+}

@@ -5,7 +5,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
-import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.Constants;
 
 @JeiPlugin
 public class BloodSmelteryJEIPlugin implements IModPlugin {
@@ -17,7 +17,7 @@ public class BloodSmelteryJEIPlugin implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return ModDefinitions.getResource("main");
+		return Constants.loc("main");
 	}
 
 }

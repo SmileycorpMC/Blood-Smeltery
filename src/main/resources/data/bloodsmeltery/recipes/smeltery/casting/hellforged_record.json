@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "tag": "forge:molten_hellforged",
+    "amount": 900
+  },
+  "cast": {
+    "tag": "minecraft:music_discs"
+  },
+  "cast_consumed": true,
+  "result": "bloodmagic:bleedingedge",
+  "cooling_time": 240
+}

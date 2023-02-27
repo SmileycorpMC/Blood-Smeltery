@@ -8,7 +8,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.Constants;
 import slimeknights.mantle.client.book.BookLoader;
 import slimeknights.mantle.client.book.data.BookData;
 import slimeknights.mantle.client.book.repository.FileRepository;
@@ -21,12 +21,12 @@ public class GuideBook extends LecternBookItem {
 	public static BookData BOOK_DATA = null;
 
 	private static BookData createBookData() {
-		ResourceLocation loc = ModDefinitions.getResource("guide_book");
-		BookData book = BookLoader.registerBook(loc, false, false, new FileRepository(ModDefinitions.getResource("book/" + loc.getPath())));
+		ResourceLocation loc = Constants.loc("guide_book");
+		BookData book = BookLoader.registerBook(loc, false, false, new FileRepository(Constants.loc("book/" + loc.getPath())));
 		book.addTransformer(BookTransformer.indexTranformer());
 		book.addTransformer(BookTransformer.paddingTransformer());
-		book.addTransformer(new SingleMaterialSectionTransformer(ModDefinitions.getResource("blood_stone")));
-		book.addTransformer(new SingleMaterialSectionTransformer(ModDefinitions.getResource("blood_brass")));
+		book.addTransformer(new SingleMaterialSectionTransformer(Constants.loc("blood_stone")));
+		book.addTransformer(new SingleMaterialSectionTransformer(Constants.loc("blood_brass")));
 		//book.addTransformer(new ModifierSectionTransformer("upgrades"));
 		return book;
 	}

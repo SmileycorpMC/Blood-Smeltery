@@ -13,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.tcon.modifiers.BloodstainedModifier;
 import net.smileycorp.bloodsmeltery.common.tcon.modifiers.DivinationModifier;
 import net.smileycorp.bloodsmeltery.common.tcon.modifiers.ExsanguinateModifier;
@@ -32,14 +32,14 @@ import slimeknights.tconstruct.library.recipe.casting.container.ContainerFilling
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
-@EventBusSubscriber(modid=ModDefinitions.MODID)
+@EventBusSubscriber(modid=Constants.MODID)
 public class TinkersContent {
 
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModDefinitions.MODID);
-	public static final BlockDeferredRegisterExtension BLOCKS = new BlockDeferredRegisterExtension(ModDefinitions.MODID);
-	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModDefinitions.MODID);
-	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ModDefinitions.MODID);
-	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ModDefinitions.MODID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
+	public static final BlockDeferredRegisterExtension BLOCKS = new BlockDeferredRegisterExtension(Constants.MODID);
+	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(Constants.MODID);
+	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Constants.MODID);
+	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Constants.MODID);
 
 	//public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book", GuideBook::new);
 
@@ -47,12 +47,17 @@ public class TinkersContent {
 			Block.Properties.of(Material.HEAVY_METAL, MaterialColor.NETHER).sound(SoundType.METAL),
 			(b) -> new BlockTooltipItem(b, new Item.Properties().tab(TinkerModule.TAB_GENERAL)), new Item.Properties().tab(TinkerModule.TAB_GENERAL));
 
+	//public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood-seared_brick", () -> new Item(new Item.Properties().tab(Smeltery)));
+
 	//fluids
-	public static final FluidObject<ForgeFlowingFluid> BLOOD_INFUSED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
+	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
 			.viscosity(8000).temperature(900).color(0x432425).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 8);
 
 	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.register("molten_bloodbrass", ModelFluidAttributes.builder().density(2000).viscosity(10000)
 			.temperature(1000).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA).temperature(1000).color(0x910000), Material.LAVA, 12);
+
+	public static final FluidObject<ForgeFlowingFluid> MOLTEN_HELLFORGED = FLUIDS.register("molten_hellforged", ModelFluidAttributes.builder().density(2000).viscosity(10000)
+			.temperature(1000).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA).temperature(1000).color(0x78C9B9), Material.LAVA, 12);
 
 	//demon will fluids
 	static {

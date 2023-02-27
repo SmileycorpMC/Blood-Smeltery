@@ -24,7 +24,7 @@ repositories {
     }
 }
 
-version = '1.18.2-1.1.5a'
+version = '1.18.2-1.1.6'
 group = 'net.smileycorp.bloodsmeltery' 
 archivesBaseName = 'Blood-Smeltery'
 
@@ -95,17 +95,19 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
-	implementation fg.deobf('curse.maven:tconstruct-74072:3998764')
-	implementation fg.deobf('curse.maven:mantle-74924:3829975')
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.1'
+	implementation fg.deobf('curse.maven:tconstruct-74072:4360093')
+	implementation fg.deobf('curse.maven:mantle-74924:4353120')
 	implementation fg.deobf('curse.maven:bloodmagic-224791:3953207')
 	implementation fg.deobf('curse.maven:patchouli-306770:3846086')
 	implementation fg.deobf('curse.maven:jei-238222:3940240')
-	implementation fg.deobf('curse.maven:create-328085:3934676')
-	implementation fg.deobf('curse.maven:flywheel-486392:3934664')
-	implementation fg.deobf('curse.maven:cofhcore-69162:3838025')
-	implementation fg.deobf('curse.maven:thermalfoundation-222880:3837827')
-	implementation fg.deobf('curse.maven:thermalexpansion-69163:3837868')
+	implementation fg.deobf('curse.maven:create-328085:4371807')
+	implementation fg.deobf('curse.maven:flywheel-486392:4341461')
+	implementation fg.deobf('curse.maven:cofhcore-69162:4385215')
+	implementation fg.deobf('curse.maven:thermalfoundation-222880:4382339')
+	implementation fg.deobf('curse.maven:thermalexpansion-69163:4382343')
+	implementation fg.deobf('curse.maven:thermaldynamics-227443:4391159')
+	implementation fg.deobf('curse.maven:thermalintegration-626708:4382885')
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

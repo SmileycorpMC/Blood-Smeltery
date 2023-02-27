@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.ModDefinitions;
+import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
@@ -38,7 +38,7 @@ public class BloodSmelteryJEICreateSupport {
 		ItemStack output = stack.copy();
 		((ItemSoulGem) gem).drainWill(type, output, 1000d/((double)BloodSmelteryConfig.willFluidAmount.get()), true);
 		return new ProcessingRecipeBuilder<>(EmptyingRecipe::new,
-				ModDefinitions.getResource("empty_bloodmagic_" + gem.getRegistryName().getPath() + "_of_bloodsmeltery_" + type.toString() + "_will"))
+				Constants.loc("empty_bloodmagic_" + gem.getRegistryName().getPath() + "_of_bloodsmeltery_" + type.toString() + "_will"))
 				.withItemIngredients(Ingredient.of(stack))
 				.withFluidOutputs(DemonWillUtils.getStackForAmount(type, 1000))
 				.withSingleItemOutput(output)
