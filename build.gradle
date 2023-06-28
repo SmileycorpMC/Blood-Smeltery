@@ -96,7 +96,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.1'
-	implementation fg.deobf('curse.maven:tconstruct-74072:4395997')
+	implementation fg.deobf('curse.maven:tconstruct-74072:4509008')
 	implementation fg.deobf('curse.maven:mantle-74924:4353120')
 	implementation fg.deobf('curse.maven:bloodmagic-224791:3953207')
 	implementation fg.deobf('curse.maven:patchouli-306770:3846086')

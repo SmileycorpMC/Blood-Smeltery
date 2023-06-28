@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -24,16 +25,20 @@ import slimeknights.mantle.registration.ModelFluidAttributes;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.MetalItemObject;
+import slimeknights.mantle.registration.object.WallBuildingBlockObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.recipe.casting.container.ContainerFillingRecipeSerializer;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
+import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.smeltery.block.component.SearedBlock;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
+import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
 
 @EventBusSubscriber(modid=Constants.MODID)
-public class TinkersContent {
+public class ModContent {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
 	public static final BlockDeferredRegisterExtension BLOCKS = new BlockDeferredRegisterExtension(Constants.MODID);
@@ -41,13 +46,9 @@ public class TinkersContent {
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Constants.MODID);
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Constants.MODID);
 
-	//public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book", GuideBook::new);
-
 	public static final MetalItemObject BLOODBRASS = BLOCKS.registerMetal("bloodbrass", "bloodbrass",
 			Block.Properties.of(Material.HEAVY_METAL, MaterialColor.NETHER).sound(SoundType.METAL),
 			(b) -> new BlockTooltipItem(b, new Item.Properties().tab(TinkerModule.TAB_GENERAL)), new Item.Properties().tab(TinkerModule.TAB_GENERAL));
-
-	//public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood-seared_brick", () -> new Item(new Item.Properties().tab(Smeltery)));
 
 	//fluids
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
