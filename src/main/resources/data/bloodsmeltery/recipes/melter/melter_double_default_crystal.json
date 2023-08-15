@@ -1,0 +1,17 @@
+{
+  "type": "cyclic:melter",
+  "ingredients":[ {
+    "item": "bloodmagic:defaultcrystal"
+  },
+  {
+    "item": "bloodmagic:defaultcrystal"
+  }],
+	"energy": {
+		"rfpertick": 200,
+		"ticks": 130
+	},
+  "result": {
+    "fluid": "bloodsmeltery:default_will",
+    "count": 10000
+  }
+}

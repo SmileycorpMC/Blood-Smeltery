@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:storage_blocks/bloodbrass"
+    "#forge:storage_blocks/bloodbrass",
+	"#forge:storage_blocks/hellforged"
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "type": "cyclic:solidifier",
+  "ingredients": [{
+    "tag": "minecraft:dirt"
+  },
+  {
+    "tag": "minecraft:dirt"
+  },
+  {
+    "tag": "minecraft:dirt"
+  }],
+	"energy": {
+		"rfpertick": 100,
+		"ticks": 40
+	},
+  "mix": {
+    "fluid": "bloodsmeltery:default_will",
+    "tag": "forge:monster_essence",
+    "count": 600
+  },
+  "result": {
+    "item": "minecraft:soul_soil",
+	"count": 3
+  }
+}

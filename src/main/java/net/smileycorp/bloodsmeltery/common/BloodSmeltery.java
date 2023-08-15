@@ -11,9 +11,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.smileycorp.bloodsmeltery.client.ClientEventListener;
 import net.smileycorp.bloodsmeltery.common.tcon.ModContent;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Mod(Constants.MODID)
 @Mod.EventBusSubscriber(modid = Constants.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BloodSmeltery {
+
+	private static Logger logger = Logger.getLogger(Constants.NAME);
 
 	public BloodSmeltery() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BloodSmelteryConfig.config);
@@ -35,5 +40,13 @@ public class BloodSmeltery {
 		MinecraftForge.EVENT_BUS.register(new ClientEventListener());
 	}
 
+	public static void logInfo(Object message) {
+		logger.info(message.toString());
+	}
+
+	public static void logError(Object message, Exception e) {
+		logger.log(Level.WARNING, message.toString());
+		e.printStackTrace();
+	}
 
 }

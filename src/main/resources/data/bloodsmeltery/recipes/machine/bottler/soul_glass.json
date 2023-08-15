@@ -1,0 +1,17 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "tag": "forge:glass"
+    },
+    {
+      "fluid_tag": "forge:demon_will",
+      "amount": 200
+    }
+  ],
+  "result": [
+    {
+      "item": "tconstruct:soul_glass"
+    }
+  ]
+}

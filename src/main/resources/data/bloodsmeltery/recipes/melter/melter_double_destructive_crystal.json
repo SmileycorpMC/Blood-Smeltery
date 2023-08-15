@@ -1,0 +1,17 @@
+{
+  "type": "cyclic:melter",
+  "ingredients":[ {
+    "item": "bloodmagic:destructivecrystal"
+  },
+  {
+    "item": "bloodmagic:destructivecrystal"
+  }],
+	"energy": {
+		"rfpertick": 200,
+		"ticks": 130
+	},
+  "result": {
+    "fluid": "bloodsmeltery:destructive_will",
+    "count": 10000
+  }
+}

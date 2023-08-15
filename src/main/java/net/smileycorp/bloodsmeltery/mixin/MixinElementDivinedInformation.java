@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import wayoftime.bloodmagic.client.hud.element.ElementDivinedInformation;
 import wayoftime.bloodmagic.client.hud.element.ElementTileInformation;
 
-@Mixin(ElementDivinedInformation.class)
+@Mixin(value = ElementDivinedInformation.class, remap = false)
 public abstract class MixinElementDivinedInformation<T extends BlockEntity> extends ElementTileInformation<T> {
 
 	@Shadow(remap = false)
@@ -30,27 +30,19 @@ public abstract class MixinElementDivinedInformation<T extends BlockEntity> exte
 	@Inject(at=@At("HEAD"), method = "shouldRender(Lnet/minecraft/client/Minecraft;)Z", cancellable = true)
 	public void shouldRender(Minecraft mc, CallbackInfoReturnable<Boolean> callback) {
 		LocalPlayer player = mc.player;
-		if (player != null) {
-			for (InteractionHand hand : InteractionHand.values()) {
-				ItemStack stack = player.getItemInHand(hand);
-				if (stack != null) {
-					if (stack.getItem() instanceof IModifiable) {
-						ToolStack tool = ToolStack.from(stack);
-						if (tool != null) {
-							int divinationLevel = tool.getModifierLevel(ModContent.DIVINATION.get());
-							if ((simple && divinationLevel > 0) || divinationLevel > 1) {
-								if (super.shouldRender(mc)) {
-									callback.setReturnValue(true);
-									callback.cancel();
-									return;
-								}
-							}
-						}
-					}
-				}
+		if (player == null) return;
+		for (InteractionHand hand : InteractionHand.values()) {
+		ItemStack stack = player.getItemInHand(hand);
+		if (stack == null |!(stack.getItem() instanceof IModifiable)) continue;
+			ToolStack tool = ToolStack.from(stack);
+			if (tool == null) continue;
+			int divinationLevel = tool.getModifierLevel(ModContent.DIVINATION.get());
+			if ((simple && divinationLevel > 0) || divinationLevel > 1 && super.shouldRender(mc)) {
+				callback.setReturnValue(true);
+				callback.cancel();
+				return;
 			}
 		}
-
 	}
 
 }

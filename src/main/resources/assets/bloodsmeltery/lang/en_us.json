@@ -8,6 +8,15 @@
 	"fluid.bloodsmeltery.steadfast_will": "Steadfast Demon Will",
 	"fluid.bloodsmeltery.molten_bloodbrass": "Molten Bloodbrass",
 	"fluid.bloodsmeltery.molten_hellforged": "Molten Demonite",
+	
+	"fluid.bloodsmeltery.flowing_blood_stone": "Blood-Seared Stone",
+	"fluid.bloodsmeltery.flowing_default_will": "Demon Will",
+	"fluid.bloodsmeltery.flowing_corrosive_will": "Corrosive Demon Will",
+	"fluid.bloodsmeltery.flowing_destructive_will": "Destructive Demon Will",
+	"fluid.bloodsmeltery.flowing_vengeful_will": "Vengeful Demon Will",
+	"fluid.bloodsmeltery.flowing_steadfast_will": "Steadfast Demon Will",
+	"fluid.bloodsmeltery.flowing_molten_bloodbrass": "Molten Bloodbrass",
+	"fluid.bloodsmeltery.flowing_molten_hellforged": "Molten Demonite",
 
 	"item.bloodsmeltery.blood_stone_bucket": "Blood-Seared Stone Bucket",
 	"item.bloodsmeltery.default_will_bucket": "Bucket of Demon Will",

@@ -1,0 +1,17 @@
+{
+  "type": "cyclic:melter",
+  "ingredients":[ {
+    "item": "bloodmagic:vengefulcrystal"
+  },
+  {
+    "item": "bloodmagic:vengefulcrystal"
+  }],
+	"energy": {
+		"rfpertick": 200,
+		"ticks": 130
+	},
+  "result": {
+    "fluid": "bloodsmeltery:vengeful_will",
+    "count": 10000
+  }
+}

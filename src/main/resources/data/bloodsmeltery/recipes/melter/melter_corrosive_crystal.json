@@ -1,0 +1,14 @@
+{
+  "type": "cyclic:melter",
+  "ingredients":[ {
+    "item": "bloodmagic:corrosivecrystal"
+  }],
+	"energy": {
+		"rfpertick": 100,
+		"ticks": 130
+	},
+  "result": {
+    "fluid": "bloodsmeltery:corrosive_will",
+    "count": 5000
+  }
+}

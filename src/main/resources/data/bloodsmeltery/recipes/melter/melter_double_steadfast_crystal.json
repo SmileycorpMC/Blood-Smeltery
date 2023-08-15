@@ -1,0 +1,17 @@
+{
+  "type": "cyclic:melter",
+  "ingredients":[ {
+    "item": "bloodmagic:steadfastcrystal"
+  },
+  {
+    "item": "bloodmagic:steadfastcrystal"
+  }],
+	"energy": {
+		"rfpertick": 200,
+		"ticks": 130
+	},
+  "result": {
+    "fluid": "bloodsmeltery:steadfast_will",
+    "count": 10000
+  }
+}
