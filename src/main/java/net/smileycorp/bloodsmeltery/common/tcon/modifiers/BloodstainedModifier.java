@@ -23,7 +23,7 @@ public class BloodstainedModifier extends Modifier {
 					if (network != null) {
 						int amount = BloodSmelteryConfig.bloodstainedLPCost.get();
 						if (level > 1) {
-							amount = (int) Math.ceil(((float)amount)*Math.pow(BloodSmelteryConfig.bloodstainedLPMultiplier.get(), level-1));
+							amount = (int) Math.ceil(((float)amount) * Math.pow(BloodSmelteryConfig.bloodstainedLPMultiplier.get(), level-1));
 						}
 						if (BloodSmelteryConfig.bloodstainedHurtsPlayers.get() || network.getCurrentEssence() > amount) {
 							float health = player.getHealth();

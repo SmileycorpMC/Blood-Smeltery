@@ -57,6 +57,9 @@
 	"modifier.bloodsmeltery.exsanguinate.description": "Adds lp to your soul network whenever you kill a monster",
 	
 	"material.bloodsmeltery.blood_stone": "Blood-Rune",
-	"material.bloodsmeltery.bloodbrass": "Bloodbrass"
+	"material.bloodsmeltery.bloodbrass": "Bloodbrass",
+	
+	"material.bloodsmeltery.blood_stone.encyclopedia": "Attempt to repair itself every few ticks using LP from your soul network.",
+	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds LP to your soul network whenever you kill a monster"
 
 }

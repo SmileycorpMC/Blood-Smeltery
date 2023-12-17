@@ -24,6 +24,6 @@ public class RunicSmelteryContent {
     public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood-seared_brick", () -> new Item(new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
 
     public static final WallBuildingBlockObject BLOOD_SEARED_BRICKS = BLOCKS.registerWallBuilding("seared_bricks", () -> new SearedBlock(BLOOD_SEARED_PROPS),
-            (block)->new BlockTooltipItem(block, new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
+            (block) -> new BlockTooltipItem(block, new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
 
 }
