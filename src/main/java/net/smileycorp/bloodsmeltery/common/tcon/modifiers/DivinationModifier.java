@@ -1,9 +1,6 @@
 package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -16,6 +13,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.core.data.Binding;
 import wayoftime.bloodmagic.util.ChatUtil;
 import wayoftime.bloodmagic.util.helper.NetworkHelper;
+
+import java.util.List;
 
 public class DivinationModifier extends PlayerBoundModifier {
 

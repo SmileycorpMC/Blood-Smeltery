@@ -1,12 +1,9 @@
 package net.smileycorp.bloodsmeltery.integration.jei;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.contraptions.processing.EmptyingRecipe;
 import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
-
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -17,6 +14,8 @@ import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
+
+import java.util.List;
 
 public class BloodSmelteryJEICreateSupport {
 

@@ -1,9 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.function.BiConsumer;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -39,6 +35,10 @@ import wayoftime.bloodmagic.api.compat.IDemonWill;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.will.PlayerDemonWillHandler;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.function.BiConsumer;
 
 public class SentientModifier extends SingleLevelModifier {
 

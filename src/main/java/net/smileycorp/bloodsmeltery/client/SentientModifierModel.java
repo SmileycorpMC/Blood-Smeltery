@@ -1,14 +1,8 @@
 package net.smileycorp.bloodsmeltery.client;
 
-import java.util.Map;
-import java.util.function.Function;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.math.Transformation;
-
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.Material;
@@ -21,6 +15,10 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
+
+import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Function;
 
 public class SentientModifierModel extends NormalModifierModel {
 

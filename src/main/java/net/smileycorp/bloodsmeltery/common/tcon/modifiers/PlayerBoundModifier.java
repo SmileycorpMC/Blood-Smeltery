@@ -1,7 +1,6 @@
 package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
 import com.mojang.authlib.GameProfile;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;

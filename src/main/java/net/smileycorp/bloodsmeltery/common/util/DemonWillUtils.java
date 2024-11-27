@@ -1,14 +1,6 @@
 package net.smileycorp.bloodsmeltery.common.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +15,9 @@ import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class DemonWillUtils {
 

@@ -1,9 +1,6 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
@@ -12,6 +9,8 @@ import slimeknights.tconstruct.library.recipe.casting.ICastingContainer;
 import slimeknights.tconstruct.library.recipe.casting.container.ContainerFillingRecipe;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
+
+import java.util.List;
 
 public class TartaricGemFillingRecipe extends ContainerFillingRecipe.Table {
 

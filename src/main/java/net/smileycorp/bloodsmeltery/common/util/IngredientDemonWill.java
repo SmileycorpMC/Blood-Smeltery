@@ -1,12 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,6 +7,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.MultiItemValue;
 import net.minecraftforge.registries.RegistryObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class IngredientDemonWill extends Ingredient {
 

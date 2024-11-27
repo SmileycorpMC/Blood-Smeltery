@@ -1,8 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import java.util.Collections;
-import java.util.List;
-
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +9,9 @@ import net.minecraftforge.fluids.FluidStack;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
+
+import java.util.Collections;
+import java.util.List;
 
 public class WillMeltingRecipe extends MeltingRecipe {
 

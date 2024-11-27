@@ -1,7 +1,5 @@
 package net.smileycorp.bloodsmeltery.client;
 
-import java.util.List;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +14,8 @@ import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.Mod
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+import java.util.List;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = Constants.MODID, bus = Bus.MOD)
 public class ClientEventListener {
