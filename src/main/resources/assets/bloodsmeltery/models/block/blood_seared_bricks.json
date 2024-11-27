@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bloodsmeltery:block/blood_seared_bricks"
+  }
+}

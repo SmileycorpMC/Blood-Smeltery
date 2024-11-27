@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bloodsmeltery:block/blood_seared_bricks"
+  }
+}
