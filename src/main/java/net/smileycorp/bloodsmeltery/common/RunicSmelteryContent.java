@@ -21,9 +21,9 @@ public class RunicSmelteryContent {
     private static final BlockBehaviour.Properties BLOOD_SEARED_PROPS = BlockBehaviour.Properties.of(Material.STONE)
             .strength(2.0F, 5.0F).sound(SoundType.STONE).requiresCorrectToolForDrops();
 
-    public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood-seared_brick", () -> new Item(new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
+    public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood_seared_brick", () -> new Item(new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
 
-    public static final WallBuildingBlockObject BLOOD_SEARED_BRICKS = BLOCKS.registerWallBuilding("seared_bricks", () -> new SearedBlock(BLOOD_SEARED_PROPS),
+    public static final WallBuildingBlockObject BLOOD_SEARED_BRICKS = BLOCKS.registerWallBuilding("blood_seared_bricks", () -> new SearedBlock(BLOOD_SEARED_PROPS),
             (block) -> new BlockTooltipItem(block, new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY)));
 
 }

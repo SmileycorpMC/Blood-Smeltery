@@ -1,6 +1,7 @@
 package net.smileycorp.bloodsmeltery.common;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -26,13 +27,16 @@ public class BloodSmeltery {
 
 	@SubscribeEvent
 	public static void constructMod(FMLConstructModEvent event) {
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		MinecraftForge.EVENT_BUS.register(new ModContent());
 		MinecraftForge.EVENT_BUS.register(new BloodSmelteryEvents());
-		ModContent.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModContent.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModContent.FLUIDS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModContent.RECIPE_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModContent.MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		ModContent.ITEMS.register(bus);
+		ModContent.BLOCKS.register(bus);
+		ModContent.FLUIDS.register(bus);
+		ModContent.RECIPE_SERIALIZERS.register(bus);
+		ModContent.MODIFIERS.register(bus);
+		RunicSmelteryContent.ITEMS.register(bus);
+		RunicSmelteryContent.BLOCKS.register(bus);
 	}
 
 	@SubscribeEvent

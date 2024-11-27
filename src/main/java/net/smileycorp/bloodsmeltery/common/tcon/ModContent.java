@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -25,19 +24,15 @@ import slimeknights.mantle.registration.ModelFluidAttributes;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.MetalItemObject;
-import slimeknights.mantle.registration.object.WallBuildingBlockObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.recipe.casting.container.ContainerFillingRecipeSerializer;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
-import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-import slimeknights.tconstruct.smeltery.block.component.SearedBlock;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
 
-@EventBusSubscriber(modid=Constants.MODID)
+@EventBusSubscriber(modid= Constants.MODID)
 public class ModContent {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
