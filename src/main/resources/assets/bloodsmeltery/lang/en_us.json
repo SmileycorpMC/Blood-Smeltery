@@ -28,12 +28,17 @@
 	"item.bloodsmeltery.molten_hellforged_bucket": "Bucket of Molten Demonite",
 	"item.bloodsmeltery.bloodbrass_ingot": "Bloodbrass Ingot",
 	"item.bloodsmeltery.bloodbrass_nugget": "Bloodbrass Nugget",
+	"item.bloodsmeltery.blood_seared_brick": "Blood-Seared Brick",
 	
 	"item.bloodsmeltery.guide_book": "A Blood Mage's Guide To Smelting",
 	"item.bloodsmeltery.guide_book.tooltip": "The complete guide to bloodforging and runecasting.\nby P. William Bloodstone",
 	
 	"block.bloodsmeltery.bloodbrass_block": "Bloodbrass Block",
 	"block.bloodsmeltery.bloodbrass_block.tooltip": "Can be used as beacon base",
+	"block.bloodsmeltery.blood_seared_bricks": "Blood-Seared Bricks",
+	"block.bloodsmeltery.blood_seared_bricks_slab": "Blood-Seared Bricks Slab",
+	"block.bloodsmeltery.blood_seared_bricks_stairs": "Blood-Seared Bricks Stairs",
+	"block.bloodsmeltery.blood_seared_bricks_wall": "Blood-Seared Bricks Wall",
 
 	"desc.bloodsmeltery.willmelting": "Produces %s mb per point of Will Quality.",
 	"desc.bloodsmeltery.tartariccasting": "Adds 1 point of Will Quality to the item.",
