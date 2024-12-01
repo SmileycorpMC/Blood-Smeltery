@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bGb",
+    " b "
+  ],
+  "key": {
+    "b": {
+      "item": "bloodsmeltery:blood_seared_brick"
+    },
+    "G": {
+      "tag": "forge:glass/colorless"
+    }
+  },
+  "result": {
+    "item": "bloodsmeltery:blood_seared_glass"
+  }
+}

@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "bloodsmeltery:blood_seared_bricks"
+      "item": "bloodsmeltery:blood_seared_glass"
     }
   },
   "result": {
-    "item": "bloodsmeltery:blood_seared_bricks_wall",
-    "count": 6
+    "item": "bloodsmeltery:blood_seared_glass_pane",
+    "count": 16
   }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:stone_brick_slab"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "forge:life",
+    "amount": 1000
+  },
+  "result": "bloodsmeltery:blood_seared_bricks_slab",
+  "cooling_time": 425
+}
