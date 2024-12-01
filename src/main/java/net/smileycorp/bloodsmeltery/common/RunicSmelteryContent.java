@@ -43,7 +43,7 @@ public class RunicSmelteryContent {
    
     public static final ItemObject<Block> TRIANGLE_BLOOD_SEARED_BRICKS = BLOCKS.register("triangle_blood_seared_bricks", PROPS, TOOLTIP);
     
-    public static final ItemObject<SearedLadderBlock> BLOOD_SEARED_LADDER = BLOCKS.register("seared_ladder",
+    public static final ItemObject<SearedLadderBlock> BLOOD_SEARED_LADDER = BLOCKS.register("blood_seared_ladder",
             () -> new SearedLadderBlock(NON_SOLID_PROPS), TOOLTIP);
     
     public static final ItemObject<SearedGlassBlock> BLOOD_SEARED_GLASS = BLOCKS.register("blood_seared_glass",
