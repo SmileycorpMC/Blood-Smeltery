@@ -49,7 +49,7 @@
 	"block.bloodsmeltery.blood_seared_ladder": "Blood-Seared Ladder",
 	"block.bloodsmeltery.blood_ladder.tooltip": "Climbable Smeltery Block",
 	"block.bloodsmeltery.blood_seared_glass": "Blood-Seared Glass",
-	"block.bloodsmeltery.blood_seared_glass.tooltip": "Part of the Smeltery.\\nCannot store liquids.",
+	"block.bloodsmeltery.blood_seared_glass.tooltip": "Part of the Smeltery.\nCannot store liquids.",
 	"block.bloodsmeltery.blood_seared_glass_pane": "Blood-Seared Glass Pane",
 	"block.bloodsmeltery.blood_seared_glass_pane.tooltip": "Cannot be used in a smeltery.",
 
