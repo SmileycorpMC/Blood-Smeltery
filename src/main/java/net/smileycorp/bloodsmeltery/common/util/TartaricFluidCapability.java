@@ -80,9 +80,8 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 			int amount = contained.getAmount();
 			int drained = contained.getAmount();
 			int maxDrain = resource.getAmount();
-			if (maxDrain>contained.getAmount()) {
-				amount = 0;
-			} else {
+			if (maxDrain>contained.getAmount()) amount = 0;
+			else {
 				amount -= maxDrain;
 				drained = maxDrain;
 			}
@@ -100,9 +99,8 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 		FluidStack contained = getFluid();
 		int amount = contained.getAmount();
 		int drained = contained.getAmount();
-		if (maxDrain>contained.getAmount()) {
-			amount = 0;
-		} else {
+		if (maxDrain>contained.getAmount()) amount = 0;
+		else {
 			amount -= maxDrain;
 			drained = maxDrain;
 		}

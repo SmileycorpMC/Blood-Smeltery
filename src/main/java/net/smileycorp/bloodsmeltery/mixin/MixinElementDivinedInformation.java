@@ -32,7 +32,7 @@ public abstract class MixinElementDivinedInformation<T extends BlockEntity> exte
 		if (player == null) return;
 		for (InteractionHand hand : InteractionHand.values()) {
 		ItemStack stack = player.getItemInHand(hand);
-		if (stack == null |!(stack.getItem() instanceof IModifiable)) continue;
+			if (stack == null |!(stack.getItem() instanceof IModifiable)) continue;
 			ToolStack tool = ToolStack.from(stack);
 			if (tool == null) continue;
 			int divinationLevel = tool.getModifierLevel(ModContent.DIVINATION.get());

@@ -17,22 +17,19 @@ public class BloodSmelteryEvents {
 	@SubscribeEvent
 	public void attachStackCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
-		if (stack != null) {
-			Item item = stack.getItem();
-			if (item instanceof ItemSoulGem) {
-				TartaricFluidCapability cap = new TartaricFluidCapability(stack);
-				event.addCapability(Constants.loc("TartaricFluid"), cap);
-			}
-		}
+		if (stack == null) return;
+		Item item = stack.getItem();
+		if (!(item instanceof ItemSoulGem)) return;
+		TartaricFluidCapability cap = new TartaricFluidCapability(stack);
+		event.addCapability(Constants.loc("TartaricFluid"), cap);
 	}
 
 	@SubscribeEvent
 	public void attachCapabilities(AttachCapabilitiesEvent<BlockEntity> event) {
 		BlockEntity tile = event.getObject();
-		if (tile instanceof TileSoulForge) {
-			HellfireForgeFluidCapability cap = new HellfireForgeFluidCapability((TileSoulForge) tile);
-			event.addCapability(Constants.loc("HellfireFluid"), cap);
-		}
+		if (!(tile instanceof TileSoulForge)) return;
+		HellfireForgeFluidCapability cap = new HellfireForgeFluidCapability((TileSoulForge) tile);
+		event.addCapability(Constants.loc("HellfireFluid"), cap);
 	}
 
 }

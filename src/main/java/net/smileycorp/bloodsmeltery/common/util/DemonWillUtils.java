@@ -16,8 +16,12 @@ import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class DemonWillUtils {
 
@@ -28,35 +32,23 @@ public class DemonWillUtils {
 	private static final double[] VENGEFUL_ATTACK_SPEED_MULTIPLIERS = {1.188, 1.25, 1.375, 1.438, 1.5, 1.5, 1.563};
 
 	public static ItemMonsterSoul getWillItem(EnumDemonWillType type) {
-		switch (type) {
-		case DEFAULT:
-			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_RAW.get();
-		case CORROSIVE:
-			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_CORROSIVE.get();
-		case DESTRUCTIVE:
-			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_DESTRUCTIVE.get();
-		case VENGEFUL:
-			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_VENGEFUL.get();
-		case STEADFAST:
-			return (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_STEADFAST.get();
-		}
-		return null;
+		return switch (type) {
+			case DEFAULT -> (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_RAW.get();
+			case CORROSIVE -> (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_CORROSIVE.get();
+			case DESTRUCTIVE -> (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_DESTRUCTIVE.get();
+			case VENGEFUL -> (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_VENGEFUL.get();
+			case STEADFAST -> (ItemMonsterSoul) BloodMagicItems.MONSTER_SOUL_STEADFAST.get();
+		};
 	}
 
 	public static int getColour(EnumDemonWillType type) {
-		switch (type) {
-		case DEFAULT:
-			return 0x4EF6FF;
-		case CORROSIVE:
-			return 0x60FF4F;
-		case DESTRUCTIVE:
-			return 0xFFCF4F;
-		case VENGEFUL:
-			return 0xFF5367;
-		case STEADFAST:
-			return 0xBB4FFF;
-		}
-		return 0xFFFFFF;
+		return switch (type) {
+			case DEFAULT -> 0x4EF6FF;
+			case CORROSIVE -> 0x60FF4F;
+			case DESTRUCTIVE -> 0xFFCF4F;
+			case VENGEFUL -> 0xFF5367;
+			case STEADFAST -> 0xBB4FFF;
+		};
 	}
 
 	public static EnumDemonWillType getTypeForFluid(FluidStack fluidStack) {
@@ -64,9 +56,7 @@ public class DemonWillUtils {
 	}
 
 	public static EnumDemonWillType getTypeForFluid(Fluid fluid) {
-		for (Entry<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> entry : WILL_FLUIDS.entrySet()) {
-			if (entry.getValue().get() == fluid) return entry.getKey();
-		}
+		for (Entry<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> entry : WILL_FLUIDS.entrySet()) if (entry.getValue().get() == fluid) return entry.getKey();
 		return EnumDemonWillType.DEFAULT;
 	}
 
@@ -85,7 +75,7 @@ public class DemonWillUtils {
 	}
 
 	public static Collection<Fluid> getWillFluids() {
-		List<Fluid> fluids = new ArrayList<>();
+		List<Fluid> fluids = Lists.newArrayList();
 		for (FluidObject<ForgeFlowingFluid> fluid : WILL_FLUIDS.values()) fluids.add(fluid.get());
 		return fluids;
 	}
@@ -103,56 +93,45 @@ public class DemonWillUtils {
 	}
 
 	public static int getToolTier(double will) {
-		for (int i = 0; i < ItemSentientSword.soulBracket.length; i++) {
-			if (will < ItemSentientSword.soulBracket[i]) {
-				return i-1;
-			}
-		}
-		return ItemSentientSword.soulBracket.length-1;
+		for (int i = 0; i < ItemSentientSword.soulBracket.length; i++) if (will < ItemSentientSword.soulBracket[i]) return i - 1;
+		return ItemSentientSword.soulBracket.length - 1;
 	}
 
 	public static EnumDemonWillType getWillFromTartaric(ItemStack stack) {
-		if (stack.hasTag()) {
-			CompoundTag tag = stack.getTag();
-			if (tag.contains("demonWillType")) return EnumDemonWillType.getType(tag.getString("demonWillType"));
-		}
-		return EnumDemonWillType.DEFAULT;
+		if (!stack.hasTag()) return EnumDemonWillType.DEFAULT;
+		CompoundTag tag = stack.getTag();
+		return tag.contains("demonWillType") ? EnumDemonWillType.getType(tag.getString("demonWillType")) : EnumDemonWillType.DEFAULT;
 	}
 
-	public static List<RegistryObject<Item>> getTartaricGemItems() {
-		return TARTARIC_GEMS ;
+	public static List<ItemSoulGem> getTartaricGemItems() {
+		return TARTARIC_GEMS.stream().map(item -> (ItemSoulGem)item.get()).collect(Collectors.toList());
 	}
 
 	public static double getBonusDamage(int tier, EnumDemonWillType type) {
-		if (type == EnumDemonWillType.DESTRUCTIVE) {
-			return ItemSentientSword.destructiveDamageAdded[tier];
-		} else if (type == EnumDemonWillType.STEADFAST) {
-			return ItemSentientSword.steadfastDamageAdded[tier];
-		} else if (type == EnumDemonWillType.VENGEFUL) {
-			return ItemSentientSword.vengefulDamageAdded[tier];
-		}
-		return ItemSentientSword.defaultDamageAdded[tier];
+		return (switch (type) {
+			case DESTRUCTIVE -> ItemSentientSword.destructiveDamageAdded;
+			case STEADFAST -> ItemSentientSword.steadfastDamageAdded;
+			case VENGEFUL -> ItemSentientSword.vengefulDamageAdded;
+			default -> ItemSentientSword.defaultDamageAdded;
+		}) [tier];
 	}
 
 	public static double getAttackSpeedMultiplier(int tier, EnumDemonWillType type) {
-		if (type == EnumDemonWillType.DESTRUCTIVE) {
-			return DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS[tier];
-		} else if (type == EnumDemonWillType.VENGEFUL) {
-			return VENGEFUL_ATTACK_SPEED_MULTIPLIERS[tier];
-		}
-		return 1;
+		return switch (type) {
+			case DESTRUCTIVE -> DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS[tier];
+			case VENGEFUL -> VENGEFUL_ATTACK_SPEED_MULTIPLIERS[tier];
+			default -> 1;
+		};
 	}
 
 	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem) {
 		ItemStack stack = new ItemStack(gem);
-		gem.setCurrentType(type, stack);
 		gem.setWill(type, stack, gem.getMaxWill(type, stack));
 		return stack;
 	}
 
 	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem, double souls) {
 		ItemStack stack = new ItemStack(gem);
-		gem.setCurrentType(type, stack);
 		gem.setWill(type, stack, souls);
 		return stack;
 	}

@@ -15,26 +15,19 @@ public class BloodstainedModifier extends Modifier {
 
 	@Override
 	public void onInventoryTick(IToolStackView tool, int level, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-		if (!world.isClientSide && isCorrectSlot && stack != null) {
-			if (holder.tickCount % BloodSmelteryConfig.bloodstainedCooldown.get() == 0) {
-				if (holder instanceof Player && stack.isDamaged()) {
-					Player player = (Player) holder;
-					SoulNetwork network = NetworkHelper.getSoulNetwork(player);
-					if (network != null) {
-						int amount = BloodSmelteryConfig.bloodstainedLPCost.get();
-						if (level > 1) {
-							amount = (int) Math.ceil(((float)amount) * Math.pow(BloodSmelteryConfig.bloodstainedLPMultiplier.get(), level-1));
-						}
-						if (BloodSmelteryConfig.bloodstainedHurtsPlayers.get() || network.getCurrentEssence() > amount) {
-							float health = player.getHealth();
-							if (network.syphonAndDamage(player, new SoulTicket(amount)).isSuccess()) {
-								if (health <= player.getHealth()) stack.setDamageValue(stack.getDamageValue()-1);;
-							}
-						}
-					}
-				}
-			}
+		if (world.isClientSide |! isCorrectSlot || stack == null) return;
+		if (holder.tickCount % BloodSmelteryConfig.bloodstainedCooldown.get() != 0) return;
+		if (!(holder instanceof Player) |! stack.isDamaged()) return;
+		Player player = (Player) holder;
+		SoulNetwork network = NetworkHelper.getSoulNetwork(player);
+		if (network == null) return;
+		int amount = BloodSmelteryConfig.bloodstainedLPCost.get();
+		if (level > 1) amount = (int) Math.ceil(((float)amount) * Math.pow(BloodSmelteryConfig.bloodstainedLPMultiplier.get(), level - 1));
+		if (BloodSmelteryConfig.bloodstainedHurtsPlayers.get() || network.getCurrentEssence() > amount) {
+			float health = player.getHealth();
+			if (network.syphonAndDamage(player, new SoulTicket(amount)).isSuccess()) if (health > player.getHealth()) return;
 		}
+		stack.setDamageValue(stack.getDamageValue() - 1);
 	}
 
 }

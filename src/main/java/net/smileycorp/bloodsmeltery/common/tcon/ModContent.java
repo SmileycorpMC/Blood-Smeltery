@@ -43,7 +43,7 @@ public class ModContent {
 
 	public static final MetalItemObject BLOODBRASS = BLOCKS.registerMetal("bloodbrass", "bloodbrass",
 			Block.Properties.of(Material.HEAVY_METAL, MaterialColor.NETHER).sound(SoundType.METAL),
-			(b) -> new BlockTooltipItem(b, new Item.Properties().tab(TinkerModule.TAB_GENERAL)), new Item.Properties().tab(TinkerModule.TAB_GENERAL));
+			b -> new BlockTooltipItem(b, new Item.Properties().tab(TinkerModule.TAB_GENERAL)), new Item.Properties().tab(TinkerModule.TAB_GENERAL));
 
 	//fluids
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.register("blood_stone", ModelFluidAttributes.builder().luminosity(0).density(2000)
@@ -58,13 +58,13 @@ public class ModContent {
 	//demon will fluids
 	static {
 		if (BloodSmelteryConfig.enableFluidWill.get()) {
-			for (EnumDemonWillType will : EnumDemonWillType.values()) {
-				if (!BloodSmelteryConfig.unifiedWill.get() || will == EnumDemonWillType.DEFAULT) {
-					FluidObject<ForgeFlowingFluid> fluid = FLUIDS.register(will.toString() + "_will", ModelFluidAttributes.builder().luminosity(11).density(1000)
-							.viscosity(1000).temperature(500).color(DemonWillUtils.getColour(will)).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 11);
-					DemonWillUtils.registerWillFluid(will, fluid);
-				}
-			}
+			if (BloodSmelteryConfig.unifiedWill.get()) DemonWillUtils.registerWillFluid(EnumDemonWillType.DEFAULT, FLUIDS.register("default" + "_will",
+					ModelFluidAttributes.builder().luminosity(11).density(1000).viscosity(1000).temperature(500).color(DemonWillUtils.getColour(EnumDemonWillType.DEFAULT))
+							.sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA), Material.LAVA, 11));
+			else for (EnumDemonWillType will : EnumDemonWillType.values())
+				DemonWillUtils.registerWillFluid(will, FLUIDS.register(will.toString() + "_will", ModelFluidAttributes.builder().luminosity(11).density(1000)
+						.viscosity(1000).temperature(500).color(DemonWillUtils.getColour(will)).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA),
+						Material.LAVA, 11));
 		}
 	}
 
@@ -81,6 +81,5 @@ public class ModContent {
 	//traits
 	public static final StaticModifier<BloodstainedModifier> BLOODSTAINED = MODIFIERS.register("bloodstained", () -> new BloodstainedModifier());
 	public static final StaticModifier<ExsanguinateModifier> EXSANGUINATE = MODIFIERS.register("exsanguinate", () -> new ExsanguinateModifier());
-
 
 }

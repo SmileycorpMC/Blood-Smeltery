@@ -78,16 +78,13 @@ public class SentientModifier extends SingleLevelModifier {
 		recalcStats(tool, player, context.getHand(), false);
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
-		if (tier >= 0) {
-			PlayerDemonWillHandler.consumeDemonWill(type, player, ItemSentientSword.soulDrainPerSwing[tier]);
-		}
+		if (tier >= 0) PlayerDemonWillHandler.consumeDemonWill(type, player, ItemSentientSword.soulDrainPerSwing[tier]);
 		recalcStats(tool, player, context.getHand(), true);
 		tier = getTier(tool);
 		type = getWillType(tool);
 		if (tier >= 0) {
-			if (type == EnumDemonWillType.CORROSIVE) {
-				target.addEffect(new MobEffectInstance(MobEffects.WITHER, ItemSentientSword.poisonTime[tier], ItemSentientSword.poisonLevel[tier]));
-			} else if (type == EnumDemonWillType.STEADFAST && target.isDeadOrDying()) {
+			if (type == EnumDemonWillType.CORROSIVE) target.addEffect(new MobEffectInstance(MobEffects.WITHER, ItemSentientSword.poisonTime[tier], ItemSentientSword.poisonLevel[tier]));
+			else if (type == EnumDemonWillType.STEADFAST && target.isDeadOrDying()) {
 				float absorption = player.getAbsorptionAmount();
 				player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, ItemSentientSword.absorptionTime[tier], 127, false, false));
 				player.setAbsorptionAmount((float) Math.min(absorption + target.getMaxHealth() * 0.05f, ItemSentientSword.maxAbsorptionHearts));
@@ -120,30 +117,26 @@ public class SentientModifier extends SingleLevelModifier {
 		IModDataView persistentData = context.getPersistentData();
 		int tier = getTier(persistentData);
 		EnumDemonWillType type = getWillType(persistentData);
-		if (tier >= 0) {
-			ToolStats.ATTACK_DAMAGE.add(builder, DemonWillUtils.getBonusDamage(tier, type));
-			double attackSpeed = DemonWillUtils.getAttackSpeedMultiplier(tier, type);
-			if (attackSpeed!=1) ToolStats.ATTACK_SPEED.multiply(builder, attackSpeed);
-			ToolStats.MINING_SPEED.add(builder, ItemSentientPickaxe.defaultDigSpeedAdded[ tier < 5 ? tier : 4]);
-		}
+		if (tier < 0) return;
+		ToolStats.ATTACK_DAMAGE.add(builder, DemonWillUtils.getBonusDamage(tier, type));
+		double attackSpeed = DemonWillUtils.getAttackSpeedMultiplier(tier, type);
+		if (attackSpeed!=1) ToolStats.ATTACK_SPEED.multiply(builder, attackSpeed);
+		ToolStats.MINING_SPEED.add(builder, ItemSentientPickaxe.defaultDigSpeedAdded[ tier < 5 ? tier : 4]);
 	}
 
 	@Override
 	public void addAttributes(IToolStackView tool, int level, EquipmentSlot slot, BiConsumer<Attribute,AttributeModifier> consumer) {
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
-		if (tier >= 0 && type == EnumDemonWillType.VENGEFUL) {
-			consumer.accept(Attributes.MOVEMENT_SPEED, new AttributeModifier(new UUID(0, 4218052), "Weapon modifier", ItemSentientSword.movementSpeed[tier], AttributeModifier.Operation.ADDITION));
-		}
+		if (tier >= 0 && type == EnumDemonWillType.VENGEFUL) consumer.accept(Attributes.MOVEMENT_SPEED, new AttributeModifier(new UUID(0, 4218052),
+				"Weapon modifier", ItemSentientSword.movementSpeed[tier], AttributeModifier.Operation.ADDITION));
 	}
 
 	protected void recalcStats(IToolStackView tool, Player player, InteractionHand hand, boolean recalcToolStats) {
 		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
 		EnumDemonWillType player_type = PlayerDemonWillHandler.getLargestWillType(player);
 		EnumDemonWillType tool_type = EnumDemonWillType.DEFAULT;
-		if (nbt.contains("type")) {
-			tool_type = EnumDemonWillType.getType(nbt.getString("type"));
-		}
+		if (nbt.contains("type")) tool_type = EnumDemonWillType.getType(nbt.getString("type"));
 		if (player_type != tool_type) nbt.putString("type", player_type.toString());
 		double will = PlayerDemonWillHandler.getTotalDemonWill(player_type, player);
 		nbt.putInt("tier", DemonWillUtils.getToolTier(will));
@@ -159,23 +152,14 @@ public class SentientModifier extends SingleLevelModifier {
 		return getWillType(tool.getPersistentData());
 	}
 
-
 	protected static int getTier(IModDataView data) {
 		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
-		int tier = -1;
-		if (nbt.contains("tier")) {
-			tier = nbt.getInt("tier");
-		}
-		return tier;
+		return nbt.contains("tier") ? nbt.getInt("tier") : -1;
 	}
 
 	protected static EnumDemonWillType getWillType(IModDataView data) {
 		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
-		EnumDemonWillType type = EnumDemonWillType.DEFAULT;
-		if (nbt.contains("type")) {
-			type = EnumDemonWillType.getType(nbt.getString("type"));
-		}
-		return type;
+		return nbt.contains("type") ? EnumDemonWillType.getType(nbt.getString("type")) : EnumDemonWillType.DEFAULT;
 	}
 
 }

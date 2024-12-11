@@ -29,14 +29,9 @@ public class WillMeltingRecipe extends MeltingRecipe {
 	@Override
 	public int getTime(IMeltingContainer inv) {
 		ItemStack stack = inv.getStack();
-		int amount = 0;
-		if (stack.hasTag()) {
-			CompoundTag tag = stack.getTag();
-			if(tag.contains("souls")) {
-				amount = (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willMeltingTime.get());
-			}
-		}
-		return amount;
+		if (!stack.hasTag()) return 0;
+		CompoundTag tag = stack.getTag();
+		return tag.contains("souls") ? (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willMeltingTime.get()) : 0;
 	}
 
 	@Override
@@ -47,14 +42,9 @@ public class WillMeltingRecipe extends MeltingRecipe {
 	@Override
 	public FluidStack getOutput(IMeltingContainer inv) {
 		ItemStack stack = inv.getStack();
-		int amount = 0;
-		if (stack.hasTag()) {
-			CompoundTag tag = stack.getTag();
-			if(tag.contains("souls")) {
-				amount = (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willFluidAmount.get());
-			}
-		}
-		return new FluidStack(getOutput().getFluid(), amount);
+		if (!stack.hasTag()) new FluidStack(getOutput().getFluid(), 0);
+		CompoundTag tag = stack.getTag();
+		return new FluidStack(getOutput().getFluid(), tag.contains("souls") ? (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willFluidAmount.get()) : 0);
 	}
 
 	@Override

@@ -25,12 +25,9 @@ public class TartaricGemFillingRecipe extends ContainerFillingRecipe.Table {
 		if (displayRecipes == null) {
 			ItemSoulGem gem = (ItemSoulGem) container;
 			displayRecipes = Lists.newArrayList();
-			for (EnumDemonWillType type : EnumDemonWillType.values()) {
-				displayRecipes.add(new DisplayCastingRecipe(getType(),
-						Lists.newArrayList(DemonWillUtils.createFilledGem(type, gem, 0d)),
-						Lists.newArrayList(DemonWillUtils.getStackForAmount(type, 100)),
-						DemonWillUtils.createFilledGem(type, gem, 1d), 0, true));
-			}
+			for (EnumDemonWillType type : EnumDemonWillType.values()) displayRecipes.add(new DisplayCastingRecipe(getType(),
+					Lists.newArrayList(DemonWillUtils.createFilledGem(type, gem, 0)), Lists.newArrayList(DemonWillUtils.getStackForAmount(type, 100)),
+					DemonWillUtils.createFilledGem(type, gem, 1), 0, true));
 		}
 		return displayRecipes;
 	}

@@ -12,7 +12,6 @@ import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
-import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 import java.util.List;
@@ -23,11 +22,8 @@ public class BloodSmelteryJEICreateSupport {
 	public static void registerRecipes(IRecipeRegistration registration) {
 		List<EmptyingRecipe> emptying_recipes = Lists.newArrayList();
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			if (type == EnumDemonWillType.DEFAULT) continue;
-			emptying_recipes.add(emptyingRecipe(type, BloodMagicItems.PETTY_GEM.get()));
-			emptying_recipes.add(emptyingRecipe(type, BloodMagicItems.LESSER_GEM.get()));
-			emptying_recipes.add(emptyingRecipe(type, BloodMagicItems.COMMON_GEM.get()));
-			emptying_recipes.add(emptyingRecipe(type, BloodMagicItems.GREATER_GEM.get()));
+			if (type == EnumDemonWillType.DEFAULT) return;
+			DemonWillUtils.getTartaricGemItems().forEach(item-> emptying_recipes.add(emptyingRecipe(type, item)));
 		}
 		registration.addRecipes(emptying_recipes, Create.asResource("draining"));
 	}

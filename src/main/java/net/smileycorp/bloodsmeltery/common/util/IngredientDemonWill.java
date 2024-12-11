@@ -1,15 +1,12 @@
 package net.smileycorp.bloodsmeltery.common.util;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.Item;
+import com.google.common.collect.Lists;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.MultiItemValue;
-import net.minecraftforge.registries.RegistryObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -28,41 +25,18 @@ public class IngredientDemonWill extends Ingredient {
 	}
 
 	@Override
-	public boolean test(@Nullable ItemStack p_test_1_) {
-		if (p_test_1_ == null) {
-			return false;
-		} else {
-			if (itemStacks == null) {
-				itemStacks = Arrays.stream(values).flatMap((p_209359_0_) -> {
-					return p_209359_0_.getItems().stream();
-				}).distinct().toArray((p_209358_0_) -> {
-					return new ItemStack[p_209358_0_];
-				});
-			}
-			if (itemStacks.length == 0) {
-				return p_test_1_.isEmpty();
-			} else {
-				for(ItemStack itemstack : itemStacks) {
-					if (itemstack.getItem() == p_test_1_.getItem()) {
-						return true;
-					}
-				}
-
-				return false;
-			}
-		}
+	public boolean test(@Nullable ItemStack test) {
+		if (test == null) return false;
+		if (itemStacks == null) itemStacks = Arrays.stream(values).flatMap(items -> items.getItems().stream()).distinct().toArray(ItemStack[]::new);
+		if (itemStacks.length == 0) return test.isEmpty();
+		for (ItemStack itemstack : itemStacks) if (itemstack.getItem() == test.getItem()) return true;
+		return false;
 	}
 
 	private static Stream<? extends Ingredient.Value> getIngredientStream(EnumDemonWillType will) {
-		List<ItemStack> stacks = new ArrayList<>();
-		for (RegistryObject<Item> item : DemonWillUtils.getTartaricGemItems())  {
-			ItemStack stack = new ItemStack(item.get());
-			CompoundTag tag = stack.getOrCreateTag();
-			if (will != EnumDemonWillType.DEFAULT) {
-				tag.putString("demonWillType", will.toString());
-			}
-			stacks.add(stack);
-		}
+		List<ItemStack> stacks = Lists.newArrayList();
+		DemonWillUtils.getTartaricGemItems().forEach(item -> stacks.add(will == EnumDemonWillType.DEFAULT ? new ItemStack(item)
+				: DemonWillUtils.createFilledGem(will, item, 0)));
 		return Arrays.stream(new MultiItemValue[] {new MultiItemValue(stacks)});
 	}
 

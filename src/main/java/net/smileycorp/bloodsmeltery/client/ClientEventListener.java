@@ -28,22 +28,17 @@ public class ClientEventListener {
 	@SubscribeEvent
 	public void renderTooltip(ItemTooltipEvent event) {
 		ItemStack stack = event.getItemStack();
-		if (stack != null) {
-			if (stack.getItem() instanceof IModifiable) {
-				ToolStack tool = ToolStack.from(stack);
-				if (tool != null) {
-					for (ModifierEntry entry : tool.getModifierList()) {
-						if (entry.getModifier() instanceof PlayerBoundModifier) {
-							PlayerBoundModifier modifier = (PlayerBoundModifier) entry.getModifier();
-							if (modifier.isBound(tool)) {
-								List<Component> tooltips = event.getToolTip();
-								tooltips.add(tooltips.size()-6, new TranslatableComponent("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
-								return;
-							}
-						}
-					}
-				}
-			}
+		if (stack == null) return;
+		if (!(stack.getItem() instanceof IModifiable)) return;
+		ToolStack tool = ToolStack.from(stack);
+		if (tool == null) return;
+		for (ModifierEntry entry : tool.getModifierList()) {
+			if (!(entry.getModifier() instanceof PlayerBoundModifier)) continue;
+			PlayerBoundModifier modifier = (PlayerBoundModifier) entry.getModifier();
+			if (!modifier.isBound(tool)) continue;
+			List<Component> tooltips = event.getToolTip();
+			tooltips.add(Math.max(tooltips.size() - 6, 0), new TranslatableComponent("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
+			return;
 		}
 	}
 
