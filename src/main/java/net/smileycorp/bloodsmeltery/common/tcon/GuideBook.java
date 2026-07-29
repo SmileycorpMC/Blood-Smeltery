@@ -14,7 +14,6 @@ import slimeknights.mantle.client.book.data.BookData;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.mantle.client.book.transformer.BookTransformer;
 import slimeknights.mantle.item.LecternBookItem;
-import slimeknights.tconstruct.shared.TinkerCommons;
 
 public class GuideBook extends LecternBookItem {
 
@@ -32,7 +31,7 @@ public class GuideBook extends LecternBookItem {
 	}
 
 	public GuideBook() {
-		super(new Properties().tab(TinkerCommons.TAB_GENERAL).stacksTo(1));
+		super(new Properties().stacksTo(1));
 		if (BOOK_DATA == null) BOOK_DATA = createBookData();
 	}
 

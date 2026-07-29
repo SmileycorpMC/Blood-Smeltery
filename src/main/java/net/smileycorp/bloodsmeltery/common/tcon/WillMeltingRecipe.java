@@ -1,20 +1,8 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import net.minecraft.core.NonNullList;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.fluids.FluidStack;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer;
-import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
+public class WillMeltingRecipe /*extends MeltingRecipe*/ {
 
-import java.util.Collections;
-import java.util.List;
-
-public class WillMeltingRecipe extends MeltingRecipe {
-
+	/*
 	private final Ingredient JEI_INGREDIENT;
 
 	public WillMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidStack output, int temperature, int time, List<FluidStack> byproducts) {
@@ -50,6 +38,6 @@ public class WillMeltingRecipe extends MeltingRecipe {
 	@Override
 	public List<List<FluidStack>> getOutputWithByproducts() {
 		return Collections.singletonList(Collections.singletonList(new FluidStack(getOutput().getFluid(), 100)));
-	}
+	}*/
 
 }

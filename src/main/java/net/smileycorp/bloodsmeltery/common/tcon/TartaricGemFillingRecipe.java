@@ -1,20 +1,8 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import com.google.common.collect.Lists;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
-import slimeknights.tconstruct.library.recipe.casting.DisplayCastingRecipe;
-import slimeknights.tconstruct.library.recipe.casting.ICastingContainer;
-import slimeknights.tconstruct.library.recipe.casting.container.ContainerFillingRecipe;
-import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
-import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
+public class TartaricGemFillingRecipe /*extends ContainerFillingRecipe*/ {
 
-import java.util.List;
-
-public class TartaricGemFillingRecipe extends ContainerFillingRecipe.Table {
-
-	private List<DisplayCastingRecipe> displayRecipes;
+	/*private List<DisplayCastingRecipe> displayRecipes;
 
 	public TartaricGemFillingRecipe(ResourceLocation idIn, String groupIn, int fluidAmount, Item containerIn) {
 		super(idIn, groupIn, fluidAmount, containerIn);
@@ -35,6 +23,6 @@ public class TartaricGemFillingRecipe extends ContainerFillingRecipe.Table {
 	@Override
 	public int getCoolingTime(ICastingContainer inv) {
 		return 0;
-	}
+	}*/
 
 }

@@ -37,6 +37,7 @@ public class BloodSmeltery {
 		ModContent.MODIFIERS.register(bus);
 		RunicSmelteryContent.ITEMS.register(bus);
 		RunicSmelteryContent.BLOCKS.register(bus);
+		ModContent.initWillFluids();
 	}
 
 	@SubscribeEvent

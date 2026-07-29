@@ -3,12 +3,14 @@ package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 import com.google.common.collect.Lists;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.core.data.Binding;
 import wayoftime.bloodmagic.util.ChatUtil;
@@ -16,7 +18,13 @@ import wayoftime.bloodmagic.util.helper.NetworkHelper;
 
 import java.util.List;
 
-public class DivinationModifier extends PlayerBoundModifier {
+public class DivinationModifier extends PlayerBoundModifier implements GeneralInteractionModifierHook {
+
+	@Override
+	protected void registerHooks(ModuleHookMap.Builder builder) {
+		super.registerHooks(builder);
+		builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
+	}
 
 	@Override
 	public Component getDisplayName(int level) {
@@ -24,21 +32,17 @@ public class DivinationModifier extends PlayerBoundModifier {
 		return level > 1 ? name.copy().withStyle(style -> style.withColor(TextColor.fromRgb(0xEE425F))) : name;
 	}
 
-	@Override
-	public void onRemoved(IToolStackView tool) {
-		tool.getPersistentData().remove(PlayerBoundModifier.BINDING_DATA);
-	}
-
 
 	@Override
-	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slot) {
+	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
 		if (!isBound(tool)) bind(tool, player);
+		int level = modifier.getLevel();
 		String key = "tooltip.bloodmagic.sigil." + (level > 1 ? "divination" : "seer") + ".";
 		Binding binding = getBinding(tool);
 		int currentEssence = NetworkHelper.getSoulNetwork(binding).getCurrentEssence();
 		List<Component> message = Lists.newArrayList();
-		if (!binding.getOwnerId().equals(player.getGameProfile().getId())) message.add(new TranslatableComponent(key + "otherNetwork", binding.getOwnerName()));
-		message.add(new TranslatableComponent(key + "currentEssence", currentEssence));
+		if (!binding.getOwnerId().equals(player.getGameProfile().getId())) message.add(Component.translatable(key + "otherNetwork", binding.getOwnerName()));
+		message.add(Component.translatable(key + "currentEssence", currentEssence));
 		ChatUtil.sendNoSpam(player, message.toArray(new Component[message.size()]));
 		return InteractionResult.SUCCESS;
 	}

@@ -1,10 +1,12 @@
 package net.smileycorp.bloodsmeltery.common.util;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,7 +19,6 @@ import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 
 public class DemonWillUtils {
 
-	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = new HashMap<>();
+	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = Maps.newHashMap();
 	private static final List<RegistryObject<Item>> TARTARIC_GEMS = Lists.newArrayList(BloodMagicItems.PETTY_GEM, BloodMagicItems.LESSER_GEM, BloodMagicItems.COMMON_GEM, BloodMagicItems.GREATER_GEM);
 
 	private static final double[] DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS = {0.875, 0.813, 0.075, 0.688, 0.625, 0.625, 0.625};
@@ -48,6 +49,16 @@ public class DemonWillUtils {
 			case DESTRUCTIVE -> 0xFFCF4F;
 			case VENGEFUL -> 0xFF5367;
 			case STEADFAST -> 0xBB4FFF;
+		};
+	}
+
+	public static MapColor getMapColor(EnumDemonWillType type) {
+		return switch (type) {
+			case DEFAULT -> MapColor.DIAMOND;
+			case CORROSIVE -> MapColor.EMERALD;
+			case DESTRUCTIVE -> MapColor.TERRACOTTA_YELLOW;
+			case VENGEFUL -> MapColor.TERRACOTTA_PINK;
+			case STEADFAST -> MapColor.COLOR_PURPLE;
 		};
 	}
 

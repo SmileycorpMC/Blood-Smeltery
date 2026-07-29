@@ -4,13 +4,13 @@ license="GNU LESSER GENERAL PUBLIC LICENSE Version 2.1"
 
 [[mods]]
 modId="bloodsmeltery"
-version="1.1.5a"
+version="1.2.1"
 displayName="Blood Smeltery"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/blood-smeltery"
 updateJSONURL="https://raw.githubusercontent.com/SmileycorpMC/Blood-Smeltery/1.18/update.json"
 credits=""
 authors="Smileycorp"
-description="Adds the ablity to create Life Essence and Rune blocks in the Tinker's Construct Smeltery."
+description="Add integration between Tinker's Construct and Blood Magic"
 
 [[dependencies.bloodsmeltery]]
     modId="tconstruct"

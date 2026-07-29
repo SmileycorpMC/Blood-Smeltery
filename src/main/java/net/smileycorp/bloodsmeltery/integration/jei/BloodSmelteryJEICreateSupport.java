@@ -1,24 +1,8 @@
 package net.smileycorp.bloodsmeltery.integration.jei;
 
-import com.google.common.collect.Lists;
-import com.simibubi.create.Create;
-import com.simibubi.create.content.contraptions.processing.EmptyingRecipe;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
-import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.Constants;
-import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
-import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
-import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
-
-import java.util.List;
-
 public class BloodSmelteryJEICreateSupport {
 
-	@SuppressWarnings("removal")
+	/*@SuppressWarnings("removal")
 	public static void registerRecipes(IRecipeRegistration registration) {
 		List<EmptyingRecipe> emptying_recipes = Lists.newArrayList();
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
@@ -38,6 +22,6 @@ public class BloodSmelteryJEICreateSupport {
 				.withFluidOutputs(DemonWillUtils.getStackForAmount(type, 1000))
 				.withSingleItemOutput(output)
 				.build();
-	}
+	}*/
 
 }
