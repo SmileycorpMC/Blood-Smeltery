@@ -28,13 +28,13 @@ public class BloodSmeltery {
 	@SubscribeEvent
 	public static void constructMod(FMLConstructModEvent event) {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		MinecraftForge.EVENT_BUS.register(new ModContent());
 		MinecraftForge.EVENT_BUS.register(new BloodSmelteryEvents());
 		ModContent.ITEMS.register(bus);
 		ModContent.BLOCKS.register(bus);
 		ModContent.FLUIDS.register(bus);
 		ModContent.RECIPE_SERIALIZERS.register(bus);
 		ModContent.MODIFIERS.register(bus);
+		ModContent.TABS.register(bus);
 		RunicSmelteryContent.ITEMS.register(bus);
 		RunicSmelteryContent.BLOCKS.register(bus);
 		ModContent.initWillFluids();

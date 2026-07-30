@@ -1,6 +1,5 @@
 package net.smileycorp.bloodsmeltery.client;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.math.Transformation;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -17,7 +16,9 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
 import javax.annotation.Nullable;
+import java.util.Collection;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class SentientModifierModel extends NormalModifierModel {
@@ -49,11 +50,11 @@ public class SentientModifierModel extends NormalModifierModel {
 	}
 
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IToolStackView tool, ModifierEntry entry, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
-		if (!(entry.getModifier() instanceof SentientModifier)) return ImmutableList.of();
+	public void addQuads(IToolStackView tool, ModifierEntry entry, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, Consumer<Collection<BakedQuad>> quadConsumer, @Nullable ItemLayerPixels pixels) {
+		if (!(entry.getModifier() instanceof SentientModifier)) return;
 		Material material = MATERIAL_MAPS.get(RenderType.getType(SentientModifier.getTier(tool) >= 0, isLarge)).get(SentientModifier.getWillType(tool));
-		return material == null ? ImmutableList.of() : MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1,
-				spriteGetter.apply(material), transforms, 10, pixels);
+		if (material == null) return;
+		MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels);
 	}
 	
 	public record CacheKey(Modifier modifier, EnumDemonWillType willType, boolean isActive) {

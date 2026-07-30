@@ -3,10 +3,10 @@ package net.smileycorp.bloodsmeltery.common.util;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
@@ -114,7 +114,7 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		return cap == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? LazyOptional.of(() -> this).cast() : LazyOptional.empty();
+		return cap == ForgeCapabilities.FLUID_HANDLER_ITEM ? LazyOptional.of(() -> this).cast() : LazyOptional.empty();
 	}
 
 	@Override

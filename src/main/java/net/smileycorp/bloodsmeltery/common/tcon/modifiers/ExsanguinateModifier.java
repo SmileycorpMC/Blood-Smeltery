@@ -51,8 +51,8 @@ public class ExsanguinateModifier extends PlayerBoundModifier implements MeleeHi
 		if (player.level().isClientSide) return;
 		if ((target.isDeadOrDying()) && (target instanceof Enemy || BloodSmelteryConfig.exsanguinateDrainsPassives.get())) {
 			int level = modifier.getLevel();
-			double amount = Math.floor(target.getMaxHealth() * BloodSmelteryConfig.exsanguinateLPPercent.get());
-			amount = amount * BloodSmelteryConfig.exsanguinateLPRate.get();
+			double amount = Math.floor(target.getMaxHealth() * BloodSmelteryConfig.exsanguinateLPPercent.get())
+					* BloodSmelteryConfig.exsanguinateLPRate.get();
 			if (level > 1) amount = amount * Math.pow(BloodSmelteryConfig.exsanguinateLPMultiplier.get(), level + 1);
 			Binding binding = getBinding(nbt);
 			SoulNetwork network = NetworkHelper.getSoulNetwork(binding);

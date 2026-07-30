@@ -20,7 +20,7 @@ public class BloodstainedModifier extends Modifier implements InventoryTickModif
 	@Override
 	protected void registerHooks(ModuleHookMap.Builder builder) {
 		super.registerHooks(builder);
-		registerHooks(ModuleHookMap.builder().addHook(this, ModifierHooks.INVENTORY_TICK));
+		builder.addHook(this, ModifierHooks.INVENTORY_TICK);
 	}
 
 	@Override

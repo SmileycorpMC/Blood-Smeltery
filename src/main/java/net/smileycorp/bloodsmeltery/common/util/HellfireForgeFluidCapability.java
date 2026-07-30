@@ -2,10 +2,10 @@ package net.smileycorp.bloodsmeltery.common.util;
 
 import net.minecraft.core.Direction;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.smileycorp.bloodsmeltery.common.BloodSmeltery;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
@@ -21,7 +21,7 @@ public class HellfireForgeFluidCapability implements IFluidHandler, ICapabilityP
 
 	protected FluidStack getFluid() {
 		for (int i = 0; i < 5; i++) {
-			BloodSmeltery.logInfo(((TileSoulForge) tile).getItem(i));
+			BloodSmeltery.logInfo(tile.getItem(i));
 		}
 		return FluidStack.EMPTY;
 	}
@@ -71,7 +71,7 @@ public class HellfireForgeFluidCapability implements IFluidHandler, ICapabilityP
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		return cap == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? LazyOptional.of(() -> this).cast() : LazyOptional.empty();
+		return cap == ForgeCapabilities.FLUID_HANDLER ? LazyOptional.of(() -> this).cast() : LazyOptional.empty();
 	}
 
 }

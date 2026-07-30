@@ -1,7 +1,6 @@
 package net.smileycorp.bloodsmeltery.client;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -37,7 +36,7 @@ public class ClientEventListener {
 			PlayerBoundModifier modifier = (PlayerBoundModifier) entry.getModifier();
 			if (!modifier.isBound(tool)) continue;
 			List<Component> tooltips = event.getToolTip();
-			tooltips.add(Math.max(tooltips.size() - 6, 0), new TranslatableComponent("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
+			tooltips.add(Math.max(tooltips.size() - 6, 0), Component.translatable("tooltip.bloodmagic.currentOwner", modifier.getOwner(tool)));
 			return;
 		}
 	}

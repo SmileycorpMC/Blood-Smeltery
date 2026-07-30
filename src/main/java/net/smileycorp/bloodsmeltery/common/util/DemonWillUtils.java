@@ -85,10 +85,8 @@ public class DemonWillUtils {
 		return new FluidStack(getFluidForType(type), amount);
 	}
 
-	public static Collection<Fluid> getWillFluids() {
-		List<Fluid> fluids = Lists.newArrayList();
-		for (FluidObject<ForgeFlowingFluid> fluid : WILL_FLUIDS.values()) fluids.add(fluid.get());
-		return fluids;
+	public static Collection<FluidObject<ForgeFlowingFluid>> getWillFluids() {
+		return WILL_FLUIDS.values();
 	}
 
 	public static boolean isWillFluid(FluidStack fluidStack) {
