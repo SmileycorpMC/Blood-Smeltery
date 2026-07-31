@@ -19,6 +19,7 @@ import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.common.item.soul.ItemSoulGem;
 
 import java.util.Collection;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 
 public class DemonWillUtils {
 
-	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = Maps.newHashMap();
+	private static final EnumMap<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
 	private static final List<RegistryObject<Item>> TARTARIC_GEMS = Lists.newArrayList(BloodMagicItems.PETTY_GEM, BloodMagicItems.LESSER_GEM, BloodMagicItems.COMMON_GEM, BloodMagicItems.GREATER_GEM);
 
 	private static final double[] DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS = {0.875, 0.813, 0.075, 0.688, 0.625, 0.625, 0.625};
@@ -78,7 +79,7 @@ public class DemonWillUtils {
 
 	public static FluidStack getStackForSouls(EnumDemonWillType type, double amount) {
 		if (type == null) return new FluidStack(WILL_FLUIDS.get(EnumDemonWillType.DEFAULT).get(), 0);
-		return getStackForAmount(type, (int) Math.round(amount*BloodSmelteryConfig.willFluidAmount.get()));
+		return getStackForAmount(type, (int) Math.round(amount * BloodSmelteryConfig.willFluidAmount.get()));
 	}
 
 	public static FluidStack getStackForAmount(EnumDemonWillType type, int amount) {

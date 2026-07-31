@@ -20,21 +20,21 @@
 		}
 	},
 	{
-		"name": "blood_stone_fluid",
-		"data": "sections/blood_stone.json",
+		"name": "blood_seared_stone_fluid",
+		"data": "sections/blood_seared_stone.json",
 		"icon": {
 			"item": {
-				"id": "bloodsmeltery:blood_stone_bucket"
+				"id": "bloodsmeltery:blood_seared_stone_bucket"
 			}
 		}
 	},
 	{
-		"name": "blood_stone",
+		"name": "blood_seared_stone",
 		"icon": {
 			"item": {
 				"id": "tconstruct:repair_kit",
 				"nbt": {
-					"Material": "bloodsmeltery:blood_stone"
+					"Material": "bloodsmeltery:blood_seared_stone"
 				}
 			}
 		}

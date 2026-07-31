@@ -4,7 +4,7 @@
 	  "forge:glass_panes/colorless"
   },
   "fluid": {
-    "name": "bloodsmeltery:blood_stone",
+    "name": "bloodsmeltery:blood_seared_stone",
     "amount": 250
   },
   "result": "bloodsmeltery:blood_seared_glass",

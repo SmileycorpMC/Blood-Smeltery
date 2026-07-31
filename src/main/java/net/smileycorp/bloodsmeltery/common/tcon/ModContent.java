@@ -36,7 +36,9 @@ import slimeknights.tconstruct.common.registration.FluidDeferredRegisterExtensio
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
+import wayoftime.bloodmagic.common.registries.BloodMagicCreativeTabs;
 
+import java.util.EnumMap;
 import java.util.Map;
 
 @EventBusSubscriber(modid= Constants.MODID)
@@ -57,18 +59,18 @@ public class ModContent {
 	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.registerMetal("molten_bloodbrass")
 			.type(hotFluid("molten_bloodbrass", 1000, 2000, 8000, 10)).burningBlock(MapColor.NETHER, 10, 10, 6).bucket().flowing();
 
-	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_stone")
-			.type(hotFluid("blood_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
+	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
+			.type(hotFluid("blood_seared_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
 
-	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> DEMONITE_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
+	private static final EnumMap<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> HELLFORGED_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
 
 	public static ForgeFlowingFluid getHellforged(EnumDemonWillType type) {
-		return DEMONITE_FLUIDS.get(BloodSmelteryConfig.unifiedWill.get() ? EnumDemonWillType.DEFAULT : type).get();
+		return HELLFORGED_FLUIDS.get(BloodSmelteryConfig.unifiedWill.get() ? EnumDemonWillType.DEFAULT : type).get();
 	}
 
 	public static final RegistryObject<CreativeModeTab> TAB = TABS.register("materials", () -> CreativeModeTab.builder()
 					.title(Component.translatable("creativetab." + Constants.MODID))
-					.withTabsBefore(CreativeModeTabs.SPAWN_EGGS).icon(() -> new ItemStack(BLOODBRASS.get())).displayItems(ModContent::fillTab).build());
+					.withTabsBefore(BloodMagicCreativeTabs.BLOODMAGIC_DECORATIVE.getId()).icon(() -> new ItemStack(BLOODBRASS.getIngot())).displayItems(ModContent::fillTab).build());
 
 	//recipe serializers
 	/*public static final RegistryObject<RecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
@@ -105,7 +107,7 @@ public class ModContent {
 		output.accept(MOLTEN_BLOODBRASS.getBucket());
 		output.accept(BLOOD_SEARED_STONE.getBucket());
 		for (FluidObject<ForgeFlowingFluid> fluid : DemonWillUtils.getWillFluids()) output.accept(fluid.getBucket());
-		for (FluidObject<ForgeFlowingFluid> fluid : DEMONITE_FLUIDS.values()) output.accept(fluid.getBucket());
+		for (FluidObject<ForgeFlowingFluid> fluid : HELLFORGED_FLUIDS.values()) output.accept(fluid.getBucket());
 	}
 
 	//demon will fluids
@@ -113,16 +115,15 @@ public class ModContent {
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
 			String name = type == EnumDemonWillType.DEFAULT ? "" : type.name + "_";
 			MapColor colour = DemonWillUtils.getMapColor(type);
-			DEMONITE_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_demonite")
-					.type(hotFluid(name + "molten_demonite", 1000, 2000, 8000, 12))
+			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_hellforged")
+					.type(hotFluid(name + "molten_hellforged", 1000, 2000, 8000, 12))
 					.burningBlock(colour, 10, 10, 6).bucket().flowing());
 			if (BloodSmelteryConfig.enableFluidWill.get()) {
 				if (type == EnumDemonWillType.DEFAULT) name = "demon_";
-				DemonWillUtils.registerWillFluid(EnumDemonWillType.DEFAULT, FLUIDS.register(name + "will")
+				DemonWillUtils.registerWillFluid(type, FLUIDS.register(name + "will")
 						.type(hotFluid(name + "will", 500, 1000, 10000, 11))
 						.burningBlock(colour, 11, 7, 10).bucket().flowing());
 			}
-
 			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedWill.get()) return;
 		}
 	}

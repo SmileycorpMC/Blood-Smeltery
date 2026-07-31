@@ -5,7 +5,7 @@
   },
   "value": 2,
   "needed": 1,
-  "material": "bloodsmeltery:blood_stone",
+  "material": "bloodsmeltery:blood_seared_stone",
   "leftover": {
     "item": "bloodmagic:blankslate"
   }
