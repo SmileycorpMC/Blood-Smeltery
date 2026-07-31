@@ -1,6 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.tcon;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -38,7 +37,6 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 
-import java.util.List;
 import java.util.Map;
 
 @EventBusSubscriber(modid= Constants.MODID)
@@ -62,10 +60,10 @@ public class ModContent {
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_stone")
 			.type(hotFluid("blood_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
 
-	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> HELLFORGED_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
+	private static final Map<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> DEMONITE_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
 
 	public static ForgeFlowingFluid getHellforged(EnumDemonWillType type) {
-		return HELLFORGED_FLUIDS.get(BloodSmelteryConfig.unifiedWill.get() ? EnumDemonWillType.DEFAULT : type).get();
+		return DEMONITE_FLUIDS.get(BloodSmelteryConfig.unifiedWill.get() ? EnumDemonWillType.DEFAULT : type).get();
 	}
 
 	public static final RegistryObject<CreativeModeTab> TAB = TABS.register("materials", () -> CreativeModeTab.builder()
@@ -107,7 +105,7 @@ public class ModContent {
 		output.accept(MOLTEN_BLOODBRASS.getBucket());
 		output.accept(BLOOD_SEARED_STONE.getBucket());
 		for (FluidObject<ForgeFlowingFluid> fluid : DemonWillUtils.getWillFluids()) output.accept(fluid.getBucket());
-		for (FluidObject<ForgeFlowingFluid> fluid : HELLFORGED_FLUIDS.values()) output.accept(fluid.getBucket());
+		for (FluidObject<ForgeFlowingFluid> fluid : DEMONITE_FLUIDS.values()) output.accept(fluid.getBucket());
 	}
 
 	//demon will fluids
@@ -115,13 +113,16 @@ public class ModContent {
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
 			String name = type == EnumDemonWillType.DEFAULT ? "" : type.name + "_";
 			MapColor colour = DemonWillUtils.getMapColor(type);
-			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_hellforged")
-					.type(hotFluid(name + "molten_hellforged", 1000, 2000, 8000, 12))
+			DEMONITE_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_demonite")
+					.type(hotFluid(name + "molten_demonite", 1000, 2000, 8000, 12))
 					.burningBlock(colour, 10, 10, 6).bucket().flowing());
-			if (BloodSmelteryConfig.enableFluidWill.get())
+			if (BloodSmelteryConfig.enableFluidWill.get()) {
+				if (type == EnumDemonWillType.DEFAULT) name = "demon_";
 				DemonWillUtils.registerWillFluid(EnumDemonWillType.DEFAULT, FLUIDS.register(name + "will")
 						.type(hotFluid(name + "will", 500, 1000, 10000, 11))
 						.burningBlock(colour, 11, 7, 10).bucket().flowing());
+			}
+
 			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedWill.get()) return;
 		}
 	}
