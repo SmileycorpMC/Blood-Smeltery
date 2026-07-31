@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "bloodsmeltery:blood_seared_bricks"
-  },
-  "result": "bloodsmeltery:cracked_blood_seared_bricks",
-  "experience": 0.1,
-  "cookingtime": 200
-}
