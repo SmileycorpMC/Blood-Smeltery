@@ -1,0 +1,13 @@
+{
+  "camera": "tconstruct:fluid/molten/transparent/camera",
+  "camera_opacity": 0.1,
+  "color": "C84EF6FF",
+  "flowing": "tconstruct:fluid/molten/transparent/flowing",
+  "fog": {
+    "calculate_color": true,
+    "end": 2.0,
+    "shape": "sphere",
+    "start": 0.25
+  },
+  "still": "tconstruct:fluid/molten/transparent/still"
+}
