@@ -35,8 +35,8 @@ public class BloodSmelteryConfig {
 				.define("enableFluidWill", true);
 		unifiedWill = builder.comment("Should all demonic will fluids be replaced with a single unified fluid? (Default is false)")
 				.define("unifiedWill", false);
-		willFluidAmount = builder.comment("How much mb per will quality does fluid will have? (Default is 60)")
-				.define("willFluidAmount", 60);
+		willFluidAmount = builder.comment("How much mb per will quality does fluid will have? (Default is 100)")
+				.define("willFluidAmount", 100);
 		willMeltingTime = builder.comment("How many ticks does it take to melt will items per will quality? (Default is 20)")
 				.define("willMeltingTime", 20);
 		builder.pop();
