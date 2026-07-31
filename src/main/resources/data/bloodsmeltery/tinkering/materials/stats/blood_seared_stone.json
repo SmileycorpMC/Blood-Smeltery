@@ -1,0 +1,42 @@
+{
+  "stats": {
+	"tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": -0.25,
+      "miningSpeed": 0.2,
+      "attackSpeed": 0.1,
+      "attackDamage": 0.15
+    },
+    "tconstruct:head": {
+      "durability": 191,
+      "miningSpeed": 5.8,
+      "harvestTier": "minecraft:iron",
+      "attack": 1.75
+    },
+	"tconstruct:maille": {},
+    "tconstruct:plating_boots": {
+      "armor": 1.0,
+      "durability": 155,
+      "knockback_resistance": 0.2
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 4.0,
+      "durability": 190,
+      "knockback_resistance": 0.2
+    },
+    "tconstruct:plating_helmet": {
+      "armor": 2.0,
+      "durability": 131,
+      "knockback_resistance": 0.2
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 3.0,
+      "durability": 179,
+      "knockback_resistance": 0.2
+    },
+    "tconstruct:plating_shield": {
+      "durability": 214,
+      "knockback_resistance": 0.2
+    }
+  }
+}
