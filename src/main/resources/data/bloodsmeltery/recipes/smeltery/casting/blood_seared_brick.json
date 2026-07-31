@@ -1,11 +1,11 @@
 {
-  "type": "tconstruct:casting_table",
+  "type": "tconstruct:casting_basin",
   "cast": {
     "tag": "tconstruct:casts/single_use/ingot"
   },
   "cast_consumed": true,
   "fluid": {
-    "name": "bloodsmeltery:blood_stone",
+    "name": "bloodsmeltery:blood_seared_stone",
     "amount": 250
   },
   "result": "bloodsmeltery:blood_seared_brick",
