@@ -6,8 +6,8 @@
     ]
   },
   "result": {
-    "fluid": "bloodsmeltery:default_will",
-    "amount": 25
+    "fluid": "bloodsmeltery:demon_will",
+    "amount": 20
   },
   "damage": 2
 }
