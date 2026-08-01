@@ -14,6 +14,10 @@ public class BloodSmelteryConfig {
 	public static BooleanValue unifiedWill;
 	public static ConfigValue<Integer> willFluidAmount;
 	public static ConfigValue<Integer> willMeltingTime;
+
+	//molten demonite
+	public static BooleanValue unifiedDemonite;
+
 	//modifiers
 	//bloodstained
 	public static ConfigValue<Integer> bloodstainedLPCost;
@@ -39,6 +43,10 @@ public class BloodSmelteryConfig {
 				.define("willFluidAmount", 100);
 		willMeltingTime = builder.comment("How many ticks does it take to melt will items per will quality? (Default is 20)")
 				.define("willMeltingTime", 20);
+		builder.pop();
+		builder.push("molten demonite");
+		unifiedDemonite = builder.comment("Should all molten demonite fluids be replaced with a single unified fluid? (Default is false)")
+				.define("unifiedDemonite", false);
 		builder.pop();
 		builder.push("modifiers");
 		builder.push("bloodstained");

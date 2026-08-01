@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -39,7 +38,6 @@ import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.registries.BloodMagicCreativeTabs;
 
 import java.util.EnumMap;
-import java.util.Map;
 
 @EventBusSubscriber(modid= Constants.MODID)
 public class ModContent {
@@ -56,11 +54,12 @@ public class ModContent {
 			b -> new BlockTooltipItem(b, new Item.Properties()), new Item.Properties());
 
 	//fluids
-	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.registerMetal("molten_bloodbrass")
-			.type(hotFluid("molten_bloodbrass", 1000, 2000, 8000, 10)).burningBlock(MapColor.NETHER, 10, 10, 6).bucket().flowing();
 
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
 			.type(hotFluid("blood_seared_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
+
+	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.registerMetal("molten_bloodbrass")
+			.type(hotFluid("molten_bloodbrass", 1000, 2000, 8000, 10)).burningBlock(MapColor.NETHER, 10, 10, 6).bucket().flowing();
 
 	private static final EnumMap<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> HELLFORGED_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
 
@@ -86,6 +85,36 @@ public class ModContent {
 	public static final StaticModifier<BloodstainedModifier> BLOODSTAINED = MODIFIERS.register("bloodstained", BloodstainedModifier::new);
 	public static final StaticModifier<ExsanguinateModifier> EXSANGUINATE = MODIFIERS.register("exsanguinate", ExsanguinateModifier::new);
 
+	//demon will fluids
+	public static void initWillFluids() {
+		for (EnumDemonWillType type : EnumDemonWillType.values()) {
+			String name = (type == EnumDemonWillType.DEFAULT ? "demon" : type.name) + "_";
+				DemonWillUtils.registerWillFluid(type, FLUIDS.register(name + "will")
+						.type(hotFluid(name + "will", 500, 1000, 10000, 11))
+						.burningBlock(DemonWillUtils.getMapColor(type), 11, 7, 10).bucket().flowing());
+			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedWill.get()) return;
+		}
+	}
+
+	//demon will fluids
+	public static void initHellforgedFluids() {
+		for (EnumDemonWillType type : EnumDemonWillType.values()) {
+			String name = type == EnumDemonWillType.DEFAULT ? "" : type.name + "_";
+			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_hellforged")
+					.type(hotFluid(name + "molten_hellforged", 1000, 2000, 8000, 12))
+					.burningBlock(DemonWillUtils.getMapColor(type), 10, 10, 6).bucket().flowing());
+			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedDemonite.get()) return;
+		}
+	}
+
+	public static FluidType.Properties hotFluid(String name, int temperature, int density, int viscosity, int lightLevel) {
+		return FluidType.Properties.create()
+				.temperature(temperature).density(density).viscosity(viscosity).lightLevel(lightLevel).descriptionId(Constants.name("fluid", name))
+				.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
+				.motionScale(0.0023333333333333335D).canSwim(false).canDrown(false)
+				.pathType(BlockPathTypes.LAVA).adjacentPathType(null);
+	}
+
 	public static void fillTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
 		//blocks
 		output.accept(BLOODBRASS.get());
@@ -108,32 +137,6 @@ public class ModContent {
 		output.accept(BLOOD_SEARED_STONE.getBucket());
 		for (FluidObject<ForgeFlowingFluid> fluid : DemonWillUtils.getWillFluids()) output.accept(fluid.getBucket());
 		for (FluidObject<ForgeFlowingFluid> fluid : HELLFORGED_FLUIDS.values()) output.accept(fluid.getBucket());
-	}
-
-	//demon will fluids
-	public static void initWillFluids() {
-		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			String name = type == EnumDemonWillType.DEFAULT ? "" : type.name + "_";
-			MapColor colour = DemonWillUtils.getMapColor(type);
-			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_hellforged")
-					.type(hotFluid(name + "molten_hellforged", 1000, 2000, 8000, 12))
-					.burningBlock(colour, 10, 10, 6).bucket().flowing());
-			if (BloodSmelteryConfig.enableFluidWill.get()) {
-				if (type == EnumDemonWillType.DEFAULT) name = "demon_";
-				DemonWillUtils.registerWillFluid(type, FLUIDS.register(name + "will")
-						.type(hotFluid(name + "will", 500, 1000, 10000, 11))
-						.burningBlock(colour, 11, 7, 10).bucket().flowing());
-			}
-			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedWill.get()) return;
-		}
-	}
-
-	public static FluidType.Properties hotFluid(String name, int temperature, int density, int viscosity, int lightLevel) {
-		return FluidType.Properties.create()
-				.temperature(temperature).density(density).viscosity(viscosity).lightLevel(lightLevel).descriptionId(Constants.name("fluid", name))
-				.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
-				.motionScale(0.0023333333333333335D).canSwim(false).canDrown(false)
-				.pathType(BlockPathTypes.LAVA).adjacentPathType(null);
 	}
 
 }

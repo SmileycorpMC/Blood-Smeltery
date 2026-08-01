@@ -37,7 +37,8 @@ public class BloodSmeltery {
 		ModContent.TABS.register(bus);
 		RunicSmelteryContent.ITEMS.register(bus);
 		RunicSmelteryContent.BLOCKS.register(bus);
-		ModContent.initWillFluids();
+		if (BloodSmelteryConfig.enableFluidWill.get()) ModContent.initWillFluids();
+		ModContent.initHellforgedFluids();
 	}
 
 	@SubscribeEvent
