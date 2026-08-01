@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+		"#bloodsmeltery:default_molten_hellforged",
+		"#bloodsmeltery:corrosive_molten_hellforged",
+		"#bloodsmeltery:destructive_molten_hellforged",
+		"#bloodsmeltery:vengeful_molten_hellforged",
+		"#bloodsmeltery:steadfast_molten_hellforged"
+  ]
+}

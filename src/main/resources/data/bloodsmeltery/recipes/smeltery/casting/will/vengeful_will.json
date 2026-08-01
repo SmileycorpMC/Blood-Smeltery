@@ -5,9 +5,11 @@
     "amount": 100
   },
   "result": {
-	   "type": "minecraft:item_nbt",
-		 "item": "bloodmagic:basemonstersoul_vengeful",
-		"nbt":  "{\"souls\": 1d}"
+	"type": "minecraft:item_nbt",
+	"item": "bloodmagic:basemonstersoul_vengeful",
+	"nbt": {
+      "souls": 1.0
+    }
   },
   "cooling_time": 100
 }

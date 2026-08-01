@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "tag": "bloodsmeltery:corrosive_molten_hellforged",
+    "amount": 810
+  },
+  "result": "bloodmagic:dungeon_metal_corrosive",
+  "cooling_time": 161
+}

@@ -5,9 +5,11 @@
     "amount": 500
   },
   "result": {
-	   "type": "minecraft:item_nbt",
-		 "item": "bloodmagic:basemonstersoul_steadfast",
-		"nbt":  "{\"souls\": 5d}"
+	"type": "minecraft:item_nbt",
+	"item": "bloodmagic:basemonstersoul_steadfast",
+	"nbt": {
+      "souls": 5.0
+    }
   },
   "cooling_time": 500
 }

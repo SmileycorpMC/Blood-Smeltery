@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    {
+		"item": "bloodmagic:dungeon_metal_destructive"
+	}
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:destructive_molten_hellforged",
+    "amount": 810
+  },
+  "temperature": 666,
+  "time": 161
+}

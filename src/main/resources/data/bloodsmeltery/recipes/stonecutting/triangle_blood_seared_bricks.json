@@ -3,5 +3,6 @@
   "ingredient": {
     "item": "bloodsmeltery:blood_seared_bricks"
   },
-  "result": "bloodsmeltery:triangle_blood_seared_bricks"
+  "result": "bloodsmeltery:triangle_blood_seared_bricks",
+  "count": 1
 }

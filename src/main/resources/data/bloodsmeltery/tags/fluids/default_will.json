@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "bloodsmeltery:default_will",
-    "bloodsmeltery:flowing_default_will"
+    "bloodsmeltery:demon_will",
+    "bloodsmeltery:flowing_demon_will"
   ]
 }

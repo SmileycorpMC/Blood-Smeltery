@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "bloodmagic:blankrune"
   },
-  "value": 2,
+  "value": 4,
   "needed": 1,
   "material": "bloodsmeltery:blood_seared_stone",
   "leftover": {
