@@ -5,15 +5,17 @@
       "tag": "bloodmagic:tartaric_gem"
     }
   ],
-  "tools": {
-    "tag": "tconstruct:modifiable/melee_or_harvest"
-  },
+  "tools": [
+    {
+      "tag": "tconstruct:modifiable/melee/weapon"
+    },
+    {
+      "tag": "tconstruct:modifiable/harvest"
+    }
+  ],
   "slots": {
     "abilities": 1
   },
-  "result": {
-    "name": "bloodsmeltery:sentient",
-    "level": 1
-  },
-  "max_level": 1
+  "result": "bloodsmeltery:sentient",
+  "level": 1
 }
