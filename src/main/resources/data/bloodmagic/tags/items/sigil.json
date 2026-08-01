@@ -14,6 +14,10 @@
 		"bloodmagic:airsigil",
 		"bloodmagic:bloodlightsigil",
 		"bloodmagic:divinationsigil",
-		"bloodmagic:sigilofholding"
+		"bloodmagic:sigilofholding",
+		{
+			"id": "#animus:sigil",
+			"required": false
+		}
   ]
 }

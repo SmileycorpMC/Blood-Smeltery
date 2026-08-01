@@ -10,6 +10,10 @@
 		"bloodmagic:bettercapacityrune",
 		"bloodmagic:orbcapacityrune",
 		"bloodmagic:accelerationrune",
-		"bloodmagic:chargingrune"
+		"bloodmagic:chargingrune",
+		{
+			"id": "#animus:basic_rune",
+			"required": false
+		}
   ]
 }

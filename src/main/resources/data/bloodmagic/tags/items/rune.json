@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-		"#bloodmagic:rune",
+		"#bloodmagic:basic_rune",
 		"#bloodmagic:reinforced_rune"
   ]
 }

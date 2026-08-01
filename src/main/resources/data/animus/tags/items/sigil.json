@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+		"animus:sigil_builder",
+		"animus:sigil_chains",
+		"animus:sigil_consumption",
+		"animus:sigil_leach",
+		"animus:sigil_storm",
+		"animus:sigil_heavenly_wrath",
+		"animus:sigil_remedium",
+		"animus:sigil_reparare",
+		"animus:sigil_transposition",
+		"animus:sigil_free_soul",
+		"animus:sigil_temporal_dominance",
+		"animus:sigil_equivalency",
+		"animus:sigil_monk",
+		{
+			"id": "animus:sigil_boundless_nature",
+			"required": false
+		},
+		{
+			"id": "animus:sigil_crimson_will",
+			"required": false
+		}
+  ]
+}
