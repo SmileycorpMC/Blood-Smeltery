@@ -78,21 +78,21 @@
 	
 	"modifier.bloodsmeltery.divination": "Divination",
 	"modifier.bloodsmeltery.divination.flavor": "Reading souls since §m2013§r 2022",
-	"modifier.bloodsmeltery.divination.description": "Shows more information for the blood altar, shows current lp on use.",
+	"modifier.bloodsmeltery.divination.description": "Shows more information for the blood altar, shows current LP on use.",
 	"recipe.bloodsmeltery.modifier.divination.level_2": "Divination II requires a different recipe than the first level",
 	
 	"modifier.bloodsmeltery.bloodstained": "Bloodstained",
 	"modifier.bloodsmeltery.bloodstained.flavor": "Made from the blood of your... enemies?",
-	"modifier.bloodsmeltery.bloodstained.description": "Repairs itself using lp from your soul network.",
+	"modifier.bloodsmeltery.bloodstained.description": "Repairs itself using LP from your soul network.",
 	
 	"modifier.bloodsmeltery.exsanguinate": "Exsanguinate",
-	"modifier.bloodsmeltery.exsanguinate.flavor": "Blood work?  I sure hope it does",
-	"modifier.bloodsmeltery.exsanguinate.description": "Adds lp to your soul network whenever you kill a monster",
+	"modifier.bloodsmeltery.exsanguinate.flavor": "Blood work? I sure hope it does",
+	"modifier.bloodsmeltery.exsanguinate.description": "Adds LP to your soul network whenever you deal damage.",
 	
 	"material.bloodsmeltery.blood_seared_stone": "Blood-Seared",
 	"material.bloodsmeltery.bloodbrass": "Bloodbrass",
 	
-	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using LP from your soul network.",
-	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds LP to your soul network whenever you kill a monster"
+	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using §4LP §r from your soul network.",
+	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds §4LP §rto your soul network whenever you deal damage"
 
 }

@@ -26,10 +26,8 @@ public class BloodSmelteryConfig {
 	public static ConfigValue<Integer> bloodstainedCooldown;
 
 	//exsanguinate
-	public static ConfigValue<Float> exsanguinateLPPercent;
 	public static ConfigValue<Float> exsanguinateLPMultiplier;
 	public static ConfigValue<Float> exsanguinateLPRate;
-	public static BooleanValue exsanguinateDrainsPassives;
 
 	static {
 
@@ -60,14 +58,10 @@ public class BloodSmelteryConfig {
 				.define("bloodstainedCooldown", 5);
 		builder.pop();
 		builder.push("exsanguinate");
-		exsanguinateLPPercent = builder.comment("What percentage of the total mob health does exsanguinate count for gaining lp? (Default is 0.75)")
-				.define("exsanguinateLPPercent", 0.75f);
-		exsanguinateLPMultiplier = builder.comment("How much is the lp gained from exsanguinate multiplied by per level? (Default is 1.25)")
-				.define("exsanguinateLPMultiplier", 1.25f);
-		exsanguinateLPRate = builder.comment("How much lp is gained per total hp point? (Default is 10)")
+		exsanguinateLPMultiplier = builder.comment("How much is the lp gained from exsanguinate multiplied by per level? (Default is 1.3)")
+				.define("exsanguinateLPMultiplier", 1.3f);
+		exsanguinateLPRate = builder.comment("How much lp is gained per damage dealt? (Default is 10)")
 				.define("exsanguinateLPRate", 10f);
-		exsanguinateDrainsPassives = builder.comment("Does exsanguinate gain lp from killing passive mobs? (Default is false)")
-				.define("exsanguinateDrainsPassives", false);
 		builder.pop();
 		builder.pop();
 		config = builder.build();

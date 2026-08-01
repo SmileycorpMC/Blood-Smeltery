@@ -1,11 +1,13 @@
 package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
 
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
@@ -18,7 +20,7 @@ import wayoftime.bloodmagic.util.helper.NetworkHelper;
 
 import java.util.List;
 
-public class DivinationModifier extends PlayerBoundModifier implements GeneralInteractionModifierHook {
+public class DivinationModifier extends Modifier implements GeneralInteractionModifierHook {
 
 	@Override
 	protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -35,10 +37,10 @@ public class DivinationModifier extends PlayerBoundModifier implements GeneralIn
 
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
-		if (!isBound(tool)) bind(tool, player);
 		int level = modifier.getLevel();
 		String key = "tooltip.bloodmagic.sigil." + (level > 1 ? "divination" : "seer") + ".";
-		Binding binding = getBinding(tool);
+		GameProfile profile = player.getGameProfile();
+		Binding binding = new Binding(profile.getId(), profile.getName());
 		int currentEssence = NetworkHelper.getSoulNetwork(binding).getCurrentEssence();
 		List<Component> message = Lists.newArrayList();
 		if (!binding.getOwnerId().equals(player.getGameProfile().getId())) message.add(Component.translatable(key + "otherNetwork", binding.getOwnerName()));
