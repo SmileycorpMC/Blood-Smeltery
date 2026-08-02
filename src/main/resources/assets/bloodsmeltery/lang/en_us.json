@@ -82,17 +82,22 @@
 	"recipe.bloodsmeltery.modifier.divination.level_2": "Divination II requires a different recipe than the first level",
 	
 	"modifier.bloodsmeltery.bloodstained": "Bloodstained",
-	"modifier.bloodsmeltery.bloodstained.flavor": "Made from the blood of your... enemies?",
+	"modifier.bloodsmeltery.bloodstained.flavor": "Blood-Forged!",
 	"modifier.bloodsmeltery.bloodstained.description": "Repairs itself using LP from your soul network.",
 	
 	"modifier.bloodsmeltery.exsanguinate": "Exsanguinate",
-	"modifier.bloodsmeltery.exsanguinate.flavor": "Blood work? I sure hope it does",
+	"modifier.bloodsmeltery.exsanguinate.flavor": "Hematophagic!",
 	"modifier.bloodsmeltery.exsanguinate.description": "Adds LP to your soul network whenever you deal damage.",
+
+	"modifier.bloodsmeltery.transfusion": "Transfusion",
+	"modifier.bloodsmeltery.transfusion.flavor": "Blood work? I sure hope it does",
+	"modifier.bloodsmeltery.transfusion.description": "Adds LP to your soul network when blocking or reducing damage.",
 	
 	"material.bloodsmeltery.blood_seared_stone": "Blood-Seared",
 	"material.bloodsmeltery.bloodbrass": "Bloodbrass",
 	
-	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using §4LP §r from your soul network.",
-	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds §4LP §rto your soul network whenever you deal damage"
+	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using §4LP §rfrom your soul network.",
+	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds §4LP §rto your soul network whenever you deal damage",
+	"material.tconstruct.copper.armor": "Adds §4LP §rto your soul network when blocking or reducing damage."
 
 }

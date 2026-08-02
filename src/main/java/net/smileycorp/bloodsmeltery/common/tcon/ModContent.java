@@ -24,10 +24,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.RunicSmelteryContent;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.BloodstainedModifier;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.DivinationModifier;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.ExsanguinateModifier;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.SentientModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.*;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -89,6 +86,7 @@ public class ModContent {
 	//traits
 	public static final StaticModifier<BloodstainedModifier> BLOODSTAINED = MODIFIERS.register("bloodstained", BloodstainedModifier::new);
 	public static final StaticModifier<ExsanguinateModifier> EXSANGUINATE = MODIFIERS.register("exsanguinate", ExsanguinateModifier::new);
+	public static final StaticModifier<TransfusionModifier> TRANSFUSION = MODIFIERS.register("transfusion", TransfusionModifier::new);
 
 	//demon will fluids
 	public static void initWillFluids() {

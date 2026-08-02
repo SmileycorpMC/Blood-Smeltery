@@ -4,5 +4,13 @@
       "name": "bloodsmeltery:exsanguinate",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "level": 1,
+        "name": "bloodsmeltery:transfusion"
+      }
+    ]
+  }
 }

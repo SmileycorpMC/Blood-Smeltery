@@ -3,15 +3,15 @@
 	"tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": -0.25,
-      "miningSpeed": 0.2,
+      "mining_speed": 0.2,
       "attackSpeed": 0.1,
-      "attackDamage": 0.15
+      "melee_damage": 0.15
     },
     "tconstruct:head": {
       "durability": 191,
-      "miningSpeed": 5.8,
-      "harvestTier": "minecraft:iron",
-      "attack": 1.75
+      "mining_speed": 5.8,
+      "mining_tier": "minecraft:iron",
+      "melee_damage": 1.75
     },
 	"tconstruct:maille": {},
     "tconstruct:plating_boots": {

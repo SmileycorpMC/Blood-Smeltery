@@ -29,6 +29,11 @@ public class BloodSmelteryConfig {
 	public static ConfigValue<Float> exsanguinateLPMultiplier;
 	public static ConfigValue<Float> exsanguinateLPRate;
 
+	//transfusion
+	public static ConfigValue<Float> transfusionLPMultiplier;
+	public static ConfigValue<Float> transfusionLPRate;
+
+
 	static {
 
 		//fluid will
@@ -62,6 +67,18 @@ public class BloodSmelteryConfig {
 				.define("exsanguinateLPMultiplier", 1.3f);
 		exsanguinateLPRate = builder.comment("How much lp is gained per damage dealt? (Default is 10)")
 				.define("exsanguinateLPRate", 10f);
+		builder.pop();
+		builder.push("exsanguinate");
+		exsanguinateLPMultiplier = builder.comment("How much is the lp gained from exsanguinate multiplied by per level? (Default is 1.3)")
+				.define("exsanguinateLPMultiplier", 1.3f);
+		exsanguinateLPRate = builder.comment("How much lp is gained per damage dealt? (Default is 10)")
+				.define("exsanguinateLPRate", 10f);
+		builder.pop();
+		builder.push("transfusion");
+		transfusionLPMultiplier = builder.comment("How much is the lp gained from transfusion multiplied by per level? (Default is 1.3)")
+				.define("transfusionLPMultiplier", 1.3f);
+		transfusionLPRate = builder.comment("How much lp is gained per damage blocked or reduced? (Default is 10)")
+				.define("transfusionLPRate", 10f);
 		builder.pop();
 		builder.pop();
 		config = builder.build();
