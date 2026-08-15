@@ -23,7 +23,7 @@ public class AmbrosiacModifier extends Modifier implements SpendLPModifierHook {
     @Override
     public int spendLP(IToolStackView tool, ModifierEntry modifier, Player player, EquipmentSlot slot, ItemStack stack, SoulNetwork network, int amountDrained, boolean dealDamage) {
         if (stack.isDamaged() && amountDrained >= BloodSmelteryConfig.ambrosiacLPThreshold.get() &&
-                network.getCurrentEssence() >= BloodSmelteryConfig.ambrosiacLPThreshold.get()) stack.setDamageValue(stack.getDamageValue() - 1);
+                network.getCurrentEssence() >= BloodSmelteryConfig.ambrosiacLPThreshold.get()) stack.setDamageValue(stack.getDamageValue() - modifier.getLevel());
         return amountDrained;
     }
 
