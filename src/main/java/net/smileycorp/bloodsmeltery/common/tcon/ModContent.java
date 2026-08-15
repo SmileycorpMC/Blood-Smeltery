@@ -25,6 +25,7 @@ import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.RunicSmelteryContent;
 import net.smileycorp.bloodsmeltery.common.tcon.modifiers.*;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.hook.SpendLPModifierHook;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -32,8 +33,10 @@ import slimeknights.mantle.registration.object.MetalItemObject;
 import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
 import slimeknights.tconstruct.common.registration.FluidDeferredRegisterExtension;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+import slimeknights.tconstruct.library.module.ModuleHook;
 import slimeknights.tconstruct.library.tools.part.IMaterialItem;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
@@ -51,9 +54,12 @@ public class ModContent {
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Constants.MODID);
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(Constants.MODID);
 
+	//items
 	public static final MetalItemObject BLOODBRASS = BLOCKS.registerMetal("bloodbrass", "bloodbrass",
 			Block.Properties.of().mapColor(MapColor.NETHER).sound(SoundType.METAL),
 			b -> new BlockTooltipItem(b, new Item.Properties()), new Item.Properties());
+
+	public static final RegistryObject<Item> TAUONIC_THREAD = ITEMS.register("tauonic_thread", () -> new Item(new Item.Properties()));
 
 	//fluids
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
@@ -76,6 +82,9 @@ public class ModContent {
 	/*public static final RegistryObject<RecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
 	public static final RegistryObject<ContainerFillingRecipeSerializer<TartaricGemFillingRecipe>> TARTARIC_GEM_FILLING = RECIPE_SERIALIZERS.register("tartaric_gem_filling", () -> new ContainerFillingRecipeSerializer<>(TartaricGemFillingRecipe::new));*/
 
+	//hooks
+	public static final ModuleHook<SpendLPModifierHook> SPEND_LP_HOOK = ModifierHooks.register(Constants.loc("spend_lp"), SpendLPModifierHook.class, (tool, modifier, player, slot, stack, network, amountDrained, dealDamage) -> SpendLPModifierHook.defaultInstance(tool, modifier, slot, player, network, amountDrained, dealDamage));
+
 	//abilities
 	public static final StaticModifier<SentientModifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", SentientModifier::new);
 
@@ -86,6 +95,7 @@ public class ModContent {
 	public static final StaticModifier<BloodstainedModifier> BLOODSTAINED = MODIFIERS.register("bloodstained", BloodstainedModifier::new);
 	public static final StaticModifier<ExsanguinateModifier> EXSANGUINATE = MODIFIERS.register("exsanguinate", ExsanguinateModifier::new);
 	public static final StaticModifier<TransfusionModifier> TRANSFUSION = MODIFIERS.register("transfusion", TransfusionModifier::new);
+	public static final StaticModifier<AmbrosiacModifier> AMBROSIAC = MODIFIERS.register("ambrosiac", AmbrosiacModifier::new);
 
 	//demon will fluids
 	public static void initWillFluids() {
@@ -134,6 +144,7 @@ public class ModContent {
 		output.accept(BLOODBRASS.getIngot());
 		output.accept(BLOODBRASS.getNugget());
 		output.accept(RunicSmelteryContent.BLOOD_SEARED_BRICK.get());
+		output.accept(TAUONIC_THREAD.get());
 		//buckets
 		output.accept(MOLTEN_BLOODBRASS.getBucket());
 		output.accept(BLOOD_SEARED_STONE.getBucket());
@@ -170,6 +181,7 @@ public class ModContent {
 	private static void addParts(CreativeModeTab.Output output, ItemLike item) {
 		addPart(output, item, MaterialVariantId.tryParse(Constants.MODID, "blood_seared_stone"));
 		addPart(output, item, MaterialVariantId.tryParse(Constants.MODID, "bloodbrass"));
+		addPart(output, item, MaterialVariantId.tryParse(Constants.MODID, "tauonic_thread"));
 	}
 
 	private static void addPart(CreativeModeTab.Output output, ItemLike item, MaterialVariantId id) {

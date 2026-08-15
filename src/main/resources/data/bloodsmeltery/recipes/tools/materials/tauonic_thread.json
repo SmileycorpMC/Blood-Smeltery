@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+   "ingredient": {
+    "item": "bloodsmeltery:tauonic_thread"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "bloodsmeltery:tauonic_thread"
+}

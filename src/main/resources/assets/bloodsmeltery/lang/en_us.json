@@ -43,6 +43,7 @@
 
 	"item.bloodsmeltery.bloodbrass_ingot": "Bloodbrass Ingot",
 	"item.bloodsmeltery.bloodbrass_nugget": "Bloodbrass Nugget",
+	"item.bloodsmeltery.tauonic_thread": "Tauonic Thread",
 	"item.bloodsmeltery.blood_seared_brick": "Blood-Seared Brick",
 	
 	"item.bloodsmeltery.guide_book": "A Blood Mage's Guide To Smelting",
@@ -84,6 +85,10 @@
 	"modifier.bloodsmeltery.bloodstained": "Bloodstained",
 	"modifier.bloodsmeltery.bloodstained.flavor": "Blood-Forged!",
 	"modifier.bloodsmeltery.bloodstained.description": "Repairs itself using LP from your soul network.",
+
+	"modifier.bloodsmeltery.ambrosiac": "Ambrosiac",
+	"modifier.bloodsmeltery.ambrosiac.flavor": "Citrusy!",
+	"modifier.bloodsmeltery.ambrosiac.description": "Repairs itself when equipped whenever you spend LP",
 	
 	"modifier.bloodsmeltery.exsanguinate": "Exsanguinate",
 	"modifier.bloodsmeltery.exsanguinate.flavor": "Hematophagic!",
@@ -95,9 +100,10 @@
 	
 	"material.bloodsmeltery.blood_seared_stone": "Blood-Seared",
 	"material.bloodsmeltery.bloodbrass": "Bloodbrass",
+	"material.bloodsmeltery.tauonic_thread": "Tauonic Thread",
 	
 	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using §4LP §rfrom your soul network.",
 	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds §4LP §rto your soul network whenever you deal damage",
-	"material.tconstruct.copper.armor": "Adds §4LP §rto your soul network when blocking or reducing damage."
-
+	"material.tconstruct.copper.armor": "Adds §4LP §rto your soul network when blocking or reducing damage.",
+	"material.bloodsmeltery.tauonic_thread.encyclopedia": "Spending §4LP §rfrom your soul network while equipped causes it to repair itself."
 }
