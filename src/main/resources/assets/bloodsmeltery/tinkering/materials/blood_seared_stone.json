@@ -2,7 +2,7 @@
   "fallbacks": [
     "rock"
   ],
-  "color": "4C3737",
+  "color": "FF4C3737",
   "luminosity": 0,
   "generator": {
     "transformer": {

@@ -2,7 +2,7 @@
   "fallbacks": [
     "string"
   ],
-  "color": "FC0F0F",
+  "color": "FFFC0F0F",
   "luminosity": 0,
   "generator": {
     "transformer": {
