@@ -56,7 +56,6 @@ public class ModContent {
 			b -> new BlockTooltipItem(b, new Item.Properties()), new Item.Properties());
 
 	//fluids
-
 	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
 			.type(hotFluid("blood_seared_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
 

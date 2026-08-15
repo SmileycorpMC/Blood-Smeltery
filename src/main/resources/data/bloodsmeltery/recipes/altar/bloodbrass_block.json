@@ -7,7 +7,7 @@
     "item": "bloodsmeltery:bloodbrass_ingot"
   },
   "upgradeLevel": 1,
-  "altarSyphon": 3000,
+  "altarSyphon": 9000,
   "consumptionRate": 15,
   "drainRate": 15
 }
