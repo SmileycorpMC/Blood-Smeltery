@@ -54,7 +54,7 @@ public class SentienceModifierModel extends NormalModifierModel {
 		if (!(entry.getModifier() instanceof SentienceModifier)) return;
 		Material material = MATERIAL_MAPS.get(RenderType.getType(SentienceModifier.getTier(tool) >= 0, isLarge)).get(SentienceModifier.getWillType(tool));
 		if (material == null) return;
-		MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels);
+		quadConsumer.accept(MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels));
 	}
 	
 	public record CacheKey(Modifier modifier, EnumDemonWillType willType, boolean isActive) {
