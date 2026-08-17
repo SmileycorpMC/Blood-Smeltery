@@ -1,0 +1,13 @@
+{
+  "modifier_id": "bloodsmeltery:sentient",
+  "text": [
+    {
+      "text": "It's Alive!"
+    }
+  ],
+  "effects": [
+	"Give your tool or weapon the abilities of Sentient tools/weapons",
+    "Maximum of 1 level",
+    "Requires 1 ability slot"
+  ]
+}

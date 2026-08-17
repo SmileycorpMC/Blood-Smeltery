@@ -1,0 +1,20 @@
+{
+  "modifier_id": "bloodsmeltery:divination",
+  "text": [
+    {
+      "text": "Right click to view the amount of §4LP§r currently in your soul network. "
+    },
+	{
+      "text": "Holding or equipping an item with this modifier shows the Divination Sigil HUD, when looking at certain Blood Magic blocks. "
+    },
+	{
+      "text": "Level 2 instead shows the Seer's Sigil HUD. "
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 2 levels",
+	"Level 1 requires 1 upgrade slot",
+	"Level 2 has a different recipe and requires level 1 to apply."
+  ]
+}

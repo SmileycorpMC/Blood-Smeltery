@@ -1,0 +1,19 @@
+{
+  "modifier_id": "bloodsmeltery:sentient",
+  "text": [
+    {
+      "text": "Killing mobs drops §3Demonic Will§r of the type of §3Demonic Will§r with the highest count in your inventory. "
+    },
+	{
+      "text": "Powers tool and weapon stats the more §3Demonic Will§r you have. "
+    },
+	{
+      "text": "Gains abilities and stats based on the type of §3Demonic Will§r with the highest count in your inventory. "
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 1 level",
+    "Requires 1 ability slot"
+  ]
+}
