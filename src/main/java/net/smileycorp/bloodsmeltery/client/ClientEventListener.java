@@ -12,7 +12,7 @@ public class ClientEventListener {
 
 	@SubscribeEvent
 	public static void registerModifierModels(ModifierModelRegistrationEvent event) {
-		event.registerModel(Constants.loc("sentient"), SentientModifierModel.UNBAKED_INSTANCE);
+		event.registerModel(Constants.loc("sentience"), SentienceModifierModel.UNBAKED_INSTANCE);
 	}
 
 }

@@ -86,7 +86,7 @@ public class ModContent {
 	public static final ModuleHook<SpendLPModifierHook> SPEND_LP_HOOK = ModifierHooks.register(Constants.loc("spend_lp"), SpendLPModifierHook.class, (tool, modifier, player, slot, stack, network, amountDrained, dealDamage) -> SpendLPModifierHook.defaultInstance(tool, modifier, slot, player, network, amountDrained, dealDamage));
 
 	//abilities
-	public static final StaticModifier<SentientModifier> SENTIENT_MODIFIER = MODIFIERS.register("sentient", SentientModifier::new);
+	public static final StaticModifier<SentienceModifier> SENTIENCE_MODIFIER = MODIFIERS.register("sentience", SentienceModifier::new);
 
 	//upgrades
 	public static final StaticModifier<DivinationModifier> DIVINATION = MODIFIERS.register("divination", DivinationModifier::new);

@@ -5,7 +5,7 @@ import com.mojang.math.Transformation;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.Material;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.SentientModifier;
+import net.smileycorp.bloodsmeltery.common.tcon.modifiers.SentienceModifier;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;
 import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;
@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class SentientModifierModel extends NormalModifierModel {
+public class SentienceModifierModel extends NormalModifierModel {
 
 	public static final IUnbakedModifierModel UNBAKED_INSTANCE = (smallGetter, largeGetter) -> {
 		Map<RenderType, Map<EnumDemonWillType, Material>> maps = Maps.newHashMap();
@@ -30,12 +30,12 @@ public class SentientModifierModel extends NormalModifierModel {
 			for (EnumDemonWillType will : EnumDemonWillType.values()) map.put(will, (type.isLarge() ? largeGetter: smallGetter).apply("/" + type.append(will)));
 			maps.put(type, map);
 		}
-		return new SentientModifierModel(maps);
+		return new SentienceModifierModel(maps);
 	};
 
 	public final Map<RenderType, Map<EnumDemonWillType, Material>> MATERIAL_MAPS;
 
-	public SentientModifierModel(Map<RenderType, Map<EnumDemonWillType, Material>> maps) {
+	public SentienceModifierModel(Map<RenderType, Map<EnumDemonWillType, Material>> maps) {
 		super(maps.get(RenderType.SMALL).get(EnumDemonWillType.DEFAULT), maps.get(RenderType.LARGE).get(EnumDemonWillType.DEFAULT));
 		MATERIAL_MAPS = maps;
 	}
@@ -43,16 +43,16 @@ public class SentientModifierModel extends NormalModifierModel {
 	@Nullable
 	@Override
 	public Object getCacheKey(IToolStackView tool, ModifierEntry entry) {
-		if (!(entry.getModifier() instanceof SentientModifier)) return entry.getModifier();
-		EnumDemonWillType will = SentientModifier.getWillType(tool);
-		boolean isActive = SentientModifier.getTier(tool) >= 0;
+		if (!(entry.getModifier() instanceof SentienceModifier)) return entry.getModifier();
+		EnumDemonWillType will = SentienceModifier.getWillType(tool);
+		boolean isActive = SentienceModifier.getTier(tool) >= 0;
 		return new CacheKey(entry.getModifier(), will, isActive);
 	}
 
 	@Override
 	public void addQuads(IToolStackView tool, ModifierEntry entry, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, Consumer<Collection<BakedQuad>> quadConsumer, @Nullable ItemLayerPixels pixels) {
-		if (!(entry.getModifier() instanceof SentientModifier)) return;
-		Material material = MATERIAL_MAPS.get(RenderType.getType(SentientModifier.getTier(tool) >= 0, isLarge)).get(SentientModifier.getWillType(tool));
+		if (!(entry.getModifier() instanceof SentienceModifier)) return;
+		Material material = MATERIAL_MAPS.get(RenderType.getType(SentienceModifier.getTier(tool) >= 0, isLarge)).get(SentienceModifier.getWillType(tool));
 		if (material == null) return;
 		MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels);
 	}

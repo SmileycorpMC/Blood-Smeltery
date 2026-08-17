@@ -52,10 +52,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class SentientModifier extends SingleLevelModifier implements ModifierRemovalHook, GeneralInteractionModifierHook, MeleeHitModifierHook,
+public class SentienceModifier extends SingleLevelModifier implements ModifierRemovalHook, GeneralInteractionModifierHook, MeleeHitModifierHook,
 		ProcessLootModifierHook, ToolStatsModifierHook, AttributesModifierHook {
 
-	private static final ResourceLocation SENTIENT_DATA = Constants.loc("sentient");
+	private static final ResourceLocation SENTIENCE_DATA = Constants.loc("sentience");
 	private static final UUID VENGEFUL_SPEED_ID = UUID.fromString("754d7a01-854a-47e5-8ed4-402955472030");
 
 	protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -80,7 +80,7 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 
 	@Override
 	public Component onRemoved(IToolStackView tool, Modifier modifier) {
-		tool.getPersistentData().remove(SENTIENT_DATA);
+		tool.getPersistentData().remove(SENTIENCE_DATA);
 		return null;
 	}
 
@@ -94,7 +94,7 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 	public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
 		Player player = context.getPlayerAttacker();
 		LivingEntity target = context.getLivingTarget();
-		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
+		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENCE_DATA);
 		recalcStats(tool, player, context.getHand(), false);
 		int tier = getTier(tool);
 		EnumDemonWillType type = getWillType(tool);
@@ -110,7 +110,7 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 				player.setAbsorptionAmount((float) Math.min(absorption + target.getMaxHealth() * 0.05f, ItemSentientSword.maxAbsorptionHearts));
 			}
 		}
-		tool.getPersistentData().put(SENTIENT_DATA, nbt);
+		tool.getPersistentData().put(SENTIENCE_DATA, nbt);
 	}
 
 	@Override
@@ -151,7 +151,7 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 	}
 
 	protected void recalcStats(IToolStackView tool, Player player, InteractionHand hand, boolean recalcToolStats) {
-		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENT_DATA);
+		CompoundTag nbt = tool.getPersistentData().getCompound(SENTIENCE_DATA);
 		EnumDemonWillType player_type = PlayerDemonWillHandler.getLargestWillType(player);
 		EnumDemonWillType tool_type = EnumDemonWillType.DEFAULT;
 		if (nbt.contains("type")) tool_type = EnumDemonWillType.getType(nbt.getString("type"));
@@ -159,7 +159,7 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 		double will = PlayerDemonWillHandler.getTotalDemonWill(player_type, player);
 		nbt.putInt("tier", DemonWillUtils.getToolTier(will));
 		if (recalcToolStats) getHeldTool(player, hand).rebuildStats();
-		tool.getPersistentData().put(SENTIENT_DATA, nbt);
+		tool.getPersistentData().put(SENTIENCE_DATA, nbt);
 	}
 
 	public static int getTier(IToolStackView tool) {
@@ -171,12 +171,12 @@ public class SentientModifier extends SingleLevelModifier implements ModifierRem
 	}
 
 	protected static int getTier(IModDataView data) {
-		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
+		CompoundTag nbt = data.getCompound(SENTIENCE_DATA);
 		return nbt.contains("tier") ? nbt.getInt("tier") : -1;
 	}
 
 	protected static EnumDemonWillType getWillType(IModDataView data) {
-		CompoundTag nbt = data.getCompound(SENTIENT_DATA);
+		CompoundTag nbt = data.getCompound(SENTIENCE_DATA);
 		return nbt.contains("type") ? EnumDemonWillType.getType(nbt.getString("type")) : EnumDemonWillType.DEFAULT;
 	}
 
