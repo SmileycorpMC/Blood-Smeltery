@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

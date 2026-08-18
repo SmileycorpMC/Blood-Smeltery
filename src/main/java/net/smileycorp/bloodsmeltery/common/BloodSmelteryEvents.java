@@ -9,7 +9,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.smileycorp.bloodsmeltery.common.tcon.ModContent;
 import net.smileycorp.bloodsmeltery.common.util.HellfireForgeFluidCapability;
 import net.smileycorp.bloodsmeltery.common.util.TartaricFluidCapability;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

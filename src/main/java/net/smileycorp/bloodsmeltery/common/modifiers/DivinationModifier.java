@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers;
 
 import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;

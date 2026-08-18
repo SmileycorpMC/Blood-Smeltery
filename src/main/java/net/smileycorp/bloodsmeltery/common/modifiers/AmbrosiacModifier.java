@@ -1,11 +1,11 @@
-package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.tcon.ModContent;
-import net.smileycorp.bloodsmeltery.common.tcon.modifiers.hook.SpendLPModifierHook;
+import net.smileycorp.bloodsmeltery.common.ModContent;
+import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.module.ModuleHookMap;

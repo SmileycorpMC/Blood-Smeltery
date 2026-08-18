@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common;
+package net.smileycorp.bloodsmeltery.common.bloodforge;
 
 import com.google.common.base.Function;
 import net.minecraft.world.item.Item;
@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.smileycorp.bloodsmeltery.common.Constants;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.mantle.registration.object.WallBuildingBlockObject;
@@ -17,7 +18,7 @@ import slimeknights.tconstruct.smeltery.block.component.SearedBlock;
 import slimeknights.tconstruct.smeltery.block.component.SearedGlassBlock;
 import slimeknights.tconstruct.smeltery.block.component.SearedLadderBlock;
 
-public class RunicSmelteryContent {
+public class BloodForgeContent {
     
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
     public static final BlockDeferredRegisterExtension BLOCKS = new BlockDeferredRegisterExtension(Constants.MODID);
@@ -27,7 +28,7 @@ public class RunicSmelteryContent {
     private static final BlockBehaviour.Properties NON_SOLID_PROPS = PROPS.noOcclusion().isValidSpawn((s,g,p,e) -> false)
             .isRedstoneConductor((s,g,p) -> false).isSuffocating((s,g,p) -> false).isViewBlocking((s,g,p) -> false);
     
-    private static final Function<Block, BlockTooltipItem> TOOLTIP = RunicSmelteryContent::tooltip;
+    private static final Function<Block, BlockTooltipItem> TOOLTIP = BloodForgeContent::tooltip;
 
     public static final RegistryObject<Item> BLOOD_SEARED_BRICK = ITEMS.register("blood_seared_brick",
             () -> new Item(new Item.Properties()));

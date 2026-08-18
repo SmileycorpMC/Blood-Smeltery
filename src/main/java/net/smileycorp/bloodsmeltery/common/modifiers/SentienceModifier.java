@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;

@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon.modifiers.hook;
+package net.smileycorp.bloodsmeltery.common.modifiers.hook;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;

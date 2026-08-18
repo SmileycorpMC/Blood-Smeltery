@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.tcon;
+package net.smileycorp.bloodsmeltery.common.recipes;
 
 public class WillMeltingRecipe /*extends MeltingRecipe*/ {
 
