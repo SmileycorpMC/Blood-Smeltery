@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.Material;
 import net.smileycorp.bloodsmeltery.common.modifiers.SentienceModifier;
+import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;
 import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;
@@ -23,75 +24,41 @@ import java.util.function.Function;
 
 public class SentienceModifierModel extends NormalModifierModel {
 
-	public static final IUnbakedModifierModel UNBAKED_INSTANCE = (smallGetter, largeGetter) -> {
-		Map<RenderType, Map<EnumDemonWillType, Material>> maps = Maps.newHashMap();
-		for (RenderType type : RenderType.values()) {
-			Map<EnumDemonWillType, Material> map = Maps.newHashMap();
-			for (EnumDemonWillType will : EnumDemonWillType.values()) map.put(will, (type.isLarge() ? largeGetter: smallGetter).apply("/" + type.append(will)));
-			maps.put(type, map);
-		}
-		return new SentienceModifierModel(maps);
-	};
+	public static final IUnbakedModifierModel UNBAKED_INSTANCE = (smallGetter, largeGetter)
+			-> new SentienceModifierModel(smallGetter.apply(""), largeGetter.apply(""));
 
-	public final Map<RenderType, Map<EnumDemonWillType, Material>> MATERIAL_MAPS;
+	protected final Material small, large;
 
-	public SentienceModifierModel(Map<RenderType, Map<EnumDemonWillType, Material>> maps) {
-		super(maps.get(RenderType.SMALL).get(EnumDemonWillType.DEFAULT), maps.get(RenderType.LARGE).get(EnumDemonWillType.DEFAULT));
-		MATERIAL_MAPS = maps;
+	public SentienceModifierModel(Material small, Material large) {
+		super(small, large);
+		this.small = small;
+		this.large = large;
 	}
 
 	@Nullable
 	@Override
 	public Object getCacheKey(IToolStackView tool, ModifierEntry entry) {
-		if (!(entry.getModifier() instanceof SentienceModifier)) return entry.getModifier();
-		EnumDemonWillType will = SentienceModifier.getWillType(tool);
-		boolean isActive = SentienceModifier.getTier(tool) >= 0;
-		return new CacheKey(entry.getModifier(), will, isActive);
+		if (!(entry.getModifier() instanceof SentienceModifier)) return super.getCacheKey(tool, entry);
+		return SentienceModifier.getTier(tool) < 0 ? null : new CacheKey(entry.getModifier(), SentienceModifier.getWillType(tool));
 	}
 
 	@Override
 	public void addQuads(IToolStackView tool, ModifierEntry entry, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, Consumer<Collection<BakedQuad>> quadConsumer, @Nullable ItemLayerPixels pixels) {
 		if (!(entry.getModifier() instanceof SentienceModifier)) return;
-		Material material = MATERIAL_MAPS.get(RenderType.getType(SentienceModifier.getTier(tool) >= 0, isLarge)).get(SentienceModifier.getWillType(tool));
+		if (SentienceModifier.getTier(tool) < 0) return;
+		Material material = isLarge ? large : small;
 		if (material == null) return;
-		quadConsumer.accept(MantleItemLayerModel.getQuadsForSprite(0xFFFFFFFF, -1, spriteGetter.apply(material), transforms, 10, pixels));
+		quadConsumer.accept(MantleItemLayerModel.getQuadsForSprite(0xFF000000 + DemonWillUtils.getColour(SentienceModifier.getWillType(tool)),
+				-1, spriteGetter.apply(material), transforms, 10, pixels));
 	}
 	
-	public record CacheKey(Modifier modifier, EnumDemonWillType willType, boolean isActive) {
+	public record CacheKey(Modifier modifier, EnumDemonWillType willType) {
 		
 		@Override
 		public boolean equals(Object object) {
 			if (object == this) return true;
-			if (!(object instanceof CacheKey)) return false;
-			CacheKey other = (CacheKey) object;
-			if (this.getClass() != other.getClass()) return false;
-			return (modifier == other.modifier && willType == other.willType && isActive == other.isActive);
-		}
-		
-	}
-
-	public enum RenderType {
-
-		SMALL(false, false), SMALL_ACTIVE(true, false), LARGE(false, true), LARGE_ACTIVE(true, true);
-
-		private final boolean isActive, isLarge;
-
-		RenderType(boolean isActive, boolean isLarge) {
-			this.isActive = isActive;
-			this.isLarge = isLarge;
-		}
-
-		public boolean isLarge() {
-			return isLarge;
-		}
-
-		public String append(EnumDemonWillType type) {
-			return isActive ? type.toString() + "_activated" : type.toString();
-		}
-
-		public static RenderType getType(boolean isActive, boolean isLarge) {
-			for (RenderType type : values()) if (type.isActive == isActive && type.isLarge == isLarge) return type;
-			return null;
+			if (!(object instanceof CacheKey other)) return false;
+            return (modifier == other.modifier && willType == other.willType);
 		}
 		
 	}
