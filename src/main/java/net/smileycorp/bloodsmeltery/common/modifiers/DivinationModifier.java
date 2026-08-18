@@ -34,7 +34,6 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 		return level > 1 ? name.copy().withStyle(style -> style.withColor(TextColor.fromRgb(0xEE425F))) : name;
 	}
 
-
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
 		int level = modifier.getLevel();
@@ -46,7 +45,7 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 		if (!binding.getOwnerId().equals(player.getGameProfile().getId())) message.add(Component.translatable(key + "otherNetwork", binding.getOwnerName()));
 		message.add(Component.translatable(key + "currentEssence", currentEssence));
 		ChatUtil.sendNoSpam(player, message.toArray(new Component[message.size()]));
-		return InteractionResult.SUCCESS;
+		return InteractionResult.PASS;
 	}
 
 }
