@@ -1,7 +1,0 @@
-{
-  "parent": "tconstruct:block/template/pane/noside_edge",
-  "textures": {
-    "pane": "bloodsmeltery:block/blood_seared_glass",
-    "edge": "bloodsmeltery:block/blood_seared_glass_top"
-  }
-}

@@ -10,7 +10,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.smileycorp.bloodsmeltery.client.ClientEventListener;
-import net.smileycorp.bloodsmeltery.common.bloodforge.BloodForgeContent;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,8 +34,6 @@ public class BloodSmeltery {
 		ModContent.RECIPE_SERIALIZERS.register(bus);
 		ModContent.MODIFIERS.register(bus);
 		ModContent.TABS.register(bus);
-		BloodForgeContent.ITEMS.register(bus);
-		BloodForgeContent.BLOCKS.register(bus);
 		if (BloodSmelteryConfig.enableFluidWill.get()) ModContent.initWillFluids();
 		ModContent.initHellforgedFluids();
 	}

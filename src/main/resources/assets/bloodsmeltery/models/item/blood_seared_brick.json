@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "bloodsmeltery:item/blood_seared_brick"
-  }
-}

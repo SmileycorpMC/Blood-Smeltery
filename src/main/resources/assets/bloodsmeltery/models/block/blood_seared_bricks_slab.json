@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "bloodsmeltery:block/blood_seared_bricks",
-    "bottom": "bloodsmeltery:block/blood_seared_bricks",
-    "top": "bloodsmeltery:block/blood_seared_bricks"
-  }
-}

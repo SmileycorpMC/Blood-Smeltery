@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:ingots/bloodbrass",
-	"bloodsmeltery:blood_seared_brick"
+    "#forge:ingots/bloodbrass"
   ]
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "tconstruct:block/template/ladder",
-  "textures": {
-    "top": "bloodsmeltery:block/fancy_blood_seared_bricks",
-    "side": "bloodsmeltery:block/blood_seared_ladder",
-    "bottom": "bloodsmeltery:block/blood_seared_ladder"
-  }
-}
