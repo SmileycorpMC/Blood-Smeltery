@@ -2,12 +2,17 @@
   "modifier_id": "bloodsmeltery:sentience",
   "text": [
     {
-      "text": "It's Alive!"
+      "text": "Give your tool the abilities of Sentient tools."
+    },
+    {
+      "text": "Attunes to the type of §3Demonic Will§r you have the most of.",
+      "paragraph": true
     }
   ],
   "effects": [
-	"Give your tool or weapon the abilities of Sentient tools/weapons",
-    "Maximum of 1 level",
-    "Requires 1 ability slot"
+    "Apply only the first level",
+    "Gains additional levels based on the amount of will of the attuned type",
+    "Requires 1 ability slot",
+    "Tank Compatible"
   ]
 }
