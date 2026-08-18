@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.smileycorp.bloodsmeltery.common.bloodforge.BloodForgeContent;
 import net.smileycorp.bloodsmeltery.common.modifiers.*;
 import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
@@ -127,9 +128,20 @@ public class ModContent {
 	public static void fillTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
 		//blocks
 		output.accept(BLOODBRASS.get());
+		output.accept(BloodForgeContent.BLOOD_SEARED_BRICKS.get());
+		output.accept(BloodForgeContent.BLOOD_SEARED_BRICKS.getSlab());
+		output.accept(BloodForgeContent.BLOOD_SEARED_BRICKS.getStairs());
+		output.accept(BloodForgeContent.BLOOD_SEARED_BRICKS.getWall());
+		output.accept(BloodForgeContent.CRACKED_BLOOD_SEARED_BRICKS);
+		output.accept(BloodForgeContent.FANCY_BLOOD_SEARED_BRICKS);
+		output.accept(BloodForgeContent.TRIANGLE_BLOOD_SEARED_BRICKS);
+		output.accept(BloodForgeContent.BLOOD_SEARED_LADDER);
+		output.accept(BloodForgeContent.BLOOD_SEARED_GLASS);
+		output.accept(BloodForgeContent.BLOOD_SEARED_GLASS_PANE);
 		//items
 		output.accept(BLOODBRASS.getIngot());
 		output.accept(BLOODBRASS.getNugget());
+		output.accept(BloodForgeContent.BLOOD_SEARED_BRICK.get());
 		output.accept(TAUONIC_THREAD.get());
 		//buckets
 		output.accept(MOLTEN_BLOODBRASS.getBucket());

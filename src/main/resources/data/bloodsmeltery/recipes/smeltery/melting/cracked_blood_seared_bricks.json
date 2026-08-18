@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": [
+    {
+		"item": "bloodsmeltery:cracked_blood_seared_bricks"
+	}
+  ],
+  "result": {
+    "fluid": "bloodsmeltery:blood_seared_stone",
+    "amount": 1000
+  },
+  "temperature": 1000,
+  "time": 700
+}

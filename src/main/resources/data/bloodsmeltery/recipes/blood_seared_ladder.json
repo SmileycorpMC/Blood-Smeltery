@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+	"# #",
+    "BBB"
+  ],
+  "key": {
+    "#": {
+      "item": "bloodsmeltery:blood_seared_brick"
+    },
+	"B": {
+      "item": "bloodsmeltery:blood_seared_bricks"
+    }
+  },
+  "result": {
+    "item": "bloodsmeltery:blood_seared_ladder",
+	"count": 4
+  }
+}

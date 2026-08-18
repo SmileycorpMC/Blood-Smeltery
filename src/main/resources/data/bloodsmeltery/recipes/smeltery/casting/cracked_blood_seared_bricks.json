@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:cracked_stone_bricks"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "forge:life",
+    "amount": 2000
+  },
+  "result": "bloodsmeltery:cracked_blood_seared_bricks",
+  "cooling_time": 400
+}

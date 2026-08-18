@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "bloodsmeltery:triangle_blood_seared_bricks"
+  },
+  "result": "bloodsmeltery:blood_seared_bricks",
+  "count": 1
+}

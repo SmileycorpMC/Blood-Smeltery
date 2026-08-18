@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:chiseled_stone_bricks"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "forge:life",
+    "amount": 2000
+  },
+  "result": "bloodsmeltery:fancy_blood_seared_bricks",
+  "cooling_time": 400
+}

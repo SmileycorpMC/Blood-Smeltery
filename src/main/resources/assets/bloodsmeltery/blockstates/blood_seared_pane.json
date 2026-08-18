@@ -1,0 +1,45 @@
+{
+  "multipart": [
+    { "apply": { "model": "bloodsmeltery:block/blood_seared_glass_post" }},
+    
+    { "when": { "north": true },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_side" }
+    },
+    { "when": { "north": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside" }
+    },
+    { "when": { "north": false, "east": false, "west": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_edge" }
+    },
+    
+    { "when": { "east": true },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_side", "y": 90 }
+    },
+    { "when": { "east": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_alt" }
+    },
+    { "when": { "east": false, "north": false, "south": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_edge", "y": 90 }
+    },
+    
+    { "when": { "south": true },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_side_alt" }
+    },
+    { "when": { "south": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_alt", "y": 90 }
+    },
+    { "when": { "south": false, "east": false, "west": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_edge", "y": 180 }
+    },
+    
+    { "when": { "west": true },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_side_alt", "y": 90 }
+    },
+    { "when": { "west": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside", "y": 270 }
+    },
+    { "when": { "west": false, "north": false, "south": false },
+      "apply": { "model": "bloodsmeltery:block/blood_seared_glass_noside_edge", "y": 270 }
+    }
+  ]
+}
