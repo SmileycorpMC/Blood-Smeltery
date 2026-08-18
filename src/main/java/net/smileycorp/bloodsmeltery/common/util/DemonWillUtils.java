@@ -1,8 +1,11 @@
 package net.smileycorp.bloodsmeltery.common.util;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
@@ -11,6 +14,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryTags;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
@@ -27,10 +31,19 @@ import java.util.stream.Collectors;
 public class DemonWillUtils {
 
 	private static final EnumMap<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> WILL_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
+	private static final BiMap<EnumDemonWillType, TagKey<Fluid>> WILL_FLUID_TAGS = createFluidTagMap();
+
 	private static final List<RegistryObject<Item>> TARTARIC_GEMS = Lists.newArrayList(BloodMagicItems.PETTY_GEM, BloodMagicItems.LESSER_GEM, BloodMagicItems.COMMON_GEM, BloodMagicItems.GREATER_GEM);
 
-	private static final double[] DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS = {0.875, 0.813, 0.075, 0.688, 0.625, 0.625, 0.625};
-	private static final double[] VENGEFUL_ATTACK_SPEED_MULTIPLIERS = {1.188, 1.25, 1.375, 1.438, 1.5, 1.5, 1.563};
+	private static BiMap<EnumDemonWillType, TagKey<Fluid>> createFluidTagMap() {
+		BiMap<EnumDemonWillType, TagKey<Fluid>> map = HashBiMap.create();
+		map.put(EnumDemonWillType.DEFAULT, BloodSmelteryTags.DEFAULT_WILL);
+		map.put(EnumDemonWillType.CORROSIVE, BloodSmelteryTags.CORROSIVE_WILL);
+		map.put(EnumDemonWillType.DESTRUCTIVE, BloodSmelteryTags.DESTRUCTIVE_WILL);
+		map.put(EnumDemonWillType.VENGEFUL, BloodSmelteryTags.VENGEFUL_WILL);
+		map.put(EnumDemonWillType.STEADFAST, BloodSmelteryTags.STEADFAST_WILL);
+		return map;
+	}
 
 	public static ItemMonsterSoul getWillItem(EnumDemonWillType type) {
 		return switch (type) {
@@ -68,7 +81,7 @@ public class DemonWillUtils {
 
 	public static EnumDemonWillType getTypeForFluid(Fluid fluid) {
 		for (Entry<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> entry : WILL_FLUIDS.entrySet()) if (entry.getValue().get() == fluid) return entry.getKey();
-		return EnumDemonWillType.DEFAULT;
+		return null;
 	}
 
 	public static Fluid getFluidForType(EnumDemonWillType type) {
@@ -127,8 +140,8 @@ public class DemonWillUtils {
 
 	public static double getAttackSpeedMultiplier(int tier, EnumDemonWillType type) {
 		return switch (type) {
-			case DESTRUCTIVE -> DESTRUCTIVE_ATTACK_SPEED_MULTIPLIERS[tier];
-			case VENGEFUL -> VENGEFUL_ATTACK_SPEED_MULTIPLIERS[tier];
+			case DESTRUCTIVE -> ItemSentientSword.destructiveAttackSpeed[tier];
+			case VENGEFUL -> ItemSentientSword.vengefulAttackSpeed[tier];
 			default -> 1;
 		};
 	}
@@ -143,6 +156,14 @@ public class DemonWillUtils {
 		ItemStack stack = new ItemStack(gem);
 		gem.setWill(type, stack, souls);
 		return stack;
+	}
+
+	public static TagKey<Fluid> getTagForType(EnumDemonWillType type) {
+		return WILL_FLUID_TAGS.get(type);
+	}
+
+	public static EnumDemonWillType getTypeForTag(TagKey<Fluid> tag) {
+		return WILL_FLUID_TAGS.inverse().get(tag);
 	}
 
 }
