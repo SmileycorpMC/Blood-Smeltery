@@ -1,11 +1,29 @@
 package net.smileycorp.bloodsmeltery.common.recipes;
 
-public class WillMeltingRecipe /*extends MeltingRecipe*/ {
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.fluids.FluidStack;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import slimeknights.mantle.data.loadable.field.ContextKey;
+import slimeknights.mantle.data.loadable.record.RecordLoadable;
+import slimeknights.mantle.recipe.helper.FluidOutput;
+import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
+import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer;
+import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 
-	/*
+import java.util.Collections;
+import java.util.List;
+
+public class WillMeltingRecipe extends MeltingRecipe {
+
+    public static final RecordLoadable<WillMeltingRecipe> LOADER = RecordLoadable.create(ContextKey.ID.requiredField(), LoadableRecipeSerializer.RECIPE_GROUP, INPUT, OUTPUT, TEMPERATURE, TIME, BYPRODUCTS, WillMeltingRecipe::new);
+
 	private final Ingredient JEI_INGREDIENT;
 
-	public WillMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidStack output, int temperature, int time, List<FluidStack> byproducts) {
+	public WillMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidOutput output, int temperature, int time, List<FluidOutput> byproducts) {
 		super(id, group, input, output, temperature, time, byproducts);
 		ItemStack stack = input.getItems()[0];
 		CompoundTag tag = new CompoundTag();
@@ -38,6 +56,6 @@ public class WillMeltingRecipe /*extends MeltingRecipe*/ {
 	@Override
 	public List<List<FluidStack>> getOutputWithByproducts() {
 		return Collections.singletonList(Collections.singletonList(new FluidStack(getOutput().getFluid(), 100)));
-	}*/
+	}
 
 }

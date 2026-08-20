@@ -23,8 +23,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.modifiers.*;
 import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
+import net.smileycorp.bloodsmeltery.common.recipes.WillMeltingRecipe;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import slimeknights.mantle.item.BlockTooltipItem;
+import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.MetalItemObject;
 import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
@@ -76,8 +78,8 @@ public class ModContent {
 					.withTabsBefore(BloodMagicCreativeTabs.BLOODMAGIC_DECORATIVE.getId()).icon(() -> new ItemStack(BLOODBRASS.getIngot())).displayItems(ModContent::fillTab).build());
 
 	//recipe serializers
-	/*public static final RegistryObject<RecipeSerializer<MeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> new MeltingRecipe.Serializer<>(WillMeltingRecipe::new));
-	public static final RegistryObject<ContainerFillingRecipeSerializer<TartaricGemFillingRecipe>> TARTARIC_GEM_FILLING = RECIPE_SERIALIZERS.register("tartaric_gem_filling", () -> new ContainerFillingRecipeSerializer<>(TartaricGemFillingRecipe::new));*/
+	public static final RegistryObject<RecipeSerializer<WillMeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> LoadableRecipeSerializer.of(WillMeltingRecipe.LOADER));
+	//public static final RegistryObject<ContainerFillingRecipeSerializer<TartaricGemFillingRecipe>> TARTARIC_GEM_FILLING = RECIPE_SERIALIZERS.register("tartaric_gem_filling", () -> new ContainerFillingRecipeSerializer<>(TartaricGemFillingRecipe::new));
 
 	//hooks
 	public static final ModuleHook<SpendLPModifierHook> SPEND_LP_HOOK = ModifierHooks.register(Constants.loc("spend_lp"), SpendLPModifierHook.class, (tool, modifier, player, slot, stack, network, amountDrained, dealDamage) -> SpendLPModifierHook.defaultInstance(tool, modifier, slot, player, network, amountDrained, dealDamage));
