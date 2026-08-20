@@ -1,6 +1,12 @@
 {
   "type": "tconstruct:alloy",
-  "conditions": [],
+  "conditions": [
+		{
+          "type": "mantle:tag_filled",
+		  "registry": "minecraft:fluid",
+          "tag": "forge:blood"
+        }
+  ],
   "inputs": [
     {
       "tag": "forge:demon_will",
