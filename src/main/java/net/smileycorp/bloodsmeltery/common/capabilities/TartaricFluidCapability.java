@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.util;
+package net.smileycorp.bloodsmeltery.common.capabilities;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -9,6 +9,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
+import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWillGem;
 import wayoftime.bloodmagic.api.compat.IMultiWillTool;
@@ -76,22 +77,20 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 	@Override
 	public FluidStack drain(FluidStack resource, FluidAction action) {
 		FluidStack contained = getFluid();
-		if (contained.getFluid() == resource.getFluid()) {
-			int amount = contained.getAmount();
-			int drained = contained.getAmount();
-			int maxDrain = resource.getAmount();
-			if (maxDrain>contained.getAmount()) amount = 0;
-			else {
-				amount -= maxDrain;
-				drained = maxDrain;
-			}
-			if (action.execute()) {
-				IDemonWillGem gem = (IDemonWillGem) stack.getItem();
-				gem.setWill(type, stack, amount/BloodSmelteryConfig.willFluidAmount.get());
-			}
-			return DemonWillUtils.getStackForAmount(type, drained);
+		if (contained.getFluid() != resource.getFluid()) return FluidStack.EMPTY;
+		int amount = contained.getAmount();
+		int drained = contained.getAmount();
+		int maxDrain = resource.getAmount();
+		if (maxDrain>contained.getAmount()) amount = 0;
+		else {
+			amount -= maxDrain;
+			drained = maxDrain;
 		}
-		return DemonWillUtils.getStackForAmount(type, 0);
+		if (action.execute()) {
+			IDemonWillGem gem = (IDemonWillGem) stack.getItem();
+			gem.setWill(type, stack, amount/BloodSmelteryConfig.willFluidAmount.get());
+		}
+		return DemonWillUtils.getStackForAmount(type, drained);
 	}
 
 	@Override
