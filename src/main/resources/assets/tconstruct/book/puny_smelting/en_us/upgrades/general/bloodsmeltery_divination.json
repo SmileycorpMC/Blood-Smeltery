@@ -8,7 +8,7 @@
   "effects": [
 	"Adds a Divination Sigil or Seer's Sigil to your tool, weapon or armor",
     "Maximum of 2 levels",
-    "Requires 1 upgrade for level 1",
+    "Requires 1 upgrade slot for level 1",
 	"Level 2 uses a different recipe, and requires level 1 to apply."
   ]
 }
