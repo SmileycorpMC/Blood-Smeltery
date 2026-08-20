@@ -88,6 +88,7 @@ public class ModContent {
 
 	//upgrades
 	public static final StaticModifier<DivinationModifier> DIVINATION = MODIFIERS.register("divination", DivinationModifier::new);
+	public static final StaticModifier<HemoglowinModifier> HEMOGLOWIN = MODIFIERS.register("hemoglowin", HemoglowinModifier::new);
 
 	//traits
 	public static final StaticModifier<BloodstainedModifier> BLOODSTAINED = MODIFIERS.register("bloodstained", BloodstainedModifier::new);

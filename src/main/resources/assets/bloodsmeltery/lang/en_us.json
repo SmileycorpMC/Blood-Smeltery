@@ -60,6 +60,10 @@
 	"modifier.bloodsmeltery.divination.flavor": "Reading souls since §m2013§r 2022",
 	"modifier.bloodsmeltery.divination.description": "Shows more information for the blood altar, shows current LP on use.",
 	"recipe.bloodsmeltery.modifier.divination.level_2": "Divination II requires a different recipe than the first level",
+
+	"modifier.bloodsmeltery.hemoglowin": "Hemoglowin",
+	"modifier.bloodsmeltery.hemoglowin.flavor": "Lighting the way with blood!",
+	"modifier.bloodsmeltery.hemoglowin.description": "Creates Blood Lamps on use, at the cost of LP.",
 	
 	"modifier.bloodsmeltery.bloodstained": "Bloodstained",
 	"modifier.bloodsmeltery.bloodstained.flavor": "Blood-Forged!",

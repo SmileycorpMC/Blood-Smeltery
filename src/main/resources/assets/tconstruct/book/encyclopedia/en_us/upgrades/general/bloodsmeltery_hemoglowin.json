@@ -1,0 +1,21 @@
+{
+  "modifier_id": "bloodsmeltery:hemoglowin",
+  "text": [
+    {
+      "text": "Use to place or launch a blood light at the cost of §4LP§r. "
+    },
+	{
+      "text": "Blood Lights are invisible and have a small particle effect. ",
+	  "paragraph": true
+    },
+	{
+      "text": "When on a tool with Divination, it shows your current §4LP§r after any is consumed for Hemoglowin.",
+	  "paragraph": true
+	}
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 1 level",
+	"Requires 1 upgrade slot"
+  ]
+}

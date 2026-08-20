@@ -7,6 +7,7 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.smileycorp.bloodsmeltery.common.ModContent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -29,6 +30,11 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 	}
 
 	@Override
+	public int getPriority() {
+		return Integer.MAX_VALUE;
+	}
+
+	@Override
 	public Component getDisplayName(int level) {
 		Component name = super.getDisplayName(level);
 		return level > 1 ? name.copy().withStyle(style -> style.withColor(TextColor.fromRgb(0xEE425F))) : name;
@@ -36,6 +42,11 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
+		if (tool.getModifierLevel(ModContent.HEMOGLOWIN.get()) == 0 |! HemoglowinModifier.isReady(tool.getPersistentData())) sendMessage(modifier, player);
+		return InteractionResult.PASS;
+	}
+
+	public static void sendMessage(ModifierEntry modifier, Player player) {
 		int level = modifier.getLevel();
 		String key = "tooltip.bloodmagic.sigil." + (level > 1 ? "divination" : "seer") + ".";
 		GameProfile profile = player.getGameProfile();
@@ -45,7 +56,6 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 		if (!binding.getOwnerId().equals(player.getGameProfile().getId())) message.add(Component.translatable(key + "otherNetwork", binding.getOwnerName()));
 		message.add(Component.translatable(key + "currentEssence", currentEssence));
 		ChatUtil.sendNoSpam(player, message.toArray(new Component[message.size()]));
-		return InteractionResult.PASS;
 	}
 
 }

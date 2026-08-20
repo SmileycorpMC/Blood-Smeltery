@@ -1,0 +1,13 @@
+{
+  "modifier_id": "bloodsmeltery:hemoglowin",
+  "text": [
+    {
+      "text": "Portable Luminol (with complementary blood)."
+    }
+  ],
+  "effects": [
+	"Adds a Sigil of the Blood Lamp to your tool or weapon",
+    "Maximum of 1 level",
+    "Requires 1 upgrade slot"
+  ]
+}

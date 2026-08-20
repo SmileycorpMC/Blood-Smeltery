@@ -1,4 +1,5 @@
 {
   "bloodsmeltery:sentience": "bloodsmeltery:gui/modifiers/sentience",
-  "bloodsmeltery:divination": "bloodsmeltery:gui/modifiers/divination"
+  "bloodsmeltery:divination": "bloodsmeltery:gui/modifiers/divination",
+  "bloodsmeltery:hemoglowin": "bloodmagic:item/bloodlightsigil"
 }

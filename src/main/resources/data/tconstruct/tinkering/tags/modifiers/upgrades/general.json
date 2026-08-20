@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "bloodsmeltery:divination"
+    "bloodsmeltery:divination",
+	"bloodsmeltery:hemoglowin"
   ]
 }

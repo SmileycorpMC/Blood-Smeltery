@@ -32,9 +32,13 @@ public abstract class MixinItemRenderer {
 		if (!(stack.getItem() instanceof IModifiable)) return;
 		ToolStack tool = ToolStack.from(stack);
 		if (tool == null) return;
-		int divinationLevel = tool.getModifierLevel(ModContent.DIVINATION.get());
-		if (divinationLevel < 1) return;
-		ItemStack sigil = new ItemStack(divinationLevel > 1 ? BloodMagicItems.SEER_SIGIL.get() : BloodMagicItems.DIVINATION_SIGIL.get());
+		ItemStack sigil = ItemStack.EMPTY;
+		if (tool.getModifierLevel(ModContent.HEMOGLOWIN.get()) > 0) sigil = new ItemStack(BloodMagicItems.BLOOD_LIGHT_SIGIL.get());
+		if (sigil.isEmpty()) {
+			int divinationLevel = tool.getModifierLevel(ModContent.DIVINATION.get());
+			if (divinationLevel < 1) return;
+			sigil = new ItemStack(divinationLevel > 1 ? BloodMagicItems.SEER_SIGIL.get() : BloodMagicItems.DIVINATION_SIGIL.get());
+		}
 		poseStack.pushPose();
 		poseStack.translate(0, 0, -1);
 		render(sigil, ctx, p_115146_, poseStack, p_115148_, p_115149_, p_115150_, getModel(sigil, null, null, 0));

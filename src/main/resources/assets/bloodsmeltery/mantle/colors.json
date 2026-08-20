@@ -1,10 +1,11 @@
 {
   "modifier.bloodsmeltery": {
+	"sentience": "#4EF6FF",
+	"divination": "#FCE324",
+	"hemoglowin": "#FFFF06",
     "bloodstained": "#7A4343",
 	"exsanguinate": "#C2141B",
 	"transfusion": "#C2141B",
-	"sentience": "#4EF6FF",
-	"divination": "#FCE324",
 	"ambrosiac": "#FF1414"
   },
   "material.bloodsmeltery": {
