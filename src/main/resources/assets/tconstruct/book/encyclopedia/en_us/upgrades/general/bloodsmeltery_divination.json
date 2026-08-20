@@ -2,7 +2,7 @@
   "modifier_id": "bloodsmeltery:divination",
   "text": [
     {
-      "text": "Right click to view the amount of §4LP§r currently in your soul network. "
+      "text": "Use to view the amount of §4LP§r currently in your soul network. "
     },
 	{
       "text": "Holding or equipping an item with this modifier shows the Divination Sigil HUD, when looking at certain Blood Magic blocks. "
