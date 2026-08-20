@@ -2,10 +2,11 @@
   "modifier_id": "bloodsmeltery:divination",
   "text": [
     {
-      "text": "Use to view the amount of §4LP§r currently in your soul network. "
+      "text": "Use or activate the modified armor piece's keybind to view the amount of §4LP§r currently in your soul network. "
     },
 	{
-      "text": "Holding or equipping an item with this modifier shows the Divination Sigil HUD, when looking at certain Blood Magic blocks. "
+      "text": "Holding or equipping an item with this modifier shows the Divination Sigil HUD, when looking at certain Blood Magic blocks. ",
+      "linebreak": true
     },
 	{
       "text": "Level 2 instead shows the Seer's Sigil HUD. "
