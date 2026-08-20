@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+	{
+		"id": "vampirism:blood",
+		"required": false
+	},
+	{
+		"id": "irons_spellbooks:blood",
+		"required": false
+	},
+	{
+		"id": "biomesoplenty:blood",
+		"required": false
+	}
+  ]
+}
