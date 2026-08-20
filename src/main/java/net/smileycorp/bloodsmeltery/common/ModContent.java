@@ -79,7 +79,6 @@ public class ModContent {
 
 	//recipe serializers
 	public static final RegistryObject<RecipeSerializer<WillMeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> LoadableRecipeSerializer.of(WillMeltingRecipe.LOADER));
-	//public static final RegistryObject<ContainerFillingRecipeSerializer<TartaricGemFillingRecipe>> TARTARIC_GEM_FILLING = RECIPE_SERIALIZERS.register("tartaric_gem_filling", () -> new ContainerFillingRecipeSerializer<>(TartaricGemFillingRecipe::new));
 
 	//hooks
 	public static final ModuleHook<SpendLPModifierHook> SPEND_LP_HOOK = ModifierHooks.register(Constants.loc("spend_lp"), SpendLPModifierHook.class, (tool, modifier, player, slot, stack, network, amountDrained, dealDamage) -> SpendLPModifierHook.defaultInstance(tool, modifier, slot, player, network, amountDrained, dealDamage));
