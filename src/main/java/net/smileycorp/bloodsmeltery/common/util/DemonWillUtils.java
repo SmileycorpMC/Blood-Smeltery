@@ -166,4 +166,8 @@ public class DemonWillUtils {
 		return WILL_FLUID_TAGS.inverse().get(tag);
 	}
 
+	public static String name(EnumDemonWillType type) {
+		return type == EnumDemonWillType.DEFAULT ? "demon" : type.name;
+	}
+
 }

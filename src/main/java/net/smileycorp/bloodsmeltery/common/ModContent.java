@@ -99,9 +99,9 @@ public class ModContent {
 	//demon will fluids
 	public static void initWillFluids() {
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			String name = (type == EnumDemonWillType.DEFAULT ? "demon" : type.name) + "_";
-				DemonWillUtils.registerWillFluid(type, FLUIDS.register(name + "will")
-						.type(hotFluid(name + "will", 500, 1000, 10000, 11))
+			String name = DemonWillUtils.name(type) + "_will";
+				DemonWillUtils.registerWillFluid(type, FLUIDS.register(name)
+						.type(hotFluid(name, 500, 1000, 10000, 11))
 						.burningBlock(DemonWillUtils.getMapColor(type), 11, 7, 10).bucket().flowing());
 			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedWill.get()) return;
 		}
@@ -110,9 +110,9 @@ public class ModContent {
 	//demon will fluids
 	public static void initHellforgedFluids() {
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			String name = type == EnumDemonWillType.DEFAULT ? "" : type.name + "_";
-			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name + "molten_hellforged")
-					.type(hotFluid(name + "molten_hellforged", 1000, 2000, 8000, 12))
+			String name = DemonWillUtils.name(type) + "_molten_hellforged";
+			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name)
+					.type(hotFluid(name, 1000, 2000, 8000, 12))
 					.burningBlock(DemonWillUtils.getMapColor(type), 10, 10, 6).bucket().flowing());
 			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedDemonite.get()) return;
 		}
