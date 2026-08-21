@@ -110,7 +110,7 @@ public class ModContent {
 	//demon will fluids
 	public static void initHellforgedFluids() {
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			String name = DemonWillUtils.name(type) + "_molten_hellforged";
+			String name = (type == EnumDemonWillType.DEFAULT ? "" : DemonWillUtils.name(type) + "_") + "molten_hellforged";
 			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name)
 					.type(hotFluid(name, 1000, 2000, 8000, 12))
 					.burningBlock(DemonWillUtils.getMapColor(type), 10, 10, 6).bucket().flowing());
