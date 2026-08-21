@@ -4,7 +4,7 @@
   "inputs": [
     {
       "tag": "forge:life",
-      "amount": 120
+      "amount": 110
     },
     {
       "tag": "forge:molten_copper",
