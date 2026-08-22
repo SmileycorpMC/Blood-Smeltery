@@ -3,6 +3,7 @@ package net.smileycorp.bloodsmeltery.common;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.smileycorp.bloodsmeltery.client.ClientEventListener;
+import net.smileycorp.bloodsmeltery.integration.thermal.ThermalIntegration;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,7 @@ public class BloodSmeltery {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		MinecraftForge.EVENT_BUS.register(new BloodSmelteryEvents());
 		ModContent.ITEMS.register(bus);
+		if (ModList.get().isLoaded("thermal")) ThermalIntegration.ITEMS.register(bus);
 		ModContent.BLOCKS.register(bus);
 		ModContent.FLUIDS.register(bus);
 		ModContent.RECIPE_SERIALIZERS.register(bus);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bloodsmeltery:item/bloodbrass_coin_0"
+  }
+}

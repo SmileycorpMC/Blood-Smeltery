@@ -1,0 +1,7 @@
+{
+  "type": "bloodsmeltery:numismatic_fuel",
+  "ingredient": {
+    "tag": "forge:coins/bloodbrass"
+  },
+  "energy": 80000
+}

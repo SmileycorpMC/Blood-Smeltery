@@ -17,6 +17,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -25,6 +26,7 @@ import net.smileycorp.bloodsmeltery.common.modifiers.*;
 import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
 import net.smileycorp.bloodsmeltery.common.recipes.WillMeltingRecipe;
 import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
+import net.smileycorp.bloodsmeltery.integration.thermal.ThermalIntegration;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -132,6 +134,7 @@ public class ModContent {
 		//items
 		output.accept(BLOODBRASS.getIngot());
 		output.accept(BLOODBRASS.getNugget());
+		if (ModList.get().isLoaded("thermal")) output.accept(ThermalIntegration.BLOODBRASS_COIN.get());
 		output.accept(TAUONIC_THREAD.get());
 		//buckets
 		output.accept(MOLTEN_BLOODBRASS.getBucket());
