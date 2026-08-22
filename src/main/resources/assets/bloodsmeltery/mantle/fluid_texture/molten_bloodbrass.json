@@ -1,7 +1,7 @@
 {
   "camera": "tconstruct:fluid/molten/compat_alloy/brass/camera",
   "camera_opacity": 0.1,
-  "color": "FFB40A1A",
+  "color": "FFCC2D0A",
   "flowing": "tconstruct:fluid/molten/compat_alloy/brass/flowing",
   "fog": {
     "calculate_color": true,

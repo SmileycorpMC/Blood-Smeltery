@@ -3,14 +3,14 @@
 	"sentience": "#4EF6FF",
 	"divination": "#FCE324",
 	"hemoglowin": "#FFFF06",
-    "bloodstained": "#7A4343",
-	"exsanguinate": "#C2141B",
-	"transfusion": "#C2141B",
-	"ambrosiac": "#FF1414"
+    "bloodstained": "#6F685C",
+	"exsanguinate": "#A10707",
+	"transfusion": "#A10707",
+	"ambrosiac": "#CD2B11"
   },
   "material.bloodsmeltery": {
-	"blood_seared_stone": "#4C3737",
-	"bloodbrass": "#910000",
-	"tauonic_thread": "#FC0F0F"
+	"blood_seared_stone": "#6F685C",
+	"bloodbrass": "#A10707",
+	"tauonic_thread": "#CD2B11"
   }
 }
