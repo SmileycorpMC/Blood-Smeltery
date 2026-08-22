@@ -3,13 +3,13 @@
 	"sentience": "#4EF6FF",
 	"divination": "#FCE324",
 	"hemoglowin": "#FFFF06",
-    "bloodstained": "#6F685C",
+    "bloodstained": "#765B55",
 	"exsanguinate": "#A10707",
 	"transfusion": "#A10707",
 	"ambrosiac": "#CD2B11"
   },
   "material.bloodsmeltery": {
-	"blood_seared_stone": "#6F685C",
+	"blood_seared_stone": "#765B55",
 	"bloodbrass": "#A10707",
 	"tauonic_thread": "#CD2B11"
   }

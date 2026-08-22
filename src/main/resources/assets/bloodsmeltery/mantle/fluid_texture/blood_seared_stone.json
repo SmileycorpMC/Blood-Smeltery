@@ -1,7 +1,7 @@
 {
   "camera": "tconstruct:fluid/molten/stone/camera",
   "camera_opacity": 0.1,
-  "color": "FF776658",
+  "color": "FF8E6F6C",
   "flowing": "tconstruct:fluid/molten/stone/flowing",
   "fog": {
     "calculate_color": true,
