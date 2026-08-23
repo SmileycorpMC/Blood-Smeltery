@@ -29,6 +29,7 @@ import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.integration.thermal.ThermalIntegration;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
+import slimeknights.mantle.registration.object.FlowingFluidObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.MetalItemObject;
 import slimeknights.tconstruct.common.registration.BlockDeferredRegisterExtension;
@@ -63,10 +64,10 @@ public class BloodSmelteryContent {
 	public static final RegistryObject<Item> TAUONIC_THREAD = ITEMS.register("tauonic_thread", () -> new Item(new Item.Properties()));
 
 	//fluids
-	public static final FluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
+	public static final FlowingFluidObject<ForgeFlowingFluid> BLOOD_SEARED_STONE = FLUIDS.registerStone("blood_seared_stone")
 			.type(hotFluid("blood_seared_stone", 900, 2000, 10000, 6)).burningBlock(MapColor.WARPED_HYPHAE, 6, 7, 2).bucket().flowing();
 
-	public static final FluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.registerMetal("molten_bloodbrass")
+	public static final FlowingFluidObject<ForgeFlowingFluid> MOLTEN_BLOODBRASS = FLUIDS.registerMetal("molten_bloodbrass")
 			.type(hotFluid("molten_bloodbrass", 1000, 2000, 8000, 10)).burningBlock(MapColor.NETHER, 10, 10, 6).bucket().flowing();
 
 	private static final EnumMap<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> HELLFORGED_FLUIDS = Maps.newEnumMap(EnumDemonWillType.class);
