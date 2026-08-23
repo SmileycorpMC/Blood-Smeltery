@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "bloodsmeltery:bloodbrass",
+  "result": {
+    "amount": 90,
+    "tag": "forge:molten_bloodbrass"
+  },
+  "temperature": 605
+}

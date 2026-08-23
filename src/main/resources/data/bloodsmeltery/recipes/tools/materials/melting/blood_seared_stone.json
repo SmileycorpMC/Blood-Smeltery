@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "bloodsmeltery:blood_seared_stone",
+  "result": {
+    "amount": 250,
+    "fluid": "bloodsmeltery:blood_seared_stone"
+  },
+  "temperature": 1000
+}
