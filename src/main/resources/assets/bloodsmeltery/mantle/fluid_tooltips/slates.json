@@ -1,0 +1,13 @@
+{
+  "tag": "bloodsmeltery:tooltips/slates",
+  "units": [
+    {
+      "key": "gui.bloodsmeltery.fluid.rune",
+      "needed": 1000
+    },
+    {
+      "key": "gui.bloodsmeltery.fluid.slate",
+      "needed": 250
+    }
+  ]
+}

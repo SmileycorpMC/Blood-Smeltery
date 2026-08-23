@@ -89,5 +89,8 @@
 	"material.bloodsmeltery.blood_seared_stone.encyclopedia": "Attempts to repair itself every few ticks using §4LP§r from your soul network. Repair amount and the cost increase per level, with the cost being more §4LP§r efficient per level",
 	"material.bloodsmeltery.bloodbrass.encyclopedia": "Adds §4LP§r to your soul network whenever you deal damage, based on the amount of damage dealt. Amount of §4LP§r gained increases per level.",
 	"material.tconstruct.copper.armor": "Adds §4LP§r to your soul network when blocking or reducing damage, based on the amount of damage blocked or reduced. Amount of §4LP§r gained increases per level.",
-	"material.bloodsmeltery.tauonic_thread.encyclopedia": "Spending §4LP§r from your soul network while equipped causes it to repair itself. Repair amount increases per level."
+	"material.bloodsmeltery.tauonic_thread.encyclopedia": "Spending §4LP§r from your soul network while equipped causes it to repair itself. Repair amount increases per level.",
+
+	"gui.bloodsmeltery.fluid.rune": "%s runes",
+	"gui.bloodsmeltery.fluid.slate": "%s slates"
 }
