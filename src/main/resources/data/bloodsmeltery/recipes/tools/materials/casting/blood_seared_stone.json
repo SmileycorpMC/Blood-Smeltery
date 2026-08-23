@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "name": "bloodsmeltery:blood_seared_stone",
-    "amount": 500
+    "amount": 250
   },
   "temperature": 1000,
   "output": "bloodsmeltery:blood_seared_stone"
