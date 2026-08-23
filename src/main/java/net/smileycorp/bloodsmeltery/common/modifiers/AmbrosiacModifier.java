@@ -4,7 +4,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.ModContent;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryContent;
 import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -17,7 +17,7 @@ public class AmbrosiacModifier extends Modifier implements SpendLPModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModContent.SPEND_LP_HOOK);
+        builder.addHook(this, BloodSmelteryContent.SPEND_LP_HOOK);
     }
 
     @Override

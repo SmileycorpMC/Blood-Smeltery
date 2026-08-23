@@ -6,7 +6,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.smileycorp.bloodsmeltery.common.ModContent;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryContent;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -40,7 +40,7 @@ public class DivinationModifier extends Modifier implements GeneralInteractionMo
 
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
-		if (tool.getModifierLevel(ModContent.HEMOGLOWIN.get()) == 0 |! HemoglowinModifier.isReady(tool.getPersistentData())) sendMessage(modifier, player);
+		if (tool.getModifierLevel(BloodSmelteryContent.HEMOGLOWIN.get()) == 0 |! HemoglowinModifier.isReady(tool.getPersistentData())) sendMessage(modifier, player);
 		return InteractionResult.PASS;
 	}
 

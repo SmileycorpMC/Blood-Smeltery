@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.smileycorp.bloodsmeltery.common.Constants;
-import net.smileycorp.bloodsmeltery.common.ModContent;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryContent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -66,7 +66,7 @@ public class HemoglowinModifier extends Modifier implements GeneralInteractionMo
 			nbt.putInt(COOLDOWN, 10);
 		}
 		//custom divination handling to make the message run after activating hemoglowin
-		ModifierEntry divination = tool.getModifier(ModContent.DIVINATION.get());
+		ModifierEntry divination = tool.getModifier(BloodSmelteryContent.DIVINATION.get());
 		if (divination.getLevel() > 0) DivinationModifier.sendMessage(divination, player);
 		return InteractionResult.SUCCESS;
 	}

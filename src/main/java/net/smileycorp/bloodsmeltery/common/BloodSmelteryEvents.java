@@ -51,7 +51,7 @@ public class BloodSmelteryEvents {
 			ItemStack stack = player.getItemBySlot(slot);
 			if (!(stack.getItem() instanceof IModifiable)) continue;
 			ToolStack tool = ToolStack.from(stack);
-			for (ModifierEntry entry : tool.getModifierList()) entry.getHook(ModContent.SPEND_LP_HOOK).spendLP(tool, entry, player, slot, stack, network, amount, event.shouldDamage());
+			for (ModifierEntry entry : tool.getModifierList()) entry.getHook(BloodSmelteryContent.SPEND_LP_HOOK).spendLP(tool, entry, player, slot, stack, network, amount, event.shouldDamage());
 		}
 		if (amount != ticket.getAmount()) event.setTicket(new SoulTicket(ticket.getDescription(), amount));
 	}

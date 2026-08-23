@@ -46,7 +46,7 @@ import wayoftime.bloodmagic.common.registries.BloodMagicCreativeTabs;
 import java.util.EnumMap;
 
 @EventBusSubscriber(modid= Constants.MODID)
-public class ModContent {
+public class BloodSmelteryContent {
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MODID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MODID);
@@ -77,7 +77,7 @@ public class ModContent {
 
 	public static final RegistryObject<CreativeModeTab> TAB = TABS.register("materials", () -> CreativeModeTab.builder()
 					.title(Component.translatable("creativetab." + Constants.MODID))
-					.withTabsBefore(BloodMagicCreativeTabs.BLOODMAGIC_DECORATIVE.getId()).icon(() -> new ItemStack(BLOODBRASS.getIngot())).displayItems(ModContent::fillTab).build());
+					.withTabsBefore(BloodMagicCreativeTabs.BLOODMAGIC_DECORATIVE.getId()).icon(() -> new ItemStack(BLOODBRASS.getIngot())).displayItems(BloodSmelteryContent::fillTab).build());
 
 	//recipe serializers
 	public static final RegistryObject<RecipeSerializer<WillMeltingRecipe>> WILL_MELTING = RECIPE_SERIALIZERS.register("will_melting", () -> LoadableRecipeSerializer.of(WillMeltingRecipe.LOADER));

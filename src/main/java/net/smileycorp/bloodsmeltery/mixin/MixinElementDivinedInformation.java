@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.smileycorp.bloodsmeltery.common.ModContent;
+import net.smileycorp.bloodsmeltery.common.BloodSmelteryContent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +23,7 @@ public class MixinElementDivinedInformation {
 		for (EquipmentSlot slot : EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(slot);
 			if (!(stack.getItem() instanceof IModifiable)) continue;
-			int divination = ToolStack.from(stack).getModifierLevel(ModContent.DIVINATION.get());
+			int divination = ToolStack.from(stack).getModifierLevel(BloodSmelteryContent.DIVINATION.get());
 			if (divination > 1) {
 				hasSeer.set(true);
 				return;

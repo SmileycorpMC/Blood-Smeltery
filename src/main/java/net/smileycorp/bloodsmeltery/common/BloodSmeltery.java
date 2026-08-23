@@ -30,15 +30,15 @@ public class BloodSmeltery {
 	public static void constructMod(FMLConstructModEvent event) {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		MinecraftForge.EVENT_BUS.register(new BloodSmelteryEvents());
-		ModContent.ITEMS.register(bus);
+		BloodSmelteryContent.ITEMS.register(bus);
 		if (ModList.get().isLoaded("thermal")) ThermalIntegration.ITEMS.register(bus);
-		ModContent.BLOCKS.register(bus);
-		ModContent.FLUIDS.register(bus);
-		ModContent.RECIPE_SERIALIZERS.register(bus);
-		ModContent.MODIFIERS.register(bus);
-		ModContent.TABS.register(bus);
-		if (BloodSmelteryConfig.enableFluidWill.get()) ModContent.initWillFluids();
-		ModContent.initHellforgedFluids();
+		BloodSmelteryContent.BLOCKS.register(bus);
+		BloodSmelteryContent.FLUIDS.register(bus);
+		BloodSmelteryContent.RECIPE_SERIALIZERS.register(bus);
+		BloodSmelteryContent.MODIFIERS.register(bus);
+		BloodSmelteryContent.TABS.register(bus);
+		if (BloodSmelteryConfig.enableFluidWill.get()) BloodSmelteryContent.initWillFluids();
+		BloodSmelteryContent.initHellforgedFluids();
 	}
 
 	@SubscribeEvent
