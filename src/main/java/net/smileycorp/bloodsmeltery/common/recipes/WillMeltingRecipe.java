@@ -55,7 +55,7 @@ public class WillMeltingRecipe extends MeltingRecipe {
 
 	@Override
 	public List<List<FluidStack>> getOutputWithByproducts() {
-		return Collections.singletonList(Collections.singletonList(new FluidStack(getOutput().getFluid(), 100)));
+		return Collections.singletonList(Collections.singletonList(new FluidStack(getOutput().getFluid(), BloodSmelteryConfig.willFluidAmount.get())));
 	}
 
 }
