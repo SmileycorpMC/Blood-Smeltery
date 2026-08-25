@@ -21,7 +21,8 @@ public class WillMeltingRecipe extends MeltingRecipe {
 
     public static final RecordLoadable<WillMeltingRecipe> LOADER = RecordLoadable.create(ContextKey.ID.requiredField(), LoadableRecipeSerializer.RECIPE_GROUP, INPUT, OUTPUT, TEMPERATURE, TIME, BYPRODUCTS, WillMeltingRecipe::new);
 
-	private final Ingredient JEI_INGREDIENT;
+	private final Ingredient jeiInput;
+	private final FluidStack jeiOutput;
 
 	public WillMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidOutput output, int temperature, int time, List<FluidOutput> byproducts) {
 		super(id, group, input, output, temperature, time, byproducts);
@@ -29,7 +30,9 @@ public class WillMeltingRecipe extends MeltingRecipe {
 		CompoundTag tag = new CompoundTag();
 		tag.putDouble("souls", 1);
 		stack.setTag(tag);
-		JEI_INGREDIENT = Ingredient.of(stack);
+		jeiInput = Ingredient.of(stack);
+		jeiOutput = output.copy();
+		jeiOutput.setAmount(BloodSmelteryConfig.willFluidAmount.get());
 	}
 
 	@Override
@@ -42,7 +45,7 @@ public class WillMeltingRecipe extends MeltingRecipe {
 
 	@Override
 	public NonNullList<Ingredient> getIngredients() {
-		return NonNullList.of(Ingredient.EMPTY, JEI_INGREDIENT);
+		return NonNullList.of(Ingredient.EMPTY, jeiInput);
 	}
 
 	@Override
@@ -51,6 +54,11 @@ public class WillMeltingRecipe extends MeltingRecipe {
 		if (!stack.hasTag()) new FluidStack(getOutput().getFluid(), 0);
 		CompoundTag tag = stack.getTag();
 		return new FluidStack(getOutput().getFluid(), tag.contains("souls") ? (int)Math.floor(tag.getDouble("souls") * BloodSmelteryConfig.willFluidAmount.get()) : 0);
+	}
+
+	@Override
+	public FluidStack getOutput() {
+		return jeiOutput;
 	}
 
 	@Override
