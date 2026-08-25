@@ -46,11 +46,14 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.module.ModuleHook;
 import slimeknights.tconstruct.library.tools.part.IMaterialItem;
+import slimeknights.tconstruct.library.tools.part.IToolPart;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.registries.BloodMagicCreativeTabs;
 
 import java.util.EnumMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid= Constants.MODID)
 public class BloodSmelteryContent {
@@ -149,31 +152,7 @@ public class BloodSmelteryContent {
 		for (FluidObject<ForgeFlowingFluid> fluid : DemonWillUtils.getWillFluids()) output.accept(fluid.getBucket());
 		for (FluidObject<ForgeFlowingFluid> fluid : HELLFORGED_FLUIDS.values()) output.accept(fluid.getBucket());
 		//parts
-		addParts(output, TinkerToolParts.pickHead);
-		addParts(output, TinkerToolParts.smallAxeHead);
-		addParts(output, TinkerToolParts.smallBlade);
-		addParts(output, TinkerToolParts.adzeHead);
-		// large heads
-		addParts(output, TinkerToolParts.hammerHead);
-		addParts(output, TinkerToolParts.broadAxeHead);
-		addParts(output, TinkerToolParts.broadBlade);
-		addParts(output, TinkerToolParts.largePlate);
-		// binding and rods
-		addParts(output, TinkerToolParts.toolHandle);
-		addParts(output, TinkerToolParts.toolBinding);
-		addParts(output, TinkerToolParts.toughHandle);
-		addParts(output, TinkerToolParts.toughBinding);
-		// ranged
-		addParts(output, TinkerToolParts.bowLimb);
-		addParts(output, TinkerToolParts.bowGrip);
-		addParts(output, TinkerToolParts.bowstring);
-		addParts(output, TinkerToolParts.arrowHead);
-		addParts(output, TinkerToolParts.arrowShaft);
-		addParts(output, TinkerToolParts.fletching);
-		// plating, pair each one with the dummy plating item
-		for (ArmorItem.Type type : ArmorItem.Type.values()) addParts(output, TinkerToolParts.plating.get(type));
-		addParts(output, TinkerToolParts.maille);
-		addParts(output, TinkerToolParts.shieldCore);
+		for (Item part : ForgeRegistries.ITEMS.getValues().stream().filter(item -> item instanceof IToolPart).toList()) addParts(output, part);
 	}
 
 	private static void addParts(CreativeModeTab.Output output, ItemLike item) {
@@ -187,5 +166,6 @@ public class BloodSmelteryContent {
 		if (!material.hasTag()) return;
 		output.accept(material);
 	}
+
 
 }
