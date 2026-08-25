@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.util;
+package net.smileycorp.bloodsmeltery.common.will;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -14,7 +14,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryTags;
 import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
@@ -37,11 +36,11 @@ public class DemonWillUtils {
 
 	private static BiMap<EnumDemonWillType, TagKey<Fluid>> createFluidTagMap() {
 		BiMap<EnumDemonWillType, TagKey<Fluid>> map = HashBiMap.create();
-		map.put(EnumDemonWillType.DEFAULT, BloodSmelteryTags.DEFAULT_WILL);
-		map.put(EnumDemonWillType.CORROSIVE, BloodSmelteryTags.CORROSIVE_WILL);
-		map.put(EnumDemonWillType.DESTRUCTIVE, BloodSmelteryTags.DESTRUCTIVE_WILL);
-		map.put(EnumDemonWillType.VENGEFUL, BloodSmelteryTags.VENGEFUL_WILL);
-		map.put(EnumDemonWillType.STEADFAST, BloodSmelteryTags.STEADFAST_WILL);
+		map.put(EnumDemonWillType.DEFAULT, WillFluidTags.DEFAULT_WILL);
+		map.put(EnumDemonWillType.CORROSIVE, WillFluidTags.CORROSIVE_WILL);
+		map.put(EnumDemonWillType.DESTRUCTIVE, WillFluidTags.DESTRUCTIVE_WILL);
+		map.put(EnumDemonWillType.VENGEFUL, WillFluidTags.VENGEFUL_WILL);
+		map.put(EnumDemonWillType.STEADFAST, WillFluidTags.STEADFAST_WILL);
 		return map;
 	}
 

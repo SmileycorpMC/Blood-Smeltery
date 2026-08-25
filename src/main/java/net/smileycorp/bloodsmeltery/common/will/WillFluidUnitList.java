@@ -1,19 +1,18 @@
-package net.smileycorp.bloodsmeltery.common.util;
+package net.smileycorp.bloodsmeltery.common.will;
 
 import com.google.common.collect.Lists;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.BloodSmelteryTags;
 import slimeknights.mantle.fluid.tooltip.FluidUnitList;
 import wayoftime.bloodmagic.util.ChatUtil;
 
 import java.util.List;
 
-public class FluidUnitListDemonWill extends FluidUnitList {
+public class WillFluidUnitList extends FluidUnitList {
 
-    public FluidUnitListDemonWill() {
-        super(BloodSmelteryTags.DEMON_WILL, Lists.newArrayList());
+    public WillFluidUnitList() {
+        super(WillFluidTags.DEMON_WILL, Lists.newArrayList());
     }
 
     @Override

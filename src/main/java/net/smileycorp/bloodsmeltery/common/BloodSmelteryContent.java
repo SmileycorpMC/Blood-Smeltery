@@ -25,7 +25,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.smileycorp.bloodsmeltery.common.modifiers.*;
 import net.smileycorp.bloodsmeltery.common.modifiers.hook.SpendLPModifierHook;
 import net.smileycorp.bloodsmeltery.common.recipes.WillMeltingRecipe;
-import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
+import net.smileycorp.bloodsmeltery.common.will.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.integration.thermal.ThermalIntegration;
 import slimeknights.mantle.item.BlockTooltipItem;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;

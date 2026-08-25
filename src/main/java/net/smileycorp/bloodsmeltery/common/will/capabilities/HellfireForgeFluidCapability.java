@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.capabilities;
+package net.smileycorp.bloodsmeltery.common.will.capabilities;
 
 import net.minecraft.core.Direction;
 import net.minecraftforge.common.capabilities.Capability;

@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.capabilities;
+package net.smileycorp.bloodsmeltery.common.will.capabilities;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -9,7 +9,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
-import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
+import net.smileycorp.bloodsmeltery.common.will.DemonWillUtils;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.api.compat.IDemonWillGem;
 import wayoftime.bloodmagic.api.compat.IMultiWillTool;

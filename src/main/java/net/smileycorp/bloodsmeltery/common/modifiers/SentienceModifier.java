@@ -26,7 +26,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fluids.FluidStack;
 import net.smileycorp.bloodsmeltery.common.BloodSmelteryConfig;
 import net.smileycorp.bloodsmeltery.common.Constants;
-import net.smileycorp.bloodsmeltery.common.util.DemonWillUtils;
+import net.smileycorp.bloodsmeltery.common.will.DemonWillUtils;
 import org.apache.commons.compress.utils.Lists;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
