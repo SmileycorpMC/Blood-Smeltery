@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "minecraft:stone_brick_wall"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "bloodmagic:demon_will/steadfast",
+    "amount": 10
+  },
+  "result": "bloodmagic:dungeon_brick1_wall_steadfast",
+  "cooling_time": 60
+}

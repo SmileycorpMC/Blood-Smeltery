@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "minecraft:smooth_stone_slab"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "bloodmagic:demon_will/vengeful",
+    "amount": 5
+  },
+  "result": "bloodmagic:dungeon_polished_slab_vengeful",
+  "cooling_time": 30
+}

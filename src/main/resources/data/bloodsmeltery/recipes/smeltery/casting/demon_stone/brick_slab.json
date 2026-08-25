@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "minecraft:stone_brick_slab"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "bloodmagic:demon_will/default",
+    "amount": 5
+  },
+  "result": "bloodmagic:dungeon_brick1_slab",
+  "cooling_time": 30
+}

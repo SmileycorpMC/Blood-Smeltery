@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "minecraft:stone_bricks"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "bloodmagic:demon_will/vengeful",
+    "amount": 10
+  },
+  "result": "bloodmagic:dungeon_brick1_vengeful",
+  "cooling_time": 60
+}

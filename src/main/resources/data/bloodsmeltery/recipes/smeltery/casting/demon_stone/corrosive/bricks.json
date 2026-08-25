@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "minecraft:stone_bricks"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "bloodmagic:demon_will/corrosive",
+    "amount": 10
+  },
+  "result": "bloodmagic:dungeon_brick1_corrosive",
+  "cooling_time": 60
+}
