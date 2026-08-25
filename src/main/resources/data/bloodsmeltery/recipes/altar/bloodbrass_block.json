@@ -7,7 +7,7 @@
     "item": "bloodsmeltery:bloodbrass_block"
   },
   "upgradeLevel": 1,
-  "altarSyphon": 8100,
-  "consumptionRate": 30,
-  "drainRate": 30
+  "altarSyphon": 13500,
+  "consumptionRate": 60,
+  "drainRate": 60
 }
