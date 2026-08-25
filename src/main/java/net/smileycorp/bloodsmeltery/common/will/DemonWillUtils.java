@@ -118,12 +118,6 @@ public class DemonWillUtils {
 		return ItemSentientSword.soulBracket.length - 1;
 	}
 
-	public static EnumDemonWillType getWillFromTartaric(ItemStack stack) {
-		if (!stack.hasTag()) return EnumDemonWillType.DEFAULT;
-		CompoundTag tag = stack.getTag();
-		return tag.contains("demonWillType") ? EnumDemonWillType.getType(tag.getString("demonWillType")) : EnumDemonWillType.DEFAULT;
-	}
-
 	public static List<ItemSoulGem> getTartaricGemItems() {
 		return TARTARIC_GEMS.stream().map(item -> (ItemSoulGem)item.get()).collect(Collectors.toList());
 	}
@@ -143,12 +137,6 @@ public class DemonWillUtils {
 			case VENGEFUL -> ItemSentientSword.vengefulAttackSpeed[tier];
 			default -> 1;
 		};
-	}
-
-	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem) {
-		ItemStack stack = new ItemStack(gem);
-		gem.setWill(type, stack, gem.getMaxWill(type, stack));
-		return stack;
 	}
 
 	public static ItemStack createFilledGem(EnumDemonWillType type, ItemSoulGem gem, double souls) {

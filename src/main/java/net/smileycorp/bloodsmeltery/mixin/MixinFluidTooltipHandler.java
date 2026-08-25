@@ -20,8 +20,6 @@ import java.util.Map;
 @Mixin(value = FluidTooltipHandler.class, remap = false)
 public class MixinFluidTooltipHandler {
 
-	@Shadow private Map<ResourceLocation, FluidUnitList> unitLists;
-
 	@Inject(at= @At(value = "INVOKE", target = "Ljava/util/Map;copyOf(Ljava/util/Map;)Ljava/util/Map;"), method = "apply(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V")
 	public void bloodsmeltery$apply(Map<ResourceLocation, JsonElement> splashList, ResourceManager manager, ProfilerFiller profiler, CallbackInfo ci, @Local(ordinal = 1) Map<ResourceLocation,FluidUnitList> builder ) {
 		builder.put(Constants.loc("will"), new WillFluidUnitList());
