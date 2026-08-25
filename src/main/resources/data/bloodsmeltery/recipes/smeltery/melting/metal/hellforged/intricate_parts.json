@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "bloodmagic:hellforgedparts"
+  },
+  "result": {
+    "fluid": "bloodsmeltery:molten_hellforged",
+    "amount": 270
+  },
+  "temperature": 666,
+  "time": 121
+}
