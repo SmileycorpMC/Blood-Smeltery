@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers.traits;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.world.entity.Entity;

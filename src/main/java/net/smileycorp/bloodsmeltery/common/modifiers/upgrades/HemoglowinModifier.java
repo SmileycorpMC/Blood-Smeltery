@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers.upgrades;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

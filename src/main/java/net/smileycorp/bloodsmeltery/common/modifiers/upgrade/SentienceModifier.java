@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers.upgrade;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;

@@ -1,10 +1,10 @@
-package net.smileycorp.bloodsmeltery.client;
+package net.smileycorp.bloodsmeltery.client.modifiers;
 
 import com.mojang.math.Transformation;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.Material;
-import net.smileycorp.bloodsmeltery.common.modifiers.SentienceModifier;
+import net.smileycorp.bloodsmeltery.common.modifiers.upgrade.SentienceModifier;
 import net.smileycorp.bloodsmeltery.common.will.DemonWillUtils;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;

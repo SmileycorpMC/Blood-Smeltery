@@ -1,4 +1,4 @@
-package net.smileycorp.bloodsmeltery.common.modifiers;
+package net.smileycorp.bloodsmeltery.common.modifiers.upgrades;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
