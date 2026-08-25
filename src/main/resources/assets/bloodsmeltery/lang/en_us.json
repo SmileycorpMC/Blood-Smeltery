@@ -20,7 +20,7 @@
 	"fluid.bloodsmeltery.flowing_corrosive_will": "Corrosive Will",
 	"fluid.bloodsmeltery.flowing_destructive_will": "Destructive Will",
 	"fluid.bloodsmeltery.flowing_vengeful_will": "Vengeful Will",
-	"fluid.bloodsmeltery.flowing_steadfast_will": "Steadfast",
+	"fluid.bloodsmeltery.flowing_steadfast_will": "Steadfast Will",
 	"fluid.bloodsmeltery.flowing_molten_bloodbrass": "Molten Bloodbrass",
 	"fluid.bloodsmeltery.flowing_molten_hellforged": "Molten Demonite",
 	"fluid.bloodsmeltery.flowing_corrosive_molten_hellforged": "Molten Demonite (Corrosive)",
@@ -33,7 +33,7 @@
 	"item.bloodsmeltery.corrosive_will_bucket": "Bucket of Corrosive Will",
 	"item.bloodsmeltery.destructive_will_bucket": "Bucket of Destructive Will",
 	"item.bloodsmeltery.vengeful_will_bucket": "Bucket of Vengeful Will",
-	"item.bloodsmeltery.steadfast_will_bucket": "Bucket of Steadfast",
+	"item.bloodsmeltery.steadfast_will_bucket": "Bucket of Steadfast Will",
 	"item.bloodsmeltery.molten_bloodbrass_bucket": "Bucket of Molten Bloodbrass",
 	"item.bloodsmeltery.molten_hellforged_bucket": "Bucket of Molten Demonite",
 	"item.bloodsmeltery.corrosive_molten_hellforged_bucket": "Bucket of Molten Demonite (Corrosive)",
@@ -48,10 +48,6 @@
 	
 	"block.bloodsmeltery.bloodbrass_block": "Bloodbrass Block",
 	"block.bloodsmeltery.bloodbrass_block.tooltip": "Can be used as beacon base",
-
-	"desc.bloodsmeltery.demon_willmelting": "Produces %s mb per point of Will Quality.",
-	"desc.bloodsmeltery.tartariccasting": "Adds 1 point of Will Quality to the item.",
-	"desc.bloodsmeltery.demon_willcompat": "This recipe may work for other items that hold Demon Will.",
 
 	"modifier.bloodsmeltery.sentience": "Sentience",
 	"modifier.bloodsmeltery.sentience.flavor": "It's alive!",
