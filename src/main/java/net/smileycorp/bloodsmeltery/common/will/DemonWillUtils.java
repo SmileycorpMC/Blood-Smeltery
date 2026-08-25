@@ -4,7 +4,6 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -83,9 +82,8 @@ public class DemonWillUtils {
 		return null;
 	}
 
-	public static Fluid getFluidForType(EnumDemonWillType type) {
-		if (!WILL_FLUIDS.containsKey(type)) return WILL_FLUIDS.get(EnumDemonWillType.DEFAULT).get();
-		return WILL_FLUIDS.get(type).get();
+	public static FluidObject<ForgeFlowingFluid> getFluidForType(EnumDemonWillType type) {
+		return WILL_FLUIDS.getOrDefault(type, WILL_FLUIDS.get(EnumDemonWillType.DEFAULT));
 	}
 
 	public static FluidStack getStackForSouls(EnumDemonWillType type, double amount) {
@@ -94,7 +92,7 @@ public class DemonWillUtils {
 	}
 
 	public static FluidStack getStackForAmount(EnumDemonWillType type, int amount) {
-		return new FluidStack(getFluidForType(type), amount);
+		return new FluidStack(getFluidForType(type).get(), amount);
 	}
 
 	public static Collection<FluidObject<ForgeFlowingFluid>> getWillFluids() {
