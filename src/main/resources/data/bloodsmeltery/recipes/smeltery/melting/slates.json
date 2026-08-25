@@ -1,9 +1,6 @@
 {
   "type": "tconstruct:melting",
   "ingredient": [
-    {
-      "tag": "bloodmagic:sigil"
-    },
 	{
       "tag": "bloodmagic:slate"
     }
