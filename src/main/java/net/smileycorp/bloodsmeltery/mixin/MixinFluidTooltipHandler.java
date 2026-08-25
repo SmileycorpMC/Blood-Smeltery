@@ -8,7 +8,6 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import net.smileycorp.bloodsmeltery.common.Constants;
 import net.smileycorp.bloodsmeltery.common.will.WillFluidUnitList;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;

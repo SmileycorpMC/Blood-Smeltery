@@ -55,7 +55,7 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 
 	@Override
 	public boolean isFluidValid(int tank, FluidStack stack) {
-		return stack.getFluid() == DemonWillUtils.getFluidForType(type).get()
+		return stack.getFluid() == DemonWillUtils.getWillFluid(type).get()
 				|| (getFluid().getAmount() == 0 && DemonWillUtils.isWillFluid(stack));
 	}
 
@@ -66,7 +66,7 @@ public class TartaricFluidCapability implements IFluidHandlerItem, ICapabilityPr
 		int contained = getFluid().getAmount();
 		if (amount + contained > capacity) amount = capacity - contained;
 		if (action.execute()) {
-			EnumDemonWillType type = DemonWillUtils.getTypeForFluid(resource);
+			EnumDemonWillType type = DemonWillUtils.getTypeFor(resource);
 			if (this.type != type) setType(type);
 			IDemonWillGem gem = (IDemonWillGem) stack.getItem();
 			gem.setWill(type, stack, (amount + contained)/BloodSmelteryConfig.willFluidAmount.get());

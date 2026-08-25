@@ -1,10 +1,13 @@
 package net.smileycorp.bloodsmeltery.common;
 
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.DispenseFluidContainer;
 import net.minecraftforge.fluids.FluidInteractionRegistry;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -14,6 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.smileycorp.bloodsmeltery.common.will.DemonWillUtils;
 import net.smileycorp.bloodsmeltery.integration.thermal.ThermalIntegration;
+import slimeknights.mantle.registration.object.FluidObject;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
 
@@ -48,15 +52,19 @@ public class BloodSmeltery {
 	@SubscribeEvent
 	public static void loadComplete(FMLLoadCompleteEvent event) {
 		FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				DemonWillUtils.getFluidForType(EnumDemonWillType.DEFAULT).getType(), BloodMagicBlocks.DUNGEON_STONE.get().defaultBlockState()));
+				DemonWillUtils.getWillFluid(EnumDemonWillType.DEFAULT).getType(), BloodMagicBlocks.DUNGEON_STONE.get().defaultBlockState()));
 		FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				DemonWillUtils.getFluidForType(EnumDemonWillType.CORROSIVE).getType(), BloodMagicBlocks.CORROSIVE_DUNGEON_STONE.get().defaultBlockState()));
+				DemonWillUtils.getWillFluid(EnumDemonWillType.CORROSIVE).getType(), BloodMagicBlocks.CORROSIVE_DUNGEON_STONE.get().defaultBlockState()));
 		FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				DemonWillUtils.getFluidForType(EnumDemonWillType.DESTRUCTIVE).getType(), BloodMagicBlocks.DESTRUCTIVE_DUNGEON_STONE.get().defaultBlockState()));
+				DemonWillUtils.getWillFluid(EnumDemonWillType.DESTRUCTIVE).getType(), BloodMagicBlocks.DESTRUCTIVE_DUNGEON_STONE.get().defaultBlockState()));
 		FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				DemonWillUtils.getFluidForType(EnumDemonWillType.VENGEFUL).getType(), BloodMagicBlocks.VENGEFUL_DUNGEON_STONE.get().defaultBlockState()));
+				DemonWillUtils.getWillFluid(EnumDemonWillType.VENGEFUL).getType(), BloodMagicBlocks.VENGEFUL_DUNGEON_STONE.get().defaultBlockState()));
 		FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				DemonWillUtils.getFluidForType(EnumDemonWillType.STEADFAST).getType(), BloodMagicBlocks.STEADFAST_DUNGEON_STONE.get().defaultBlockState()));
+				DemonWillUtils.getWillFluid(EnumDemonWillType.STEADFAST).getType(), BloodMagicBlocks.STEADFAST_DUNGEON_STONE.get().defaultBlockState()));
+		DispenserBlock.registerBehavior(BloodSmelteryContent.MOLTEN_BLOODBRASS.getBucket(),  DispenseFluidContainer.getInstance());
+		DispenserBlock.registerBehavior(BloodSmelteryContent.BLOOD_SEARED_STONE.getBucket(),  DispenseFluidContainer.getInstance());
+		for (FluidObject<ForgeFlowingFluid> fluid : DemonWillUtils.getWillFluids()) DispenserBlock.registerBehavior(fluid.getBucket(),  DispenseFluidContainer.getInstance());
+		for (FluidObject<ForgeFlowingFluid> fluid : BloodSmelteryContent.getHellforgedFluids()) DispenserBlock.registerBehavior(fluid.getBucket(),  DispenseFluidContainer.getInstance());
 	}
 
 	public static void logInfo(Object message) {

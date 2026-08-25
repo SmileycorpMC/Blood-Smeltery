@@ -149,7 +149,7 @@ public class SentienceModifier extends SingleLevelModifier implements TooltipMod
 		// if tank is full, nothing to do
 		FluidStack current = TANK_HELPER.getFluid(tool);
 		int capacity = TANK_HELPER.getCapacity(tool);
-		Fluid fluid = DemonWillUtils.getFluidForType(type).get();
+		Fluid fluid = DemonWillUtils.getWillFluid(type).get();
 		for (int i = 0; i <= looting; i++) if (i == 0 || RANDOM.nextDouble() < 0.4) {
 			double amount = RANDOM.nextDouble() * multiplier + healthBonus;
 			if (capacity > current.getAmount() && (current.isEmpty() || current.getFluid() == fluid)) {
@@ -217,7 +217,7 @@ public class SentienceModifier extends SingleLevelModifier implements TooltipMod
 	private EnumDemonWillType getWillType(IToolStackView tool, Player player) {
 		FluidStack stack = TANK_HELPER.getFluid(tool);
 		if (!stack.isEmpty()) {
-			EnumDemonWillType type = DemonWillUtils.getTypeForFluid(stack);
+			EnumDemonWillType type = DemonWillUtils.getTypeFor(stack);
 			if (type != null) return type;
 		}
 		return PlayerDemonWillHandler.getLargestWillType(player);

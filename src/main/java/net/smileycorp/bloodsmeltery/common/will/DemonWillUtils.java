@@ -73,16 +73,16 @@ public class DemonWillUtils {
 		};
 	}
 
-	public static EnumDemonWillType getTypeForFluid(FluidStack fluidStack) {
-		return getTypeForFluid(fluidStack.getFluid());
+	public static EnumDemonWillType getTypeFor(FluidStack fluidStack) {
+		return getTypeFor(fluidStack.getFluid());
 	}
 
-	public static EnumDemonWillType getTypeForFluid(Fluid fluid) {
+	public static EnumDemonWillType getTypeFor(Fluid fluid) {
 		for (Entry<EnumDemonWillType, FluidObject<ForgeFlowingFluid>> entry : WILL_FLUIDS.entrySet()) if (entry.getValue().get() == fluid) return entry.getKey();
 		return null;
 	}
 
-	public static FluidObject<ForgeFlowingFluid> getFluidForType(EnumDemonWillType type) {
+	public static FluidObject<ForgeFlowingFluid> getWillFluid(EnumDemonWillType type) {
 		return WILL_FLUIDS.getOrDefault(type, WILL_FLUIDS.get(EnumDemonWillType.DEFAULT));
 	}
 
@@ -92,7 +92,7 @@ public class DemonWillUtils {
 	}
 
 	public static FluidStack getStackForAmount(EnumDemonWillType type, int amount) {
-		return new FluidStack(getFluidForType(type).get(), amount);
+		return new FluidStack(getWillFluid(type).get(), amount);
 	}
 
 	public static Collection<FluidObject<ForgeFlowingFluid>> getWillFluids() {

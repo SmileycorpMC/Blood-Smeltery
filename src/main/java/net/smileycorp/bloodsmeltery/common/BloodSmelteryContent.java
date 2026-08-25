@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,13 +46,11 @@ import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.module.ModuleHook;
 import slimeknights.tconstruct.library.tools.part.IMaterialItem;
 import slimeknights.tconstruct.library.tools.part.IToolPart;
-import slimeknights.tconstruct.tools.TinkerToolParts;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.common.registries.BloodMagicCreativeTabs;
 
+import java.util.Collection;
 import java.util.EnumMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid= Constants.MODID)
 public class BloodSmelteryContent {
@@ -83,6 +80,10 @@ public class BloodSmelteryContent {
 
 	public static ForgeFlowingFluid getHellforged(EnumDemonWillType type) {
 		return HELLFORGED_FLUIDS.get(BloodSmelteryConfig.unifiedWill.get() ? EnumDemonWillType.DEFAULT : type).get();
+	}
+
+	public static Collection<FluidObject<ForgeFlowingFluid>> getHellforgedFluids() {
+		return HELLFORGED_FLUIDS.values();
 	}
 
 	public static final RegistryObject<CreativeModeTab> TAB = TABS.register("materials", () -> CreativeModeTab.builder()
@@ -166,6 +167,5 @@ public class BloodSmelteryContent {
 		if (!material.hasTag()) return;
 		output.accept(material);
 	}
-
 
 }
