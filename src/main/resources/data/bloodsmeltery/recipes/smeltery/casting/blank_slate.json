@@ -5,7 +5,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "name": "bloodsmeltery:blood_seared_stone",
+    "fluid": "bloodsmeltery:blood_seared_stone",
     "amount": 250
   },
   "result": "bloodmagic:blankslate",
