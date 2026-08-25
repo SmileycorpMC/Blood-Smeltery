@@ -29,7 +29,7 @@ public class BloodSmelteryJEICreateSupport {
 		List<EmptyingRecipe> emptyingRecipes = Lists.newArrayList();
 		List<FillingRecipe> fillingRecipes = Lists.newArrayList();
 		for (EnumDemonWillType type : EnumDemonWillType.values()) {
-			DemonWillUtils.getTartaricGemItems().forEach(item-> {
+			DemonWillUtils.getTartaricGemItems().forEach(item -> {
 				emptyingRecipes.add(emptyingRecipe(type, item));
 				fillingRecipes.add(fillingRecipe(type, item));
 			});
@@ -38,21 +38,21 @@ public class BloodSmelteryJEICreateSupport {
 		registration.addRecipes(new RecipeType<>(Create.asResource("spout_filling"), FillingRecipe.class), fillingRecipes);
 	}
 
-	private static EmptyingRecipe emptyingRecipe(EnumDemonWillType type, Item gem) {
+	private static EmptyingRecipe emptyingRecipe(EnumDemonWillType type, ItemSoulGem gem) {
 		return new ProcessingRecipeBuilder<>(EmptyingRecipe::new,
 				Constants.loc("empty_bloodmagic_" + ForgeRegistries.ITEMS.getKey(gem).getPath() + "_of_bloodsmeltery_" + DemonWillUtils.name(type) + "_will"))
-				.withItemIngredients(Ingredient.of(DemonWillUtils.createFilledGem(type, (ItemSoulGem) gem, 1000d/((double) BloodSmelteryConfig.willFluidAmount.get()))))
+				.withItemIngredients(Ingredient.of(DemonWillUtils.createFilledGem(type, gem, 1000d/((double) BloodSmelteryConfig.willFluidAmount.get()))))
 				.withFluidOutputs(DemonWillUtils.getStackForAmount(type, 1000))
-				.withSingleItemOutput(DemonWillUtils.createFilledGem(type, (ItemSoulGem) gem, 0))
+				.withSingleItemOutput(DemonWillUtils.createFilledGem(type, gem, 0))
 				.build();
 	}
 
-	private static FillingRecipe fillingRecipe(EnumDemonWillType type, Item gem) {
+	private static FillingRecipe fillingRecipe(EnumDemonWillType type, ItemSoulGem gem) {
 		return new ProcessingRecipeBuilder<>(FillingRecipe::new,
 				Constants.loc("fill_bloodmagic_" + ForgeRegistries.ITEMS.getKey(gem).getPath() + "_with_bloodsmeltery_" + DemonWillUtils.name(type) + "_will"))
-				.withItemIngredients(Ingredient.of(DemonWillUtils.createFilledGem(type, (ItemSoulGem) gem, 0)))
+				.withItemIngredients(Ingredient.of(DemonWillUtils.createFilledGem(type, gem, 0)))
 				.withFluidIngredients(FluidIngredient.fromFluidStack(DemonWillUtils.getStackForAmount(type, 1000)))
-				.withSingleItemOutput(DemonWillUtils.createFilledGem(type, (ItemSoulGem) gem, 1000d/((double) BloodSmelteryConfig.willFluidAmount.get())))
+				.withSingleItemOutput(DemonWillUtils.createFilledGem(type, gem, 1000d/((double) BloodSmelteryConfig.willFluidAmount.get())))
 				.build();
 	}
 
