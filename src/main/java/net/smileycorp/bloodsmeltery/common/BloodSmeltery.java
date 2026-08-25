@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 @Mod.EventBusSubscriber(modid = Constants.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BloodSmeltery {
 
-	private static Logger logger = Logger.getLogger(Constants.NAME);
+	private static final Logger logger = Logger.getLogger(Constants.NAME);
 
 	public BloodSmeltery() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BloodSmelteryConfig.config);
@@ -39,11 +39,6 @@ public class BloodSmeltery {
 		BloodSmelteryContent.TABS.register(bus);
 		if (BloodSmelteryConfig.enableFluidWill.get()) BloodSmelteryContent.initWillFluids();
 		BloodSmelteryContent.initHellforgedFluids();
-	}
-
-	@SubscribeEvent
-	public static void clientSetup(FMLClientSetupEvent event){
-		MinecraftForge.EVENT_BUS.register(new ClientEventListener());
 	}
 
 	public static void logInfo(Object message) {
