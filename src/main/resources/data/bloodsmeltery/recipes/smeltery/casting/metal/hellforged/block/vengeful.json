@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:casting_basin",
+  "conditions": [
+		{
+          "type": "mantle:tag_filled",
+		  "registry": "minecraft:fluid",
+          "tag": "bloodsmeltery:molten_hellforged/vengeful"
+        }
+  ],
+  "fluid": {
+    "tag": "bloodsmeltery:molten_hellforged/vengeful",
+    "amount": 810
+  },
+  "result": "bloodmagic:dungeon_metal_vengeful",
+  "cooling_time": 161
+}

@@ -3,7 +3,7 @@
   "conditions": [],
   "inputs": [
     {
-      "tag": "forge:demon_will",
+      "tag": "bloodmagic:demon_will",
       "amount": 5
     },
     {

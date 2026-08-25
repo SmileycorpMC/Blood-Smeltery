@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:casting_basin",
-  "fluid": {
-    "tag": "bloodsmeltery:steadfast_molten_hellforged",
-    "amount": 810
-  },
-  "result": "bloodmagic:dungeon_metal_steadfast",
-  "cooling_time": 161
-}

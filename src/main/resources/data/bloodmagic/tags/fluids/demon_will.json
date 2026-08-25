@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+		"#bloodmagic:demon_will/default",
+		{
+			"id": "#bloodmagic:demon_will/corrosive",
+			"required": false
+		},
+		{
+			"id": "#bloodmagic:demon_will/destructive",
+			"required": false
+		},
+		{
+			"id": "#bloodmagic:demon_will/vengeful",
+			"required": false
+		},
+		{
+			"id": "#bloodmagic:demon_will/steadfast",
+			"required": false
+		}
+  ]
+}

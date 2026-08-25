@@ -1,10 +1,22 @@
 {
   "replace": false,
   "values": [
-		"#bloodsmeltery:default_molten_hellforged",
-		"#bloodsmeltery:corrosive_molten_hellforged",
-		"#bloodsmeltery:destructive_molten_hellforged",
-		"#bloodsmeltery:vengeful_molten_hellforged",
-		"#bloodsmeltery:steadfast_molten_hellforged"
+		"#bloodsmeltery:molten_hellforged/default",
+		{
+			"id": "bloodsmeltery:molten_hellforged/corrosive",
+			"required": false
+		},
+		{
+			"id": "bloodsmeltery:molten_hellforged/destructive",
+			"required": false
+		},
+		{
+			"id": "bloodsmeltery:molten_hellforged/vengeful",
+			"required": false
+		},
+		{
+			"id": "bloodsmeltery:molten_hellforged/steadfast",
+			"required": false
+		}
   ]
 }
