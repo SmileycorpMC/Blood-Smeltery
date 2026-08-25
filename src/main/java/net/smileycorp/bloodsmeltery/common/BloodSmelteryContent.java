@@ -117,7 +117,7 @@ public class BloodSmelteryContent {
 			HELLFORGED_FLUIDS.put(type, FLUIDS.registerMetal(name)
 					.type(hotFluid(name, 1000, 2000, 8000, 12))
 					.burningBlock(DemonWillUtils.getMapColor(type), 10, 10, 6).bucket().flowing());
-			if (type == EnumDemonWillType.DEFAULT && BloodSmelteryConfig.unifiedDemonite.get()) return;
+			if (type == EnumDemonWillType.DEFAULT /*&& BloodSmelteryConfig.unifiedDemonite.get()*/) return;
 		}
 	}
 
