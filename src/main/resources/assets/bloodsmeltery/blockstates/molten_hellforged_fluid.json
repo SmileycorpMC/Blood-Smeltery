@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "bloodsmeltery:block/fluid/molten_hellforged"
+      "model": "tconstruct:block/fluid"
     }
   }
 }

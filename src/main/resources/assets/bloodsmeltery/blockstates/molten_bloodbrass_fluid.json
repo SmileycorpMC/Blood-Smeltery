@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "bloodsmeltery:block/fluid/molten_bloodbrass"
+      "model": "tconstruct:block/fluid"
     }
   }
 }
