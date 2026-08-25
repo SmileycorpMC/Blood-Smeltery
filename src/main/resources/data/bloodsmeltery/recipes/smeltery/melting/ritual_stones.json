@@ -9,6 +9,12 @@
     "fluid": "bloodsmeltery:blood_seared_stone",
     "amount": 250
   },
+  "byproducts": [
+    {
+      "amount": 1000,
+      "fluid": "tconstruct:molten_obsidian"
+    }
+  ],
   "temperature": 1000,
   "time": 175
 }
