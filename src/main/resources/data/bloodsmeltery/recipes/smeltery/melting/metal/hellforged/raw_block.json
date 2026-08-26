@@ -13,7 +13,7 @@
     "tag": "forge:storage_blocks/raw_hellforged"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 1080
   },
   "temperature": 666,

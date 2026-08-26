@@ -13,7 +13,7 @@
     "tag": "forge:coins/hellforged"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 30
   },
   "temperature": 666,

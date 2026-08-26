@@ -4,7 +4,7 @@
     "item": "bloodmagic:hellforgedparts"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 270
   },
   "temperature": 666,

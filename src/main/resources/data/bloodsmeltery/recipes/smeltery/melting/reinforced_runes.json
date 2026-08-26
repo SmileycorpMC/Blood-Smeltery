@@ -16,7 +16,7 @@
     },
     {
 	  "amount": 270,
-	  "fluid": "bloodsmeltery:molten_hellforged"
+	  "tag": "forge:molten_hellforged"
 	}
   ],
   "temperature": 1000,

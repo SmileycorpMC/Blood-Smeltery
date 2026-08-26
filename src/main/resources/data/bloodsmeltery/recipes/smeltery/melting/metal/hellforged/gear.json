@@ -13,7 +13,7 @@
     "tag": "forge:gears/hellforged"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 360
   },
   "temperature": 666,

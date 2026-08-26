@@ -13,7 +13,7 @@
     "tag": "forge:nuggets/hellforged"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 10
   },
   "temperature": 666,

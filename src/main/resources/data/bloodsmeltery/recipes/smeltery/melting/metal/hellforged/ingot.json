@@ -13,7 +13,7 @@
     "tag": "forge:ingots/hellforged"
   },
   "result": {
-    "fluid": "bloodsmeltery:molten_hellforged",
+    "tag": "forge:molten_hellforged",
     "amount": 90
   },
   "temperature": 666,
