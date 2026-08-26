@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:casting_table",
   "fluid": {
     "tag": "forge:molten_hellforged",
     "amount": 1080
