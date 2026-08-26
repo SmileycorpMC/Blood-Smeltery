@@ -146,9 +146,8 @@ public class SentienceModifier extends SingleLevelModifier implements TooltipMod
 		double multiplier = (target instanceof Slime ? 0.67 : 1d) * (tier >=  0 ? ItemSentientSword.soulDrop[tier] : 0);
 		double healthBonus = (tier >= 0 ? ItemSentientSword.staticDrop[tier] : 1d) * target.getMaxHealth() / 20d;
 		IDemonWill will = DemonWillUtils.getWillItem(type);
-		// if tank is full, nothing to do
 		FluidStack current = TANK_HELPER.getFluid(tool);
-		int capacity = TANK_HELPER.getCapacity(tool);
+		int capacity = BloodSmelteryConfig.sentienceFillsTanks.get() ? TANK_HELPER.getCapacity(tool) : 0;
 		Fluid fluid = DemonWillUtils.getWillFluid(type).get();
 		for (int i = 0; i <= looting; i++) if (i == 0 || RANDOM.nextDouble() < 0.4) {
 			double amount = RANDOM.nextDouble() * multiplier + healthBonus;
@@ -208,7 +207,7 @@ public class SentienceModifier extends SingleLevelModifier implements TooltipMod
 
 	private double getTotalDemonWill(IToolStackView tool, EnumDemonWillType type, Player player) {
 		double will = PlayerDemonWillHandler.getTotalDemonWill(type, player);
-		FluidStack stack = TANK_HELPER.getFluid(tool);
+		FluidStack stack = BloodSmelteryConfig.sentiencePowersFromTanks.get() ? TANK_HELPER.getFluid(tool) : FluidStack.EMPTY;
 		if (!stack.isEmpty() && stack.getFluid().is(DemonWillUtils.getTagForType(type)))
 			will += (double) stack.getAmount() / (double) BloodSmelteryConfig.willFluidAmount.get();
 		return will;

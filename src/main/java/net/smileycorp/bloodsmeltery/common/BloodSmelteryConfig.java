@@ -3,6 +3,7 @@ package net.smileycorp.bloodsmeltery.common;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 
 public class BloodSmelteryConfig {
 
@@ -21,20 +22,24 @@ public class BloodSmelteryConfig {
 	//modifiers
 	//bloodstained
 	public static ConfigValue<Integer> bloodstainedLPCost;
-	public static ConfigValue<Float> bloodstainedLPMultiplier;
+	public static DoubleValue bloodstainedLPMultiplier;
 	public static BooleanValue bloodstainedHurtsPlayers;
 	public static ConfigValue<Integer> bloodstainedCooldown;
 
 	//exsanguinate
-	public static ConfigValue<Float> exsanguinateLPMultiplier;
-	public static ConfigValue<Float> exsanguinateLPRate;
+	public static DoubleValue exsanguinateLPMultiplier;
+	public static DoubleValue exsanguinateLPRate;
 
 	//transfusion
-	public static ConfigValue<Float> transfusionLPMultiplier;
-	public static ConfigValue<Float> transfusionLPRate;
+	public static DoubleValue transfusionLPMultiplier;
+	public static DoubleValue transfusionLPRate;
 
-	//transfusion
+	//ambrosiac
 	public static ConfigValue<Integer> ambrosiacLPThreshold;
+
+	//sentience
+	public static BooleanValue sentienceFillsTanks;
+	public static BooleanValue sentiencePowersFromTanks;
 
 	static {
 
@@ -58,7 +63,7 @@ public class BloodSmelteryConfig {
 		bloodstainedLPCost = builder.comment("How much life essence does it cost to repair 1 durability for bloodstained items? (Default is 100)")
 				.define("bloodstainedLPCost", 100);
 		bloodstainedLPMultiplier = builder.comment("What factor does the bloodstained modifier's cost reduce to each level? (Default is 0.7)")
-				.define("bloodstainedLPMultiplier", 0.7f);
+				.defineInRange("bloodstainedLPMultiplier", 0.7, 0, 1);
 		bloodstainedHurtsPlayers = builder.comment("Do bloodstained items try to repair even if a player doesn't have enough lp, and damaging them if they don't have enough? (Default is false)")
 				.define("bloodstainedHurtsPlayers", false);
 		bloodstainedCooldown = builder.comment("How many ticks should bloodstained items wait before attempting to repair themselves? (Default is 5)")
@@ -66,18 +71,24 @@ public class BloodSmelteryConfig {
 		builder.pop();
 		builder.push("exsanguinate");
 		exsanguinateLPMultiplier = builder.comment("How much is the lp gained from exsanguinate multiplied by per level? (Default is 1.3)")
-				.define("exsanguinateLPMultiplier", 1.3f);
+				.defineInRange("exsanguinateLPMultiplier", 1.3, 1, Integer.MAX_VALUE);
 		exsanguinateLPRate = builder.comment("How much lp is gained per damage dealt? (Default is 10)")
-				.define("exsanguinateLPRate", 10f);
+				.defineInRange("exsanguinateLPRate", 10d, 0, Integer.MAX_VALUE);
 		builder.push("transfusion");
 		transfusionLPMultiplier = builder.comment("How much is the lp gained from transfusion multiplied by per level? (Default is 1.3)")
-				.define("transfusionLPMultiplier", 1.3f);
+				.defineInRange("transfusionLPMultiplier", 1.3, 1, Integer.MAX_VALUE);
 		transfusionLPRate = builder.comment("How much lp is gained per damage blocked or reduced? (Default is 10)")
-				.define("transfusionLPRate", 10f);
+				.defineInRange("transfusionLPRate", 10d, 0, Integer.MAX_VALUE);
 		builder.pop();
-		builder.push("Ambrosiac");
+		builder.push("ambrosiac");
 		ambrosiacLPThreshold = builder.comment("How much life essence needs to be drained to trigger ambrosiac's repairing(Default is 100)")
 				.define("ambrosiacLPThreshold", 100);
+		builder.pop();
+		builder.push("sentience");
+		sentienceFillsTanks = builder.comment("Does the sentience modifier fill tanks on the tool with fluid demon will?")
+				.define("sentienceFillsTanks", true);
+		sentiencePowersFromTanks = builder.comment("Does the sentience modifier count demon will fluid in tanks on the tool towards it's total?")
+				.define("sentiencePowersFromTanks", true);
 		builder.pop();
 		builder.pop();
 		config = builder.build();

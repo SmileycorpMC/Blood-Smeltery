@@ -104,7 +104,7 @@ public class DemonWillUtils {
 	}
 
 	public static boolean isWillFluid(Fluid fluid) {
-		return getWillFluids().contains(fluid);
+		return fluid.is(WillFluidTags.DEMON_WILL);
 	}
 
 	public static void registerWillFluid(EnumDemonWillType type, FluidObject<ForgeFlowingFluid> fluid) {
