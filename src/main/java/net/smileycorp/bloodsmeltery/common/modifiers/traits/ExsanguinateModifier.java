@@ -1,6 +1,5 @@
 package net.smileycorp.bloodsmeltery.common.modifiers.traits;
 
-import com.mojang.authlib.GameProfile;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +15,6 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import wayoftime.bloodmagic.common.item.ItemBloodOrb;
-import wayoftime.bloodmagic.core.data.Binding;
 import wayoftime.bloodmagic.core.data.SoulNetwork;
 import wayoftime.bloodmagic.core.data.SoulTicket;
 import wayoftime.bloodmagic.core.registry.OrbRegistry;
@@ -48,9 +46,7 @@ public class ExsanguinateModifier extends Modifier implements MeleeHitModifierHo
 		int level = modifier.getLevel();
 		double amount = damageDealt * BloodSmelteryConfig.exsanguinateLPRate.get();
 		if (level > 1) amount = amount * Math.pow(BloodSmelteryConfig.exsanguinateLPMultiplier.get(), level - 1);
-		GameProfile profile = player.getGameProfile();
-		Binding binding = new Binding(profile.getId(), profile.getName());
-		SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
+		SoulNetwork network = NetworkHelper.getSoulNetwork(player);
 		if (network.getOrbTier() > 0) {
 			ItemStack orb = OrbRegistry.getOrbsForTier(network.getOrbTier()).get(0);
 			network.add(new SoulTicket((int) Math.floor(amount)), ((ItemBloodOrb)orb.getItem()).getOrb(orb).getCapacity());
