@@ -36,7 +36,7 @@ public class BloodstainedModifier extends Modifier implements InventoryTickModif
 		if (level > 1) amount = (int) Math.ceil(((float)amount) * Math.pow(BloodSmelteryConfig.bloodstainedLPMultiplier.get(), level - 1) * level);
 		if (!BloodSmelteryConfig.bloodstainedHurtsPlayers.get() && network.getCurrentEssence() < amount) return;
 		if (!network.syphonAndDamage(player, new SoulTicket(amount)).isSuccess()) return;
-		stack.setDamageValue(stack.getDamageValue() - level);
+		stack.setDamageValue(Math.min(0, stack.getDamageValue() - level));
 	}
 
 }
